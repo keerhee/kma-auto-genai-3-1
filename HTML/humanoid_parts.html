@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>휴머노이드 부품 학습 시뮬레이션 · 실기 기준</title>
+  <style>
+    :root{
+      --bg:#eef4f7; --panel:rgba(255,255,255,.88); --panel2:rgba(247,251,253,.94);
+      --line:rgba(39,91,124,.12); --text:#16303f; --muted:#557180; --accent:#00a6c8; --accent2:#1d6eff; --good:#00b27a;
+      --shadow:0 18px 44px rgba(22,48,63,.12);
+    }
+    *{box-sizing:border-box} html,body{margin:0;height:100%;overflow:hidden;background:linear-gradient(180deg,#f5f9fb,#e8f0f4);color:var(--text);font-family:Inter,Pretendard,"Noto Sans KR",sans-serif}
+    #scene{position:fixed;inset:0}
+    .glass{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+    #top{position:fixed;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;gap:12px;z-index:20;pointer-events:none}
+    .title{padding:14px 16px;border-radius:16px;pointer-events:auto;min-width:300px}.title h1{margin:0;font-size:18px}.title p{margin:6px 0 0;color:var(--muted);font-size:12px}
+    .badge{padding:12px 14px;border-radius:999px;pointer-events:auto;font-size:12px;display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--good);box-shadow:0 0 12px rgba(0,178,122,.4)}
+    #left{position:fixed;left:16px;top:96px;bottom:112px;width:345px;border-radius:20px;padding:16px;z-index:20;overflow:auto}
+    .eyebrow{font-size:10px;color:var(--accent);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    #name{margin:8px 0;font-size:24px;line-height:1.2} #desc{margin:0;color:#456271;font-size:13px;line-height:1.65}
+    .stats{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{padding:10px 11px;border-radius:12px;background:rgba(255,255,255,.6);border:1px solid rgba(22,48,63,.06)} .stat span{display:block;color:#67818d;font-size:10px;letter-spacing:.1em;text-transform:uppercase}.stat strong{display:block;margin-top:4px;font-size:13px}
+    #tip{margin-top:14px;padding:11px 12px;border-left:2px solid var(--accent);background:linear-gradient(90deg,rgba(0,166,200,.08),transparent);font-size:12px;color:#3a5d6e;border-radius:0 10px 10px 0}
+    #partsList{margin-top:14px;display:grid;gap:8px}.partBtn{appearance:none;border:1px solid rgba(22,48,63,.08);background:rgba(255,255,255,.54);color:var(--text);text-align:left;border-radius:12px;padding:10px 12px;cursor:pointer}.partBtn.active{border-color:rgba(0,166,200,.45);background:rgba(0,166,200,.08)}.partBtn small{display:block;color:var(--muted);margin-top:3px}
+    #right{position:fixed;right:16px;top:96px;width:310px;border-radius:18px;padding:14px;z-index:20}.right-title{margin:0 0 8px;font-size:17px}.right-p{margin:0;color:#456271;font-size:12px;line-height:1.58}.bullet{margin-top:10px;display:grid;gap:7px;font-size:12px;color:#345363}
+    #bottom{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;border-radius:18px;padding:12px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}.btn,.voiceSelect{appearance:none;border:1px solid rgba(22,48,63,.1);background:rgba(255,255,255,.82);color:var(--text);height:40px;border-radius:12px;padding:0 12px;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#14d8f8,#72ecff);border:none;color:#053341;font-weight:800}.voiceSelect{max-width:170px;font:inherit;font-size:12px}.voiceRange{display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;border:1px solid rgba(22,48,63,.1);border-radius:12px;background:rgba(255,255,255,.68);font-size:11px;color:var(--muted)}.voiceRange input{width:72px;accent-color:var(--accent)}
+    #progress{height:8px;border-radius:999px;background:rgba(22,48,63,.08);overflow:hidden}#bar{height:100%;width:10%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+    #labels{margin-top:8px;display:grid;grid-template-columns:repeat(8,minmax(40px,1fr));gap:6px}.lab{font-size:10px;color:#708893;text-align:center}.lab.active{color:#16303f;font-weight:800}
+    #voiceHint{font-size:12px;color:#597684}
+    @media (max-width:1100px){#right{display:none}} @media (max-width:820px){#left{left:10px;right:10px;width:auto;bottom:118px;height:220px;top:auto}#bottom{left:10px;right:10px;bottom:10px;grid-template-columns:1fr}#top{left:10px;right:10px;top:10px}.badge{display:none}}
+  </style>
+</head>
+<body>
+<div id="scene"></div>
+<div id="top">
+  <div class="title glass"><h1>휴머노이드 부품 학습 시뮬레이션 · 쉬운 설명</h1><p>로봇의 근육(액추에이터), 뇌(AI 컴퓨터), 눈(카메라), 평형 감각(IMU), 혈관과 신경(전선)까지 — 사람 몸에 빗대어 누구나 이해할 수 있게 설명하는 교육용 버전입니다.</p></div>
+  <div class="badge glass"><span class="dot"></span>EDUCATION MODE · HUMANOID ROBOTICS</div>
+</div>
+<aside id="left" class="glass">
+  <div class="eyebrow" id="eyebrow">COMPONENT 01</div>
+  <h2 id="name"></h2>
+  <p id="desc"></p>
+  <div class="stats">
+    <div class="stat"><span>위치</span><strong id="loc"></strong></div>
+    <div class="stat"><span>기능</span><strong id="role"></strong></div>
+    <div class="stat"><span>핵심 기술</span><strong id="tech"></strong></div>
+    <div class="stat"><span>학습 단계</span><strong id="order"></strong></div>
+  </div>
+  <div id="tip"></div>
+  <div id="partsList"></div>
+</aside>
+<aside id="right" class="glass">
+  <h3 class="right-title">교육 포인트</h3>
+  <p class="right-p">3D 장면 속 부품 이름 라벨을 직접 보면서 각 부품이 어디에 있는지 파악할 수 있습니다. 버튼을 누르면 한국어 음성으로 설명이 재생됩니다.</p>
+  <div class="bullet">
+    <div>• 드래그: 카메라 회전</div>
+    <div>• 휠: 확대 / 축소</div>
+    <div>• 클릭: 부품 선택 및 설명</div>
+    <div>• 음성: 현재 부품 설명 내레이션</div>
+    <div>• 분해 보기: 전체 구조 학습</div>
+  </div>
+</aside>
+<div id="bottom" class="glass">
+  <div class="controls">
+    <button class="btn" id="prevBtn">이전</button>
+    <button class="btn primary" id="nextBtn">다음 부품</button>
+    <button class="btn" id="autoBtn">자동 설명</button>
+    <button class="btn" id="explodeBtn">분해 보기</button>
+    <button class="btn" id="voiceBtn">음성 설명</button>
+    <button class="btn" id="voiceToggleBtn">자동 음성 ON</button>
+    <select class="voiceSelect" id="voiceSelect" title="내레이션 목소리"><option>한국어 음성 검색 중…</option></select>
+    <label class="voiceRange">속도 <input id="voiceRate" type="range" min="0.75" max="1.15" step="0.05" value="0.90"><span id="rateValue">0.90×</span></label>
+    <button class="btn" id="resetBtn">시점 초기화</button>
+  </div>
+  <div>
+    <div id="progress"><div id="bar"></div></div>
+    <div id="labels"></div>
+  </div>
+  <div id="voiceHint">차분한 한국어 교육 내레이션 · 기기에서 사용 가능한 음성을 자동 선택합니다.</div>
+</div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const PARTS = [
+  { key:'actuator', short:'액추에이터', name:'관절 액추에이터 (로봇의 근육)', location:'어깨·팔꿈치·허리·엉덩이·무릎·발목', role:'몸을 움직이는 근육 역할', tech:'모터 + 기어(감속기) + 센서', tip:'로봇 한 대 값의 절반이 이 부품! 그래서 회사들이 이걸 싸게 만들려고 경쟁합니다.', desc:'사람의 근육에 해당하는 부품입니다. 안에는 전기 모터와 기어, 그리고 "지금 얼마나 돌았는지, 얼마나 힘을 주는지" 알려주는 센서가 들어 있습니다. 모터는 빠르지만 힘이 약해서, 자전거 저단 기어처럼 속도를 줄이고 힘을 키우는 기어(하모닉 드라이브)를 함께 씁니다. 로봇 한 대에 30개 정도 들어가고, 로봇 가격의 절반을 차지합니다.', narr:'첫 번째는 관절 액추에이터, 로봇의 근육입니다. 전기 모터는 빠르지만 힘이 약해서, 자전거 기어처럼 속도를 줄이고 힘을 키우는 장치를 함께 넣습니다. 어깨, 팔꿈치, 무릎처럼 움직이는 곳마다 하나씩, 로봇 한 대에 서른 개쯤 들어갑니다. 로봇 값의 절반이 이 부품이라서, 로봇 회사들의 진짜 승부처입니다.' },
+  { key:'hand', short:'핸드', name:'로봇 손', location:'양팔 끝', role:'물건을 잡고 다루는 손', tech:'와이어(줄)로 손가락 당기기', tip:'모터는 팔뚝에 숨어 있고, 낚싯줄 같은 와이어가 손가락을 당깁니다. 사람 손 힘줄과 똑같은 원리!', desc:'로봇에서 가장 만들기 어려운 부품입니다. 손가락마다 모터를 넣으면 손이 너무 무거워지기 때문에, 모터를 팔뚝에 숨기고 낚싯줄 같은 와이어로 손가락을 당깁니다. 사실 사람 손도 똑같아서, 손가락을 움직이는 근육은 팔뚝에 있고 힘줄이 당겨 줍니다. 손끝에는 촉각 센서가 있어서 계란은 살살, 무거운 상자는 꽉 잡을 수 있습니다.', narr:'로봇 손입니다. 손가락마다 모터를 넣으면 손이 너무 무거워져서, 모터는 팔뚝에 숨기고 낚싯줄 같은 와이어로 손가락을 당깁니다. 사람 손도 똑같습니다. 손가락 근육은 팔뚝에 있고, 힘줄이 당겨 주지요. 손끝의 촉각 센서 덕분에 계란은 살살, 무거운 물건은 꽉 잡을 수 있습니다.' },
+  { key:'head', short:'헤드', name:'비전 헤드 (로봇의 눈과 귀)', location:'목 위', role:'보고 듣기', tech:'카메라 여러 대 + 마이크', tip:'비싼 레이저 센서(라이다) 없이, 사람처럼 카메라(눈)만으로 세상을 알아봅니다.', desc:'로봇의 눈과 귀입니다. 머리 안에 카메라 여러 대와 마이크가 들어 있어서 주변을 보고 소리를 듣습니다. 자율주행차는 레이저 센서(라이다)를 쓰기도 하지만, 요즘 휴머노이드 대부분은 사람처럼 카메라만으로 물건과 사람을 알아봅니다. 목 관절이 있어서 고개를 돌려 볼 수도 있습니다.', narr:'비전 헤드, 로봇의 눈과 귀입니다. 머리 안에 카메라 여러 대와 마이크가 있어서 주변을 보고 듣습니다. 사람이 눈만으로 세상을 알아보듯, 요즘 로봇도 비싼 레이저 센서 없이 카메라만으로 물건을 알아봅니다. 목을 돌려 여기저기 살펴볼 수도 있습니다.' },
+  { key:'compute', short:'컴퓨트', name:'AI 컴퓨터 (로봇의 뇌)', location:'가슴 위쪽', role:'생각하고 명령 내리기', tech:'AI 칩 + 반사신경용 작은 칩', tip:'"뭘 할지 생각하는 뇌"와 "넘어지지 않게 하는 반사신경"이 따로 있습니다. 사람과 똑같아요!', desc:'로봇의 뇌입니다. 카메라가 본 것을 이해하고 "컵을 집어야겠다" 같은 판단을 내리는 AI 칩이 들어 있습니다. 재미있는 점은 뇌가 두 개로 나뉜다는 것입니다. 천천히 생각하는 AI 뇌와, 1초에 천 번씩 관절을 조절해 넘어지지 않게 하는 반사신경용 작은 칩이 따로 있습니다. 사람도 뜨거운 걸 만지면 생각하기 전에 손을 떼는 것과 같은 원리입니다.', narr:'에이아이 컴퓨터, 로봇의 뇌입니다. 카메라가 본 것을 이해하고 무엇을 할지 판단합니다. 재미있는 건 뇌가 두 개라는 점입니다. 천천히 생각하는 인공지능 뇌와, 일 초에 천 번씩 관절을 조절해 넘어지지 않게 하는 반사신경 칩이 따로 있습니다. 사람이 뜨거운 것을 만지면 생각하기도 전에 손을 떼는 것과 같은 원리입니다.' },
+  { key:'battery', short:'배터리', name:'배터리 팩', location:'가슴 한가운데(등쪽)', role:'로봇의 도시락(에너지)', tech:'노트북 배터리 약 30개 분량', tip:'제일 무거운 부품이라 몸 한가운데 둡니다. 무거운 가방을 등 가운데 메는 것과 같은 이유!', desc:'로봇의 에너지 도시락입니다. 노트북 배터리 30개 정도의 전기를 담아 두세 시간 일할 수 있습니다. 로봇에서 가장 무거운 부품이라 몸통 한가운데에 넣는데, 무거운 책가방을 몸 가운데로 딱 붙여 메야 안 넘어지는 것과 같은 이유입니다. 요즘은 공장에서 쉬지 않고 일하도록, 게임기 배터리 갈아 끼우듯 통째로 교체하는 방식도 나오고 있습니다.', narr:'배터리 팩, 로봇의 에너지 도시락입니다. 노트북 배터리 서른 개 분량의 전기로 두세 시간을 일합니다. 로봇에서 가장 무거운 부품이라 몸 한가운데에 넣는데, 무거운 가방을 몸에 딱 붙여 메야 넘어지지 않는 것과 같은 이유입니다. 요즘은 배터리를 통째로 갈아 끼우는 로봇도 나오고 있습니다.' },
+  { key:'imu', short:'IMU', name:'IMU (평형 감각 센서)', location:'허리·가슴 속', role:'기울어짐 감지 = 균형 감각', tech:'스마트폰 속 센서와 같은 원리', tip:'우리 귓속 깊은 곳에 있는 평형기관과 똑같은 일을 하는, 작지만 최고로 중요한 센서입니다.', desc:'로봇의 평형 감각입니다. 사람은 귓속 깊은 곳의 평형기관 덕분에 눈을 감아도 몸이 기울면 바로 느끼는데, IMU가 바로 그 역할을 합니다. 몸이 얼마나 기울고 도는지를 1초에 천 번씩 재서 알려주면, 로봇이 재빨리 다리를 움직여 균형을 잡습니다. 스마트폰을 돌리면 화면이 같이 돌아가는 것도 사실 이 센서 덕분입니다.', narr:'아이엠유, 로봇의 평형 감각입니다. 사람은 귓속 평형기관 덕분에 눈을 감아도 몸이 기울면 바로 느끼지요. 이 작은 센서가 바로 그 일을 합니다. 몸이 얼마나 기울었는지 일 초에 천 번씩 재서 알려주면, 로봇이 재빨리 균형을 잡습니다. 스마트폰을 돌리면 화면이 따라 도는 것도 같은 센서 덕분입니다.' },
+  { key:'harness', short:'하니스', name:'전선 다발 (혈관과 신경)', location:'등뼈를 따라 온몸으로', role:'전기와 신호 전달', tech:'수백만 번 굽혀도 안 끊어지는 특수 전선', tip:'전기를 나르는 선은 혈관, 명령을 나르는 선은 신경. 로봇 몸속의 혈관과 신경입니다.', desc:'로봇 몸속의 혈관과 신경입니다. 굵은 전원선은 혈관처럼 배터리의 전기를 각 관절 근육에 보내고, 통신선은 신경처럼 뇌의 명령을 전달합니다. 등뼈를 따라 내려가다 팔다리로 갈라지는 것도 사람 신경과 비슷합니다. 관절이 움직일 때마다 같이 굽혀지기 때문에, 수백만 번 접혀도 끊어지지 않는 특수 전선을 씁니다.', narr:'전선 다발 하니스, 로봇의 혈관과 신경입니다. 전기를 나르는 선은 혈관처럼 배터리의 힘을 온몸의 근육에 보내고, 통신선은 신경처럼 뇌의 명령을 전달합니다. 관절이 움직일 때마다 함께 굽혀지기 때문에, 수백만 번 접혀도 끊어지지 않는 특수한 전선을 씁니다.' },
+  { key:'frame', short:'프레임', name:'뼈대와 겉옷 (프레임·외장)', location:'온몸', role:'몸을 지탱하는 뼈대', tech:'가볍고 튼튼한 마그네슘·알루미늄', tip:'뼈대가 1kg 가벼워지면 모든 근육이 편해지고 배터리도 오래갑니다. 다이어트와 같은 원리!', desc:'로봇의 뼈대입니다. 비행기에도 쓰는 가볍고 튼튼한 마그네슘·알루미늄 합금으로 만듭니다. 뼈대가 가벼울수록 근육(액추에이터)이 힘을 덜 써도 되고 배터리도 오래갑니다. 사람이 가방을 비우면 덜 힘든 것과 같지요. 겉을 덮는 하얀 커버는 사람과 부딪혀도 다치지 않게 모서리를 둥글게 만듭니다.', narr:'마지막은 뼈대와 겉옷입니다. 비행기에도 쓰는 가볍고 튼튼한 금속으로 뼈대를 만듭니다. 뼈대가 가벼울수록 근육이 힘을 덜 쓰고 배터리도 오래갑니다. 무거운 가방을 비우면 덜 힘든 것과 같지요. 겉의 하얀 커버는 사람과 부딪혀도 다치지 않도록 둥글게 만듭니다.' }
+];
+
+const $ = s => document.querySelector(s);
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0xeef4f7); scene.fog=new THREE.FogExp2(0xeef4f7,.006);
+const camera=new THREE.PerspectiveCamera(42, innerWidth/innerHeight, .1, 240); camera.position.set(6.5,4.2,8.5);
+const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight); renderer.shadowMap.enabled=true; renderer.outputColorSpace=THREE.SRGBColorSpace; $('#scene').appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement); controls.target.set(0,2.2,0); controls.enableDamping=true; controls.maxPolarAngle=Math.PI*.48;
+scene.add(new THREE.HemisphereLight(0xffffff,0xcddce4,2.2)); const sun=new THREE.DirectionalLight(0xffffff,4.8); sun.position.set(10,16,10); sun.castShadow=true; scene.add(sun); const rimL=new THREE.DirectionalLight(0xb9eeff,2.0); rimL.position.set(-10,8,-10); scene.add(rimL);
+
+function mat(color, metalness=.35, roughness=.5, extra={}){ return new THREE.MeshStandardMaterial({color, metalness, roughness, ...extra}); }
+function box(w,h,d,m,x=0,y=0,z=0){ const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); mesh.position.set(x,y,z); mesh.castShadow=true; mesh.receiveShadow=true; return mesh; }
+function cylX(r,len,m,x=0,y=0,z=0){ const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len,28),m); mesh.rotation.z=Math.PI/2; mesh.position.set(x,y,z); mesh.castShadow=true; mesh.receiveShadow=true; return mesh; }
+function roundRect(ctx,x,y,w,h,r,fill,stroke){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); if(fill) ctx.fill(); if(stroke) ctx.stroke(); }
+function labelSprite(text){ const canvas=document.createElement('canvas'); canvas.width=512; canvas.height=128; const ctx=canvas.getContext('2d'); ctx.fillStyle='rgba(255,255,255,0.92)'; roundRect(ctx,8,8,496,112,22,true,false); ctx.strokeStyle='rgba(0,166,200,0.85)'; ctx.lineWidth=4; roundRect(ctx,8,8,496,112,22,false,true); ctx.fillStyle='#143243'; ctx.font='700 34px Pretendard, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(text,256,64); const tex=new THREE.CanvasTexture(canvas); const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true})); spr.scale.set(2.2,.55,1); return spr; }
+function workerAvatar(color=0x355362){ const g=new THREE.Group(); g.add(box(.38,.82,.26,mat(color,.18,.72),0,1.15,0)); const head=new THREE.Mesh(new THREE.SphereGeometry(.18,20,16),mat(0xffdfca,.1,.85)); head.position.y=1.78; g.add(head); const helmet=new THREE.Mesh(new THREE.SphereGeometry(.2,20,16,0,Math.PI*2,0,Math.PI/2),mat(0xffffff,.08,.65)); helmet.position.y=1.85; g.add(helmet); g.add(box(.11,.7,.11,mat(0x223844,.1,.8),-.09,.43,0)); g.add(box(.11,.7,.11,mat(0x223844,.1,.8),.09,.43,0)); g.add(box(.1,.58,.1,mat(color,.18,.72),-.28,1.18,0)); g.add(box(.1,.58,.1,mat(color,.18,.72),.28,1.18,0)); return g; }
+
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(64,44), mat(0xf7fbfd,.02,.94)); floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
+const pad=new THREE.Mesh(new THREE.CylinderGeometry(2.6,2.6,.06,48), mat(0xe6f0f4,.02,.9)); pad.position.y=.03; scene.add(pad);
+const grid=new THREE.GridHelper(40,40,0xc8dbe6,0xdfeaf0); grid.position.y=.01; grid.material.opacity=.45; grid.material.transparent=true; scene.add(grid);
+
+// ── 휴머노이드 (자립 스탠드) ───────────────────────────────
+const bot=new THREE.Group(); scene.add(bot);
+const frameM=mat(0xaebcc6,.7,.3), coverM=mat(0xeef2f5,.2,.4), actM=mat(0xf2aa61,.72,.22), darkM=mat(0x1f2830,.5,.3);
+const PY=0;
+// 프레임·외장 (frame)
+const frameG=new THREE.Group(); bot.add(frameG);
+frameG.add(box(.95,.34,.5,frameM,0,PY+1.62,0));
+const torsoFrame=box(1.02,1.12,.5,frameM,0,PY+2.52,0); frameG.add(torsoFrame);
+for(const sx of [-.28,.28]){ frameG.add(box(.2,.78,.24,frameM,sx,PY+1.04,0)); frameG.add(box(.18,.72,.22,frameM,sx,PY+.36,0)); frameG.add(box(.3,.12,.58,frameM,sx,PY+.06,.1)); }
+const chest=new THREE.Group(); const chestPlate=box(1.08,1.16,.1,coverM,0,PY+2.52,.32); chest.add(chestPlate); chest.add(box(1.0,.36,.08,coverM,0,PY+1.62,.3)); frameG.add(chest);
+// 팔(피벗 그룹) + 핸드
+function armGroup(side){ const g=new THREE.Group(); g.position.set(side*.66,PY+2.98,0);
+  g.add(box(.18,.62,.2,frameM,0,-.36,0));
+  const elbow=cylX(.11,.24,actM,0,-.72,0); elbow.userData.act=true; g.add(elbow);
+  g.add(box(.16,.5,.18,frameM,0,-1.02,0));
+  const hand=new THREE.Group(); hand.position.set(0,-1.36,0);
+  hand.add(box(.16,.2,.1,coverM)); for(const fz of [-.045,0,.045]) hand.add(box(.035,.16,.03,darkM,0,-.16,fz));
+  g.add(hand); g.userData.hand=hand; return g; }
+const armL=armGroup(-1), armR=armGroup(1); frameG.add(armL,armR);
+const hands=[armL.userData.hand, armR.userData.hand];
+// 액추에이터 (actuator)
+const acts=new THREE.Group(); bot.add(acts);
+for(const sx of [-1,1]){ acts.add(cylX(.15,.3,actM,sx*.66,PY+2.98,0)); acts.add(cylX(.14,.3,actM,sx*.28,PY+1.45,0)); acts.add(cylX(.12,.28,actM,sx*.28,PY+.72,0)); acts.add(cylX(.10,.26,actM,sx*.28,PY+.18,0)); }
+acts.add(cylX(.16,.5,actM,0,PY+1.9,0));
+const elbows=[armL.children.find(c=>c.userData.act), armR.children.find(c=>c.userData.act)];
+// 헤드 (head)
+const headG=new THREE.Group(); bot.add(headG);
+headG.add(box(.44,.46,.46,coverM,0,PY+3.66,0)); headG.add(box(.34,.14,.05,mat(0x101820,.4,.2),0,PY+3.7,.235));
+const eyeL=box(.06,.04,.02,new THREE.MeshBasicMaterial({color:0x59e6ff}),-.09,PY+3.7,.26); const eyeR=eyeL.clone(); eyeR.position.x=.09; headG.add(eyeL,eyeR);
+headG.add(cylX(.09,.16,frameM,0,PY+3.36,0));
+// 컴퓨트 / 배터리 / IMU (토르소 내부·후면)
+const compute=new THREE.Group(); compute.add(box(.5,.3,.1,mat(0x4d79ff,.56,.24),0,PY+3.0,-.34)); bot.add(compute);
+const battery=new THREE.Group(); battery.add(box(.72,.82,.22,mat(0x1c9b7a,.58,.28),0,PY+2.42,-.38)); bot.add(battery);
+const imu=new THREE.Group(); imu.add(box(.18,.12,.14,mat(0x8493a1,.58,.3),.3,PY+2.0,-.3)); bot.add(imu);
+// 하니스 (harness)
+const harness=new THREE.Group(); bot.add(harness);
+const hvM=new THREE.MeshStandardMaterial({color:0xff8329,metalness:.18,roughness:.44,emissive:0x351a07,emissiveIntensity:.22});
+function tube(pts,r=.035){ return new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(...p))),36,r,10,false),hvM.clone()); }
+harness.add(tube([[0,PY+3.05,-.28],[0,PY+2.3,-.3],[0,PY+1.6,-.28]], .05));
+for(const sx of [-.28,.28]) harness.add(tube([[0,PY+1.6,-.28],[sx,PY+1.35,-.2],[sx,PY+.6,-.18],[sx,PY+.18,-.14]]));
+for(const sx of [-.6,.6]) harness.add(tube([[0,PY+2.9,-.3],[sx,PY+2.95,-.22],[sx*1.08,PY+2.6,-.12]]));
+
+const workers=[workerAvatar(0x4e7988),workerAvatar(0x5f8593)]; workers[0].position.set(-4.5,0,-3.6); workers[1].position.set(4.2,0,3.8); workers.forEach(w=>scene.add(w));
+
+// ── 선택 시스템 ───────────────────────────────────────────
+const lookup={ actuator:[acts,...elbows], hand:hands, head:[headG], compute:[compute], battery:[battery], imu:[imu], harness:[harness], frame:[frameG] };
+const INTERNAL=new Set(['compute','battery','imu','harness']);
+const targets={
+  actuator:{cam:[4.6,2.6,5.6], target:[.3,1.4,0], label:[1.35,1.9,0]},
+  hand:{cam:[3.8,2.0,5.2], target:[.66,1.62,0], label:[1.15,1.1,0]},
+  head:{cam:[2.8,4.4,4.6], target:[0,3.66,0], label:[0,4.45,0]},
+  compute:{cam:[-2.6,4.2,-4.8], target:[0,3.0,-.3], label:[-.95,3.35,-.6]},
+  battery:{cam:[-3.2,3.2,-5.2], target:[0,2.42,-.35], label:[.95,2.6,-.8]},
+  imu:{cam:[-3.0,2.6,-4.6], target:[.3,2.0,-.3], label:[1.15,1.75,-.7]},
+  harness:{cam:[-4.2,2.8,-5.0], target:[0,2.0,-.25], label:[-1.15,2.35,-.7]},
+  frame:{cam:[5.8,3.6,7.4], target:[0,2.0,0], label:[0,.55,1.35]}
+};
+const partLabels={};
+PARTS.forEach(p=>{ const spr=labelSprite(p.short); const anchor=new THREE.Object3D(); const lp=targets[p.key].label; anchor.position.set(lp[0],lp[1],lp[2]); bot.add(anchor); anchor.add(spr); partLabels[p.key]=spr; });
+const rayTargets=[]; function markObj(root,key){ root.traverse(o=>{ if(o.isMesh){ o.userData.partKey=key; rayTargets.push(o); } }); }
+Object.entries(lookup).forEach(([k,objs])=>objs.forEach(o=>markObj(o,k)));
+
+// 외장 고스트(투시): 내부 부품 선택 시 토르소 프레임·가슴 커버 반투명
+const ghostMeshes=[]; [torsoFrame,chestPlate].forEach(o=>{ const m=o.material=o.material.clone(); m.userData.baseOpacity=1; ghostMeshes.push(o); });
+function setGhost(on){ ghostMeshes.forEach(o=>{ const m=o.material; m.transparent=on; m.opacity=on?.15:1; m.depthWrite=!on; }); }
+
+let hiMeshes=[];
+function clearHighlight(){ hiMeshes.forEach(h=>{ h.mesh.material.emissive.setHex(h.em); h.mesh.material.emissiveIntensity=h.int; }); hiMeshes=[]; }
+function highlight(objs){ clearHighlight(); objs.forEach(root=>root.traverse(o=>{ if(o.isMesh&&o.material.emissive){ hiMeshes.push({mesh:o, em:o.material.emissive.getHex(), int:o.material.emissiveIntensity}); o.material.emissive.setHex(0x0aa8ca); } })); }
+
+let current=0, explode=false, autoMode=false, autoVoice=true, autoNext=null;
+const list=$('#partsList'), labelStrip=$('#labels');
+PARTS.forEach((p,i)=>{ const b=document.createElement('button'); b.className='partBtn'; b.innerHTML=`<strong>${i+1}. ${p.name}</strong><small>${p.role} · ${p.location}</small>`; b.onclick=()=>{ stopAuto(); selectPart(i,true); }; list.appendChild(b); const l=document.createElement('div'); l.className='lab'; l.textContent=p.short; labelStrip.appendChild(l); });
+
+const voiceSelect=$('#voiceSelect'), voiceRate=$('#voiceRate');
+let koreanVoices=[], selectedVoice=null;
+function voiceScore(v){ const n=(v.name+' '+v.voiceURI).toLowerCase(); let s=0; if(v.lang.toLowerCase()==='ko-kr') s+=100; if(/yuna|sunhi|heami|google.*한국|korean/.test(n)) s+=40; if(/natural|neural|premium|enhanced/.test(n)) s+=25; if(v.default) s+=5; return s; }
+function loadVoices(){
+  if(!('speechSynthesis' in window)){ voiceSelect.innerHTML='<option>음성 미지원</option>'; voiceSelect.disabled=true; return; }
+  koreanVoices=window.speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith('ko')).sort((a,b)=>voiceScore(b)-voiceScore(a)); voiceSelect.innerHTML='';
+  if(!koreanVoices.length){ const o=document.createElement('option'); o.textContent='한국어 음성 없음'; voiceSelect.appendChild(o); voiceSelect.disabled=true; $('#voiceHint').textContent='운영체제 설정에서 한국어 음성을 설치하면 내레이션을 사용할 수 있습니다.'; return; }
+  koreanVoices.forEach((v,i)=>{ const o=document.createElement('option'); o.value=String(i); o.textContent=`${i===0?'추천 · ':''}${v.name}`; voiceSelect.appendChild(o); });
+  selectedVoice=koreanVoices[0]; voiceSelect.disabled=false; $('#voiceHint').textContent=`현재 음성: ${selectedVoice.name}`;
+}
+loadVoices(); if('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged=loadVoices;
+voiceSelect.onchange=()=>{ selectedVoice=koreanVoices[Number(voiceSelect.value)]||koreanVoices[0]; $('#voiceHint').textContent=`현재 음성: ${selectedVoice.name}`; speakText(PARTS[current].narr); };
+voiceRate.oninput=()=>$('#rateValue').textContent=`${Number(voiceRate.value).toFixed(2)}×`;
+
+let speechRun=0, keepAlive=null;
+function splitSentences(text){ return (text.match(/[^.!?…]+[.!?…]?/g)||[text]).map(s=>s.trim()).filter(Boolean); }
+function stopSpeech(){ speechRun++; if(keepAlive){ clearInterval(keepAlive); keepAlive=null; } if('speechSynthesis' in window) window.speechSynthesis.cancel(); $('#voiceBtn').textContent='음성 설명'; }
+function speakText(text,onDone){
+  if(!('speechSynthesis' in window)||!text||!koreanVoices.length){ if(onDone) onDone(); return; }
+  stopSpeech(); const run=speechRun;
+  const sentences=splitSentences(text); let i=0;
+  $('#voiceBtn').textContent='재생 중…';
+  keepAlive=setInterval(()=>{ if(window.speechSynthesis.speaking) window.speechSynthesis.resume(); },10000);
+  const next=()=>{
+    if(run!==speechRun) return;
+    if(i>=sentences.length){ if(keepAlive){ clearInterval(keepAlive); keepAlive=null; } $('#voiceBtn').textContent='음성 설명'; if(onDone) onDone(); return; }
+    const u=new SpeechSynthesisUtterance(sentences[i++]); u.lang='ko-KR';
+    if(selectedVoice) u.voice=selectedVoice; u.rate=Number(voiceRate.value); u.pitch=.98; u.volume=1;
+    u.onend=()=>setTimeout(next,150);
+    u.onerror=e=>{ if(e.error!=='canceled'&&e.error!=='interrupted') setTimeout(next,150); };
+    window.speechSynthesis.speak(u);
+  };
+  setTimeout(next,80);
+}
+
+const camGoal={pos:camera.position.clone(), target:controls.target.clone()};
+function setCam(p,t){ camGoal.pos.set(...p); camGoal.target.set(...t); }
+
+function selectPart(idx, announce=false){
+  clearTimeout(autoNext);
+  current=(idx+PARTS.length)%PARTS.length; const p=PARTS[current];
+  $('#eyebrow').textContent=`COMPONENT ${String(current+1).padStart(2,'0')}`;
+  $('#name').textContent=p.name; $('#desc').textContent=p.desc;
+  $('#loc').textContent=p.location; $('#role').textContent=p.role; $('#tech').textContent=p.tech;
+  $('#order').textContent=`${current+1} / ${PARTS.length}`; $('#tip').textContent=`💡 ${p.tip}`;
+  [...list.children].forEach((e,i)=>e.classList.toggle('active',i===current));
+  [...labelStrip.children].forEach((e,i)=>e.classList.toggle('active',i===current));
+  $('#bar').style.width=`${((current+1)/PARTS.length)*100}%`;
+  highlight(lookup[p.key]);
+  setGhost(INTERNAL.has(p.key) && !explode);
+  const t=targets[p.key]; setCam(t.cam,t.target);
+  Object.entries(partLabels).forEach(([k,spr])=>{ spr.material.opacity = k===p.key ? 1 : .45; spr.scale.set(k===p.key?2.5:2.2, k===p.key?.63:.55, 1); });
+  const scheduleNext=()=>{ if(autoMode) autoNext=setTimeout(()=>selectPart(current+1,true),1500); };
+  if(announce && autoVoice) speakText(p.narr, scheduleNext);
+  else if(autoMode) autoNext=setTimeout(()=>selectPart(current+1,true),8000);
+}
+function stopAuto(){ if(autoMode){ autoMode=false; clearTimeout(autoNext); $('#autoBtn').textContent='자동 설명'; } }
+function applyExplode(){
+  headG.position.y = explode? 1.1 : 0;
+  acts.position.x = explode? -1.6 : 0; elbows.forEach((e2,i)=>e2.position.x = explode? (i===0?-.5:.5) : 0);
+  hands.forEach(h=>h.position.y = explode? -1.36-.75 : -1.36);
+  battery.position.z = explode? -1.3 : 0; compute.position.set(0, explode?.5:0, explode?-1.0:0); imu.position.z = explode? -1.7 : 0;
+  harness.position.z = explode? -2.2 : 0;
+  chest.position.z = explode? 1.2 : 0;
+}
+$('#prevBtn').onclick=()=>{ stopAuto(); selectPart(current-1,true); };
+$('#nextBtn').onclick=()=>{ stopAuto(); selectPart(current+1,true); };
+$('#resetBtn').onclick=()=>setCam([6.5,4.2,8.5],[0,2.2,0]);
+$('#explodeBtn').onclick=()=>{ explode=!explode; applyExplode(); setGhost(INTERNAL.has(PARTS[current].key)&&!explode); $('#explodeBtn').textContent=explode?'조립 보기':'분해 보기'; if(explode) setCam([7.5,4.6,9.5],[0,2.2,-.5]); else { const t=targets[PARTS[current].key]; setCam(t.cam,t.target); } };
+$('#voiceBtn').onclick=()=>speakText(PARTS[current].narr);
+$('#voiceToggleBtn').onclick=()=>{ autoVoice=!autoVoice; $('#voiceToggleBtn').textContent=autoVoice?'자동 음성 ON':'자동 음성 OFF'; if(!autoVoice) stopSpeech(); };
+$('#autoBtn').onclick=()=>{ autoMode=!autoMode; $('#autoBtn').textContent=autoMode?'자동 설명 중지':'자동 설명'; if(autoMode) selectPart(current,true); else clearTimeout(autoNext); };
+
+const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
+renderer.domElement.addEventListener('pointerdown', e=>{ pointer.x=(e.clientX/innerWidth)*2-1; pointer.y=-(e.clientY/innerHeight)*2+1; raycaster.setFromCamera(pointer,camera); const hits=raycaster.intersectObjects(rayTargets); if(!hits.length) return; const key=hits[0].object.userData.partKey; const idx=PARTS.findIndex(p=>p.key===key); if(idx>=0){ stopAuto(); selectPart(idx,true); } });
+addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); });
+
+const clock=new THREE.Clock();
+function animate(){ requestAnimationFrame(animate); const dt=Math.min(clock.getDelta(),.05), t=clock.elapsedTime; controls.update();
+  camera.position.lerp(camGoal.pos,1-Math.exp(-dt*2.6)); controls.target.lerp(camGoal.target,1-Math.exp(-dt*2.8));
+  const key=PARTS[current].key;
+  if(key==='hand'){ hands.forEach((h,i)=>{ h.children.slice(1).forEach((f,j)=>f.rotation.x=Math.sin(t*2.4+j*.6)*.35); }); }
+  else hands.forEach(h=>h.children.slice(1).forEach(f=>f.rotation.x*=.9));
+  if(key==='head') headG.rotation.y=Math.sin(t*.9)*.3; else headG.rotation.y*=.95;
+  if(key==='imu'||key==='frame') bot.rotation.z=Math.sin(t*1.4)*.015; else bot.rotation.z*=.9;
+  eyeL.visible=eyeR.visible=true;
+  workers.forEach((w,i)=>{ w.position.y=Math.sin(t*2+i)*.02; w.rotation.y=Math.sin(t*.7+i)*.2; });
+  const pulse=.4+Math.sin(t*3.2)*.22; hiMeshes.forEach(h=>h.mesh.material.emissiveIntensity=pulse);
+  Object.values(partLabels).forEach(s=>s.lookAt(camera.position));
+  renderer.render(scene,camera);
+}
+applyExplode(); selectPart(0,false); setCam([6.5,4.2,8.5],[0,2.2,0]); animate();
+</script>
+</body>
+</html>

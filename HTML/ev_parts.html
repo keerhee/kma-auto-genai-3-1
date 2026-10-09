@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV 부품 학습 시뮬레이션 · 교육용 완성본</title>
+  <style>
+    :root{
+      --bg:#eef4f7; --panel:rgba(255,255,255,.88); --panel2:rgba(247,251,253,.94);
+      --line:rgba(39,91,124,.12); --text:#16303f; --muted:#557180; --accent:#00a6c8; --accent2:#1d6eff; --good:#00b27a;
+      --shadow:0 18px 44px rgba(22,48,63,.12);
+    }
+    *{box-sizing:border-box} html,body{margin:0;height:100%;overflow:hidden;background:linear-gradient(180deg,#f5f9fb,#e8f0f4);color:var(--text);font-family:Inter,Pretendard,"Noto Sans KR",sans-serif}
+    #scene{position:fixed;inset:0}
+    .glass{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+    #top{position:fixed;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;gap:12px;z-index:20;pointer-events:none}
+    .title{padding:14px 16px;border-radius:16px;pointer-events:auto;min-width:300px}.title h1{margin:0;font-size:18px}.title p{margin:6px 0 0;color:var(--muted);font-size:12px}
+    .badge{padding:12px 14px;border-radius:999px;pointer-events:auto;font-size:12px;display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--good);box-shadow:0 0 12px rgba(0,178,122,.4)}
+    #left{position:fixed;left:16px;top:96px;bottom:112px;width:345px;border-radius:20px;padding:16px;z-index:20;overflow:auto}
+    .eyebrow{font-size:10px;color:var(--accent);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    #name{margin:8px 0;font-size:24px;line-height:1.2} #desc{margin:0;color:#456271;font-size:13px;line-height:1.65}
+    .stats{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{padding:10px 11px;border-radius:12px;background:rgba(255,255,255,.6);border:1px solid rgba(22,48,63,.06)} .stat span{display:block;color:#67818d;font-size:10px;letter-spacing:.1em;text-transform:uppercase}.stat strong{display:block;margin-top:4px;font-size:13px}
+    #tip{margin-top:14px;padding:11px 12px;border-left:2px solid var(--accent);background:linear-gradient(90deg,rgba(0,166,200,.08),transparent);font-size:12px;color:#3a5d6e;border-radius:0 10px 10px 0}
+    #partsList{margin-top:14px;display:grid;gap:8px}.partBtn{appearance:none;border:1px solid rgba(22,48,63,.08);background:rgba(255,255,255,.54);color:var(--text);text-align:left;border-radius:12px;padding:10px 12px;cursor:pointer}.partBtn.active{border-color:rgba(0,166,200,.45);background:rgba(0,166,200,.08)}.partBtn small{display:block;color:var(--muted);margin-top:3px}
+    #right{position:fixed;right:16px;top:96px;width:310px;border-radius:18px;padding:14px;z-index:20}.right-title{margin:0 0 8px;font-size:17px}.right-p{margin:0;color:#456271;font-size:12px;line-height:1.58}.bullet{margin-top:10px;display:grid;gap:7px;font-size:12px;color:#345363}
+    #bottom{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;border-radius:18px;padding:12px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}.btn,.voiceSelect{appearance:none;border:1px solid rgba(22,48,63,.1);background:rgba(255,255,255,.82);color:var(--text);height:40px;border-radius:12px;padding:0 12px;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#14d8f8,#72ecff);border:none;color:#053341;font-weight:800}.voiceSelect{max-width:170px;font:inherit;font-size:12px}.voiceRange{display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;border:1px solid rgba(22,48,63,.1);border-radius:12px;background:rgba(255,255,255,.68);font-size:11px;color:var(--muted)}.voiceRange input{width:72px;accent-color:var(--accent)}
+    #progress{height:8px;border-radius:999px;background:rgba(22,48,63,.08);overflow:hidden}#bar{height:100%;width:10%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+    #labels{margin-top:8px;display:grid;grid-template-columns:repeat(8,minmax(40px,1fr));gap:6px}.lab{font-size:10px;color:#708893;text-align:center}.lab.active{color:#16303f;font-weight:800}
+    #voiceHint{font-size:12px;color:#597684}
+    @media (max-width:1100px){#right{display:none}} @media (max-width:820px){#left{left:10px;right:10px;width:auto;bottom:118px;height:220px;top:auto}#bottom{left:10px;right:10px;bottom:10px;grid-template-columns:1fr}#top{left:10px;right:10px;top:10px}.badge{display:none}}
+  </style>
+</head>
+<body>
+<div id="scene"></div>
+<div id="top">
+  <div class="title glass"><h1>EV 부품 학습 시뮬레이션 · 실차 기준</h1><p>배터리·e-파워트레인·전력전자·의장 모듈까지, 실제 양산 전기차의 부품 구성과 최신 기술 트렌드(800V, SiC, 기가캐스팅)를 반영한 교육용 버전입니다.</p></div>
+  <div class="badge glass"><span class="dot"></span>EDUCATION MODE · CLEAN EV FACTORY</div>
+</div>
+<aside id="left" class="glass">
+  <div class="eyebrow" id="eyebrow">COMPONENT 01</div>
+  <h2 id="name"></h2>
+  <p id="desc"></p>
+  <div class="stats">
+    <div class="stat"><span>위치</span><strong id="loc"></strong></div>
+    <div class="stat"><span>기능</span><strong id="role"></strong></div>
+    <div class="stat"><span>핵심 기술</span><strong id="tech"></strong></div>
+    <div class="stat"><span>학습 단계</span><strong id="order"></strong></div>
+  </div>
+  <div id="tip"></div>
+  <div id="partsList"></div>
+</aside>
+<aside id="right" class="glass">
+  <h3 class="right-title">교육 포인트</h3>
+  <p class="right-p">3D 장면 속 부품 이름 라벨을 직접 보면서 각 부품이 어디에 있는지 파악할 수 있습니다. 버튼을 누르면 한국어 음성으로 설명이 재생됩니다.</p>
+  <div class="bullet">
+    <div>• 드래그: 카메라 회전</div>
+    <div>• 휠: 확대 / 축소</div>
+    <div>• 클릭: 부품 선택 및 설명</div>
+    <div>• 음성: 현재 부품 설명 내레이션</div>
+    <div>• 분해 보기: 전체 구조 학습</div>
+  </div>
+</aside>
+<div id="bottom" class="glass">
+  <div class="controls">
+    <button class="btn" id="prevBtn">이전</button>
+    <button class="btn primary" id="nextBtn">다음 부품</button>
+    <button class="btn" id="autoBtn">자동 설명</button>
+    <button class="btn" id="explodeBtn">분해 보기</button>
+    <button class="btn" id="voiceBtn">음성 설명</button>
+    <button class="btn" id="voiceToggleBtn">자동 음성 ON</button>
+    <select class="voiceSelect" id="voiceSelect" title="내레이션 목소리"><option>한국어 음성 검색 중…</option></select>
+    <label class="voiceRange">속도 <input id="voiceRate" type="range" min="0.75" max="1.15" step="0.05" value="0.90"><span id="rateValue">0.90×</span></label>
+    <button class="btn" id="resetBtn">시점 초기화</button>
+  </div>
+  <div>
+    <div id="progress"><div id="bar"></div></div>
+    <div id="labels"></div>
+  </div>
+  <div id="voiceHint">차분한 한국어 교육 내레이션 · 기기에서 사용 가능한 음성을 자동 선택합니다.</div>
+</div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const PARTS = [
+  { key:'battery', short:'배터리', name:'고전압 배터리 팩', location:'차체 하부(플로어 일체)', role:'에너지 저장 · 차량 원가의 30~40%', tech:'셀→모듈→팩 / 액랭 냉각 / BMS', tip:'무게중심을 낮춰 주행 안정성을 높이지만, 측면 충돌 보호 설계가 필수입니다.', desc:'배터리 팩은 셀을 모듈로 묶고(최근에는 셀투팩으로 모듈을 생략) 냉각 플레이트, BMS, 충돌 보호 하우징과 함께 밀봉한 구조입니다. 400V가 표준이며 고급 차종은 800V 체계로 급속충전 시간을 줄입니다. BMS는 셀 전압 편차를 밀리볼트 단위로 감시하며 열폭주 전파를 차단하는 설계가 핵심입니다.', narr:'첫 번째 부품은 고전압 배터리 팩입니다. 차량 원가의 삼사십 퍼센트를 차지하는 가장 비싼 부품으로, 셀과 냉각 플레이트, 배터리 관리 시스템 비엠에스가 밀봉 하우징 안에 통합되어 있습니다. 차체 바닥 전체에 깔려 무게중심을 낮추며, 조립 공정에서는 차체 하부로 들어 올려 결합합니다.' },
+  { key:'motor', short:'모터', name:'구동모터 (PMSM)', location:'프런트/리어 액슬', role:'구동력 생성 + 회생제동 발전', tech:'영구자석 동기모터 / 헤어핀 권선', tip:'감속 시에는 발전기로 전환되어 에너지를 배터리로 회수합니다.', desc:'양산 EV 대부분은 영구자석 동기모터(PMSM)를 사용하며, 헤어핀 권선으로 출력 밀도를 높입니다. 최근에는 모터·감속기·인버터를 하나로 묶은 3-in-1 e-드라이브 유닛(EDU)이 표준입니다. 정지 상태에서 최대 토크가 나오는 것이 EV 특유의 즉각적인 가속감의 이유입니다.', narr:'구동모터입니다. 영구자석 동기모터가 주로 쓰이며, 정지 상태에서 곧바로 최대 토크를 내는 것이 전기차 특유의 가속감의 비밀입니다. 감속할 때는 반대로 발전기가 되어, 운동 에너지를 전기로 바꿔 배터리에 되돌려 보냅니다. 이것이 회생제동입니다.' },
+  { key:'inverter', short:'인버터', name:'인버터', location:'e-드라이브 유닛 상부', role:'DC↔AC 양방향 전력 변환', tech:'SiC 전력반도체 / PWM 제어', tip:'회생제동 시에는 역방향으로 AC를 DC로 바꿔 배터리를 충전합니다.', desc:'인버터는 배터리의 직류를 모터용 3상 교류로 변환하고, 초당 수만 번의 PWM 스위칭으로 토크와 회전수를 제어합니다. 최근에는 IGBT 대신 실리콘카바이드(SiC) 반도체를 채택해 변환 효율을 높이고 주행거리를 3~5% 늘립니다.', narr:'인버터입니다. 배터리의 직류를 모터가 쓰는 삼상 교류로 바꾸고, 초당 수만 번의 스위칭으로 토크를 정밀하게 제어합니다. 최근에는 실리콘카바이드 반도체를 채택해 효율을 높이는 것이 업계의 큰 흐름입니다.' },
+  { key:'obc', short:'충전기', name:'온보드 차저 (OBC)', location:'전방 전력전자 영역', role:'AC 완속충전 변환', tech:'ICCU 통합(OBC+LDC) 추세', tip:'급속충전(DC)은 OBC를 거치지 않고 배터리에 직결됩니다.', desc:'온보드 차저는 완속충전기의 교류(AC)를 배터리용 직류(DC)로 변환하는 장치로, 승용 EV는 통상 11kW급입니다. 반대로 DC 급속충전은 OBC를 거치지 않고 배터리에 직접 연결됩니다. 최근에는 OBC와 저전압 변환기(LDC)를 하나로 묶은 통합 충전 제어 장치(ICCU)로 진화하고 있습니다.', narr:'온보드 차저입니다. 집이나 완속 충전기의 교류 전력을 배터리용 직류로 변환하며, 통상 십일 킬로와트급입니다. 반면 급속충전은 이 장치를 거치지 않고 직류가 배터리로 직접 들어갑니다. 완속과 급속의 경로가 다르다는 점이 중요합니다.' },
+  { key:'dashboard', short:'칵핏', name:'칵핏 모듈 (대시보드)', location:'운전석 전방 크로스카멤버', role:'HMI · 안전 · 공조 통합', tech:'디지털 클러스터 / OTA', tip:'수십 개 부품을 하나의 서브모듈로 만들어 라인에서 한 번에 장착합니다.', desc:'칵핏 모듈은 계기판, 디스플레이, 에어백, HVAC 덕트, 스티어링 칼럼 지지 구조를 크로스카멤버에 통합한 대형 서브모듈입니다. 부품사에서 완성해 서열(JIS) 공급되며, 의장 라인에서 로봇 보조로 한 번에 삽입됩니다.', narr:'칵핏 모듈입니다. 계기판과 디스플레이, 에어백, 공조 덕트가 하나의 골격에 통합된 대형 모듈로, 부품 회사가 조립 순서에 맞춰 완성품으로 공급하면 의장 라인에서 한 번에 장착합니다.' },
+  { key:'seat', short:'시트', name:'시트 모듈', location:'실내', role:'탑승 편의 + 승객 감지 안전', tech:'착좌 센서 / 프리텐셔너 연동', tip:'승객 감지 센서가 에어백 전개 여부를 판단하는 안전 부품이기도 합니다.', desc:'시트는 레일, 전동 조절 모터, 열선·통풍뿐 아니라 착좌 감지 센서를 내장합니다. 이 센서 신호로 에어백 전개와 시트벨트 경고가 제어되므로, 조립 후 전기 검사가 필수인 안전 부품입니다.', narr:'시트 모듈입니다. 단순한 의자가 아니라, 착좌 감지 센서가 승객 유무를 판단해 에어백 전개를 제어하는 안전 부품입니다. 전동 조절과 열선, 통풍 기능까지 포함해 조립 후 전기 검사를 반드시 거칩니다.' },
+  { key:'wheel', short:'휠·타이어', name:'휠과 EV 전용 타이어', location:'차량 네 모서리', role:'하중·토크 전달 + 소음 저감', tech:'고하중(HL) 규격 / 흡음폼', tip:'엔진 소음이 없어 타이어 소음이 부각되므로 흡음폼 내장 타이어를 씁니다.', desc:'EV는 배터리 무게로 동급 내연기관차보다 200~400kg 무겁고 순간 토크가 커서, 고하중(XL·HL) 규격에 내마모 컴파운드를 쓴 EV 전용 타이어가 필요합니다. 저구름저항으로 전비를 지키면서, 타이어 내부 흡음폼으로 노면 소음을 줄이는 것이 특징입니다.', narr:'휠과 타이어입니다. 전기차는 배터리 때문에 이삼백 킬로그램 더 무겁고 토크도 커서, 고하중 규격의 전용 타이어를 씁니다. 엔진 소리가 없어 노면 소음이 그대로 들리기 때문에, 타이어 안쪽에 흡음 폼을 붙여 소음을 줄이는 것도 전기차 타이어만의 특징입니다.' },
+  { key:'body', short:'차체', name:'차체 / 도어 / 유리', location:'외부 구조', role:'승객·배터리 보호 골격', tech:'초고장력강+알루미늄 / 기가캐스팅', tip:'측면 충돌 시 배터리를 지키는 사이드실 보강이 EV 차체의 핵심입니다.', desc:'EV 차체는 배터리를 바닥에 품기 때문에 사이드실(문턱)을 초고장력강과 알루미늄 압출재로 보강해 측면 충돌 에너지를 흡수합니다. 최근에는 수십 개 부품을 하나의 대형 주조품으로 대체하는 기가캐스팅으로 부품 수와 공정을 줄이는 추세이며, 플랫 플로어 덕분에 실내 공간이 넓어집니다.', narr:'차체 구조입니다. 전기차 차체의 핵심은 바닥에 깔린 배터리를 지키는 것으로, 문턱 부위인 사이드실을 초고장력강과 알루미늄으로 크게 보강합니다. 최근에는 수십 개의 부품을 하나의 대형 알루미늄 주조품으로 대체하는 기가캐스팅이 확산되고 있습니다.' }
+];
+
+const $ = s => document.querySelector(s);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xeef4f7);
+scene.fog = new THREE.FogExp2(0xeef4f7, 0.0065);
+const camera = new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 0.1, 240);
+camera.position.set(12,7.5,15);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth, innerHeight); renderer.shadowMap.enabled=true; renderer.outputColorSpace = THREE.SRGBColorSpace; $('#scene').appendChild(renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement); controls.target.set(0,1.8,0); controls.enableDamping=true; controls.maxPolarAngle=Math.PI*.46;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0xc8d7df, 2.2));
+const sun = new THREE.DirectionalLight(0xffffff, 4.8); sun.position.set(10,16,10); sun.castShadow=true; scene.add(sun);
+const rim = new THREE.DirectionalLight(0xb9eeff, 2.0); rim.position.set(-10,8,-10); scene.add(rim);
+
+function mat(color, metalness=.35, roughness=.5, extra={}){ return new THREE.MeshStandardMaterial({color, metalness, roughness, ...extra}); }
+function box(w,h,d,m,x=0,y=0,z=0){ const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); mesh.position.set(x,y,z); mesh.castShadow=true; mesh.receiveShadow=true; return mesh; }
+function cyl(r,len,m,x=0,y=0,z=0){ const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len,28),m); mesh.rotation.z=Math.PI/2; mesh.position.set(x,y,z); mesh.castShadow=true; mesh.receiveShadow=true; return mesh; }
+function roundedBox(w,h,d,r,m){ const s=new THREE.Shape(); const x=-w/2,y=-h/2; s.moveTo(x+r,y); s.lineTo(x+w-r,y); s.quadraticCurveTo(x+w,y,x+w,y+r); s.lineTo(x+w,y+h-r); s.quadraticCurveTo(x+w,y+h,x+w-r,y+h); s.lineTo(x+r,y+h); s.quadraticCurveTo(x,y+h,x,y+h-r); s.lineTo(x,y+r); s.quadraticCurveTo(x,y,x+r,y); const g=new THREE.ExtrudeGeometry(s,{depth:d,bevelEnabled:true,bevelSize:r*.22,bevelThickness:r*.22,bevelSegments:3}); g.center(); return new THREE.Mesh(g,m); }
+function labelSprite(text){ const canvas=document.createElement('canvas'); canvas.width=512; canvas.height=128; const ctx=canvas.getContext('2d'); ctx.fillStyle='rgba(255,255,255,0.92)'; roundRect(ctx,8,8,496,112,22,true,false); ctx.strokeStyle='rgba(0,166,200,0.85)'; ctx.lineWidth=4; roundRect(ctx,8,8,496,112,22,false,true); ctx.fillStyle='#143243'; ctx.font='700 34px Pretendard, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(text,256,64); const tex=new THREE.CanvasTexture(canvas); const matS=new THREE.SpriteMaterial({map:tex, transparent:true}); const spr=new THREE.Sprite(matS); spr.scale.set(2.7,.68,1); return spr; }
+function roundRect(ctx,x,y,w,h,r,fill,stroke){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); if(fill) ctx.fill(); if(stroke) ctx.stroke(); }
+function workerAvatar(color=0x355362){ const g=new THREE.Group(); const body=box(.38,.82,.26,mat(color,.18,.72),0,1.15,0); const head=new THREE.Mesh(new THREE.SphereGeometry(.18,20,16),mat(0xffdfca,.1,.85)); head.position.y=1.78; g.add(body,head); const helmet = new THREE.Mesh(new THREE.SphereGeometry(.2,20,16,0,Math.PI*2,0,Math.PI/2), mat(0xffffff,.08,.65)); helmet.position.y=1.85; g.add(helmet); const leg1=box(.11,.7,.11,mat(0x223844,.1,.8),-.09,.43,0); const leg2=box(.11,.7,.11,mat(0x223844,.1,.8),.09,.43,0); const arm1=box(.1,.58,.1,mat(color,.18,.72),-.28,1.18,0); const arm2=box(.1,.58,.1,mat(color,.18,.72),.28,1.18,0); g.add(leg1,leg2,arm1,arm2); return g; }
+
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(64,44), mat(0xf7fbfd,.02,.94)); floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
+const lineZone = new THREE.Mesh(new THREE.PlaneGeometry(18,8), mat(0xe6f0f4,.02,.9)); lineZone.rotation.x=-Math.PI/2; lineZone.position.y=.02; scene.add(lineZone);
+const grid = new THREE.GridHelper(40,40,0xc8dbe6,0xdfeaf0); grid.position.y=.01; grid.material.opacity=.45; grid.material.transparent=true; scene.add(grid);
+scene.add(box(16,.12,.12,mat(0xabc5d3,.4,.5),0,.24,3.6)); scene.add(box(16,.12,.12,mat(0xabc5d3,.4,.5),0,.24,-3.6));
+for(let x=-7.5;x<=7.5;x+=.85) scene.add(cyl(.10,6.9,mat(0xd2e1e8,.45,.36),x,.33,0));
+for(let x=-10;x<=10;x+=4){ scene.add(box(.14,6.5,.14,mat(0xd5e4eb,.18,.8),x,3.25,-6.2)); scene.add(box(2.2,.08,.18,new THREE.MeshBasicMaterial({color:0xdff7ff}),x,6.5,-5.6)); }
+
+const car = new THREE.Group(); car.position.y=.7; scene.add(car);
+const frameMat=mat(0x72818a,.82,.22), bodyMat=mat(0xe7edf0,.2,.38), glassMat=mat(0x8fd8f2,.16,.18,{transparent:true,opacity:.4}), darkMat=mat(0x1f2830,.5,.3);
+const frame = new THREE.Group(); frame.add(box(7.2,.16,3.1,frameMat,0,.44,0)); frame.add(box(6.6,.28,.25,frameMat,0,.62,1.35)); frame.add(box(6.6,.28,.25,frameMat,0,.62,-1.35)); for(const x of [-2.1,0,2.1]) frame.add(box(.2,.3,2.7,frameMat,x,.66,0)); car.add(frame);
+const body = new THREE.Group(); const lower=roundedBox(7.7,.86,3.18,.3,bodyMat); lower.position.y=1.16; body.add(lower); const cabin=roundedBox(3.85,1.55,2.92,.38,bodyMat); cabin.position.set(.45,2.22,0); body.add(cabin); const hood=roundedBox(2.0,.48,3.05,.27,bodyMat); hood.position.set(-2.65,1.8,0); body.add(hood); const trunk=roundedBox(1.42,.55,3.03,.25,bodyMat); trunk.position.set(3.05,1.84,0); body.add(trunk);
+for(const cfg of [{x:-.4,y:2.05,z:-1.53},{x:-.4,y:2.05,z:1.53},{x:1.45,y:2.0,z:-1.53},{x:1.45,y:2.0,z:1.53}]){ const door=new THREE.Group(); door.add(box(1.45,.95,.08,mat(0xf2f6f8,.18,.45))); door.add(box(.82,.34,.03,glassMat,.08,.18,0)); door.position.set(cfg.x,cfg.y,cfg.z); body.add(door); }
+const wind=box(1.12,1.12,2.72,glassMat,-1.15,2.47,0); wind.rotation.z=-.52; body.add(wind); const rearGlass=box(.9,1.05,2.68,glassMat,2.0,2.49,0); rearGlass.rotation.z=.48; body.add(rearGlass); body.add(box(1.7,.07,2.62,glassMat,.55,3.03,0)); const fb=roundedBox(1.0,.48,2.8,.2,bodyMat); fb.position.set(-3.85,1.35,0); body.add(fb); const rb=roundedBox(.88,.44,2.72,.2,bodyMat); rb.position.set(3.92,1.35,0); body.add(rb); for(const x of [-2.5,2.5]) for(const z of [-1.58,1.58]) body.add(cyl(.69,.18,darkMat,x,1.12,z)); car.add(body);
+
+const battery = new THREE.Group(); const batteryPack=roundedBox(5.5,.34,2.55,.14,mat(0x1c9b7a,.58,.28)); batteryPack.position.y=.28; battery.add(batteryPack); for(let x=-2.1;x<=2.1;x+=.7) for(let z=-.82;z<=.82;z+=.55) battery.add(box(.52,.18,.36,mat(0xa4ffd0,.16,.46,{emissive:0x174032,emissiveIntensity:.55}),x,.48,z)); const coolPlate=box(5.4,.07,2.5,mat(0x4d9fd6,.5,.35),0,.09,0); battery.add(coolPlate); car.add(battery);
+const motorGroup = new THREE.Group(); const motor=cyl(.55,1.0,mat(0xf2aa61,.72,.22),2.6,.78,0); motor.rotation.x=Math.PI/2; motorGroup.add(motor); const gear=roundedBox(.94,.72,1.32,.16,mat(0x8b99a3,.78,.24)); gear.position.set(2.08,.78,0); motorGroup.add(gear); const axle=cyl(.11,3.1,mat(0xadb8c0,.84,.18),2.48,.78,0); axle.rotation.x=Math.PI/2; motorGroup.add(axle); car.add(motorGroup);
+const inverterGroup = new THREE.Group(); const inverter=roundedBox(1.3,.42,1.1,.14,mat(0x4d79ff,.56,.24)); inverter.position.set(2.42,1.46,0); inverterGroup.add(inverter); const obc=roundedBox(1.15,.42,1.06,.14,mat(0x8493a1,.58,.3)); obc.position.set(-2.3,1.02,0); inverterGroup.add(obc); const hvMat=new THREE.MeshStandardMaterial({color:0xff8329,metalness:.18,roughness:.44,emissive:0x351a07,emissiveIntensity:.22}); const hvCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(-1.6,.56,.75),new THREE.Vector3(0,.52,.98),new THREE.Vector3(1.5,.72,.75),new THREE.Vector3(2.3,1.34,.35)]); inverterGroup.add(new THREE.Mesh(new THREE.TubeGeometry(hvCurve,44,.06,12,false), hvMat)); const acCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(-2.3,.82,-.5),new THREE.Vector3(-2.0,.6,-.8),new THREE.Vector3(-1.7,.52,-.6)]); inverterGroup.add(new THREE.Mesh(new THREE.TubeGeometry(acCurve,24,.05,10,false), hvMat.clone())); car.add(inverterGroup);
+const finalAssembly = new THREE.Group(); const wheelGroups=[]; for(const [x,y,z] of [[-2.5,1.0,-1.72],[-2.5,1.0,1.72],[2.5,1.0,-1.72],[2.5,1.0,1.72]]){ const wg=new THREE.Group(); const tire=cyl(.66,.34,mat(0x1a2127,.16,.86)); tire.rotation.x=Math.PI/2; const rim=cyl(.34,.37,mat(0xc1d1dc,.92,.12)); rim.rotation.x=Math.PI/2; wg.add(tire,rim); wg.position.set(x,y,z); finalAssembly.add(wg); wheelGroups.push(wg);} const seatGroups=[]; for(const sx of [-.6,.85]) for(const sz of [-.78,.78]){ const seat=new THREE.Group(); seat.add(roundedBox(.7,.24,.6,.12,mat(0x35414d,.14,.74))); const back=roundedBox(.68,1.0,.24,.12,mat(0x35414d,.14,.74)); back.position.set(.25,.52,0); back.rotation.z=-.18; seat.add(back); seat.position.set(sx,1.75,sz); finalAssembly.add(seat); seatGroups.push(seat);} const dashGroup=new THREE.Group(); const dash=roundedBox(1.12,.42,2.1,.12,mat(0x24323c,.15,.82)); dashGroup.add(dash); const steering=new THREE.Mesh(new THREE.TorusGeometry(.19,.035,10,40),mat(0x202830,.25,.72)); steering.rotation.y=Math.PI/2; steering.position.set(-.18,.18,.62); dashGroup.add(steering); dashGroup.add(box(.42,.22,.05,mat(0x173241,.1,.12,{emissive:0x2b8db6,emissiveIntensity:.7}),.15,.22,0)); dashGroup.position.set(-1.7,2.18,0); finalAssembly.add(dashGroup); car.add(finalAssembly);
+
+// workers and ambience
+const workers=[workerAvatar(0x4e7988),workerAvatar(0x5f8593),workerAvatar(0x355362)]; workers[0].position.set(-6,0,-5.2); workers[1].position.set(5.8,0,5.4); workers[2].position.set(0,0,6.4); workers.forEach(w=>scene.add(w));
+scene.add(box(2.6,1.2,1.2,mat(0xe7eff3,.06,.9),-7.5,.6,-4.8)); scene.add(box(2.6,1.2,1.2,mat(0xe7eff3,.06,.9),6.8,.6,5.0));
+
+const lookup = {
+  battery:[battery], motor:[motorGroup], inverter:[inverter], obc:[obc],
+  dashboard:[dashGroup], seat:seatGroups, wheel:wheelGroups, body:[body]
+};
+const INTERNAL = new Set(['battery','motor','inverter','obc','dashboard','seat']);
+const targets = {
+  battery:{cam:[7.2,3.2,9.6], target:[0,.55,0], label:[0,1.95,0]},
+  motor:{cam:[8.6,3.2,6.8], target:[2.5,.95,0], label:[2.7,2.2,-1.2]},
+  inverter:{cam:[8.2,4.4,6.6], target:[2.4,1.4,0], label:[2.4,2.65,1.1]},
+  obc:{cam:[-8.2,3.8,7.2], target:[-2.3,1.0,0], label:[-2.4,2.3,0]},
+  dashboard:{cam:[-6.6,4.6,7.6], target:[-1.6,2.2,0], label:[-1.7,3.25,0]},
+  seat:{cam:[6.6,5.2,8.2], target:[0,2.0,0], label:[-.6,3.25,-.85]},
+  wheel:{cam:[-6.6,3.0,-7.6], target:[-2.5,1.0,-1.7], label:[-2.5,2.35,-1.85]},
+  body:{cam:[10.5,6.2,13], target:[0,1.9,0], label:[0,4.5,0]}
+};
+
+const partLabels = {};
+PARTS.forEach(p=>{ const spr=labelSprite(p.short); const anchor=new THREE.Object3D(); const lp=targets[p.key].label; anchor.position.set(lp[0],lp[1],lp[2]); car.add(anchor); anchor.add(spr); partLabels[p.key]=spr; });
+
+const rayTargets=[]; function mark(root,key){ root.traverse(o=>{ if(o.isMesh){ o.userData.partKey=key; rayTargets.push(o); } }); }
+Object.entries(lookup).forEach(([k,objs])=>objs.forEach(o=>mark(o,k)));
+
+// 차체 고스트(투시): 내부 부품 선택 시 차체를 반투명하게
+const ghostMeshes=[]; body.traverse(o=>{ if(o.isMesh){ const m=o.material; if(m.userData.baseOpacity===undefined) m.userData.baseOpacity = m.transparent ? m.opacity : 1; ghostMeshes.push(o); } });
+function setBodyGhost(on){ ghostMeshes.forEach(o=>{ const m=o.material; const base=m.userData.baseOpacity; m.transparent = on || base<1; m.opacity = on ? Math.min(.13, base) : base; m.depthWrite = !on; }); }
+
+// 선택 부품 하이라이트(발광 펄스)
+let hiMeshes=[];
+function clearHighlight(){ hiMeshes.forEach(h=>{ h.mesh.material.emissive.setHex(h.em); h.mesh.material.emissiveIntensity=h.int; }); hiMeshes=[]; }
+function highlight(objs){ clearHighlight(); objs.forEach(root=>root.traverse(o=>{ if(o.isMesh && o.material.emissive){ hiMeshes.push({mesh:o, em:o.material.emissive.getHex(), int:o.material.emissiveIntensity}); o.material.emissive.setHex(0x0aa8ca); } })); }
+
+let current=0, explode=false, autoMode=false, autoVoice=true, autoNext=null;
+const list=$('#partsList'), labelStrip=$('#labels');
+PARTS.forEach((p,i)=>{ const b=document.createElement('button'); b.className='partBtn'; b.innerHTML=`<strong>${i+1}. ${p.name}</strong><small>${p.role} · ${p.location}</small>`; b.onclick=()=>{ stopAuto(); selectPart(i,true); }; list.appendChild(b); const l=document.createElement('div'); l.className='lab'; l.textContent=p.short; labelStrip.appendChild(l); });
+
+const voiceSelect=$('#voiceSelect'), voiceRate=$('#voiceRate');
+let koreanVoices=[], selectedVoice=null;
+function voiceScore(v){ const n=(v.name+' '+v.voiceURI).toLowerCase(); let s=0; if(v.lang.toLowerCase()==='ko-kr') s+=100; if(/yuna|sunhi|heami|google.*한국|korean/.test(n)) s+=40; if(/natural|neural|premium|enhanced/.test(n)) s+=25; if(v.default) s+=5; return s; }
+function loadVoices(){
+  if(!('speechSynthesis' in window)){ voiceSelect.innerHTML='<option>음성 미지원</option>'; voiceSelect.disabled=true; return; }
+  koreanVoices=window.speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith('ko')).sort((a,b)=>voiceScore(b)-voiceScore(a));
+  voiceSelect.innerHTML='';
+  if(!koreanVoices.length){ const o=document.createElement('option'); o.textContent='한국어 음성 없음'; voiceSelect.appendChild(o); voiceSelect.disabled=true; $('#voiceHint').textContent='운영체제 설정에서 한국어 음성을 설치하면 내레이션을 사용할 수 있습니다.'; return; }
+  koreanVoices.forEach((v,i)=>{ const o=document.createElement('option'); o.value=String(i); o.textContent=`${i===0?'추천 · ':''}${v.name}`; voiceSelect.appendChild(o); });
+  selectedVoice=koreanVoices[0]; voiceSelect.disabled=false;
+  $('#voiceHint').textContent=`현재 음성: ${selectedVoice.name}`;
+}
+loadVoices(); if('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged=loadVoices;
+voiceSelect.onchange=()=>{ selectedVoice=koreanVoices[Number(voiceSelect.value)]||koreanVoices[0]; $('#voiceHint').textContent=`현재 음성: ${selectedVoice.name}`; speakText(PARTS[current].narr); };
+voiceRate.oninput=()=>$('#rateValue').textContent=`${Number(voiceRate.value).toFixed(2)}×`;
+
+// ── 음성: 문장 단위 연결 재생(장문 끊김 방지) + 재생 완료 콜백 ──
+let speechRun=0, keepAlive=null;
+function splitSentences(text){ return (text.match(/[^.!?…]+[.!?…]?/g)||[text]).map(s=>s.trim()).filter(Boolean); }
+function stopSpeech(){ speechRun++; if(keepAlive){ clearInterval(keepAlive); keepAlive=null; } if('speechSynthesis' in window) window.speechSynthesis.cancel(); $('#voiceBtn').textContent='음성 설명'; }
+function speakText(text, onDone){
+  if(!('speechSynthesis' in window)||!text||!koreanVoices.length){ if(onDone) onDone(); return; }
+  stopSpeech(); const run=speechRun;
+  const sentences=splitSentences(text); let i=0;
+  $('#voiceBtn').textContent='재생 중…';
+  keepAlive=setInterval(()=>{ if(window.speechSynthesis.speaking) window.speechSynthesis.resume(); },10000);
+  const next=()=>{
+    if(run!==speechRun) return;
+    if(i>=sentences.length){ clearInterval(keepAlive); keepAlive=null; $('#voiceBtn').textContent='음성 설명'; if(onDone) onDone(); return; }
+    const u=new SpeechSynthesisUtterance(sentences[i++]); u.lang='ko-KR';
+    if(selectedVoice) u.voice=selectedVoice; u.rate=Number(voiceRate.value); u.pitch=.98; u.volume=1;
+    u.onend=()=>setTimeout(next,150);
+    u.onerror=e=>{ if(e.error!=='canceled'&&e.error!=='interrupted') setTimeout(next,150); };
+    window.speechSynthesis.speak(u);
+  };
+  setTimeout(next,80);
+}
+
+const camGoal={pos:camera.position.clone(), target:controls.target.clone()};
+function setCam(p,t){ camGoal.pos.set(...p); camGoal.target.set(...t); }
+
+// ── 부품 선택: 제자리 하이라이트 + 차체 투시 + 카메라 이동 ──
+function selectPart(idx, announce=false){
+  clearTimeout(autoNext);
+  current=(idx+PARTS.length)%PARTS.length; const p=PARTS[current];
+  $('#eyebrow').textContent=`COMPONENT ${String(current+1).padStart(2,'0')}`;
+  $('#name').textContent=p.name; $('#desc').textContent=p.desc;
+  $('#loc').textContent=p.location; $('#role').textContent=p.role; $('#tech').textContent=p.tech;
+  $('#order').textContent=`${current+1} / ${PARTS.length}`; $('#tip').textContent=`💡 ${p.tip}`;
+  [...list.children].forEach((e,i)=>e.classList.toggle('active',i===current));
+  [...labelStrip.children].forEach((e,i)=>e.classList.toggle('active',i===current));
+  $('#bar').style.width=`${((current+1)/PARTS.length)*100}%`;
+  Object.values(lookup).flat().forEach(o=>o.scale.setScalar(1));
+  lookup[p.key].forEach(o=>o.scale.setScalar(1.05));
+  highlight(lookup[p.key]);
+  setBodyGhost(INTERNAL.has(p.key) && !explode);
+  const t=targets[p.key]; setCam(t.cam,t.target);
+  Object.entries(partLabels).forEach(([k,spr])=>{ spr.material.opacity = k===p.key ? 1 : .45; spr.scale.set(k===p.key?3.1:2.7, k===p.key?.78:.68, 1); });
+  const scheduleNext=()=>{ if(autoMode) autoNext=setTimeout(()=>selectPart(current+1,true),1500); };
+  if(announce && autoVoice) speakText(p.narr, scheduleNext);
+  else if(autoMode) autoNext=setTimeout(()=>selectPart(current+1,true),8000);
+}
+function stopAuto(){ if(autoMode){ autoMode=false; clearTimeout(autoNext); $('#autoBtn').textContent='자동 설명'; } }
+function applyExplode(){ frame.position.set(0,0,0); body.position.set(0,explode?2.05:0,0); battery.position.set(0,explode?-1.55:0,0); motorGroup.position.set(explode?2.2:0,explode?.55:0,0); inverterGroup.position.set(explode?-1.6:0,explode?.85:0,0); finalAssembly.position.set(0,explode?.5:0,explode?2.1:0); }
+
+$('#prevBtn').onclick=()=>{ stopAuto(); selectPart(current-1,true); };
+$('#nextBtn').onclick=()=>{ stopAuto(); selectPart(current+1,true); };
+$('#resetBtn').onclick=()=>setCam([12,7.5,15],[0,1.8,0]);
+$('#explodeBtn').onclick=()=>{ explode=!explode; applyExplode(); setBodyGhost(INTERNAL.has(PARTS[current].key) && !explode); $('#explodeBtn').textContent=explode?'조립 뷰':'분해 뷰'; if(explode) setCam([13,8,15],[0,1.6,0]); else { const t=targets[PARTS[current].key]; setCam(t.cam,t.target); } };
+$('#voiceBtn').onclick=()=>speakText(PARTS[current].narr);
+$('#voiceToggleBtn').onclick=()=>{ autoVoice=!autoVoice; $('#voiceToggleBtn').textContent=autoVoice?'자동 음성 ON':'자동 음성 OFF'; if(!autoVoice) stopSpeech(); };
+$('#autoBtn').onclick=()=>{ autoMode=!autoMode; $('#autoBtn').textContent=autoMode?'자동 설명 중지':'자동 설명'; if(autoMode) selectPart(current,true); else clearTimeout(autoNext); };
+
+const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
+renderer.domElement.addEventListener('pointerdown', e=>{ pointer.x=(e.clientX/innerWidth)*2-1; pointer.y=-(e.clientY/innerHeight)*2+1; raycaster.setFromCamera(pointer,camera); const hits=raycaster.intersectObjects(rayTargets); if(!hits.length) return; const key=hits[0].object.userData.partKey; const idx=PARTS.findIndex(p=>p.key===key); if(idx>=0){ stopAuto(); selectPart(idx,true); } });
+addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); });
+
+const clock=new THREE.Clock();
+function animate(){ requestAnimationFrame(animate); const dt=Math.min(clock.getDelta(),.05), t=clock.elapsedTime; controls.update();
+  camera.position.lerp(camGoal.pos,1-Math.exp(-dt*2.6)); controls.target.lerp(camGoal.target,1-Math.exp(-dt*2.8));
+  wheelGroups.forEach((w,i)=>w.rotation.x += dt*(PARTS[current].key==='wheel'?4.6:1.1+i*.08));
+  workers.forEach((w,i)=>{ w.position.y=Math.sin(t*2+i)*.02; w.rotation.y=Math.sin(t*.7+i)*.2; });
+  if(PARTS[current].key!=='battery') battery.children.forEach((c,i)=>{ if(i>0 && c.material?.emissive && c!==coolPlate){ c.material.emissiveIntensity=.4+Math.sin(t*3+i)*.16; } });
+  const pulse=.4+Math.sin(t*3.2)*.22; hiMeshes.forEach(h=>h.mesh.material.emissiveIntensity=pulse);
+  Object.values(partLabels).forEach(s=>s.lookAt(camera.position));
+  renderer.render(scene,camera);
+}
+applyExplode(); explode=false; applyExplode(); selectPart(0,false); setCam([8.2,4.2,10.4],[0,.8,0]); animate();
+</script>
+</body>
+</html>

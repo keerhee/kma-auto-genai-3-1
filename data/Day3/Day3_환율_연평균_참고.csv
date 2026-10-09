@@ -1,0 +1,7 @@
+﻿연도,기간,KRW/USD(원/달러),JPY/USD(엔/달러),USD/EUR(달러/유로),CNY/USD(위안/달러),출처,비고
+2023,2023-01-01~2023-12-31,1306.7637,140.5001,1.0817,7.0809,https://www.federalreserve.gov/releases/g5a/20260105/default.htm,Fed G.5A 연평균(뉴욕 정오 매입률 일별 평균). EUR은 유로당 달러로 표기(1유로=1.0817달러).
+2024,2024-01-01~2024-12-31,1363.4381,151.4551,1.0820,7.1957,https://www.federalreserve.gov/releases/g5a/20260105/default.htm,Fed G.5A 연평균. EUR은 유로당 달러.
+2025,2025-01-01~2025-12-31,1421.3963,149.5686,1.1306,7.1875,https://www.federalreserve.gov/releases/g5a/20260105/default.htm,Fed G.5A 연평균(2026-01-05 공표). EUR은 유로당 달러.
+도요타 2024년 3월기,2023-04-01~2024-03-31,,144.5144,,,https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm,계산값: Fed H.10 일별 엔/달러(249영업일) 단순평균. 도요타 3월 결산 USD 환산용. 같은 방식의 역년 평균이 G.5A 값과 일치함을 확인.
+도요타 2025년 3월기,2024-04-01~2025-03-31,,152.4030,,,https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm,계산값: Fed H.10 일별(250영업일) 단순평균.
+도요타 2026년 3월기,2025-04-01~2026-03-31,,150.6677,,,https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm,계산값: Fed H.10 일별(250영업일) 단순평균.

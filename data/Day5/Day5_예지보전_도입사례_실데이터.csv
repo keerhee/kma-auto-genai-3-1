@@ -1,0 +1,7 @@
+﻿기업,설비/공정,사용센서(진동·온도·압력 등),예측대상,효과(보고된 수치 그대로),발표연도,출처URL
+현대자동차(마키나락스 협업),생산라인 산업용 로봇,모터 부하·진동·전류 신호,로봇 고장(이상 징후),고장 약 5일 전 90% 이상 정확도로 감지; 8년간 현장 검증,2026,https://www.fnnews.com/news/202605280925297568
+BMW 그룹(레겐스부르크 공장),차량 조립 컨베이어,"추가 센서 없이 기존 부품·컨베이어 제어 데이터(전력 소비, 이동 이상, 바코드 판독성)",컨베이어 기술적 결함,연간 500분 이상의 조립 중단 회피; 주요 조립라인 약 80% 모니터링,2023,https://press.bmwgroup.com/global/article/detail/T0438145EN/smart-maintenance-using-artificial-intelligence
+익명 글로벌 자동차 OEM(Siemens Senseye 고객),"프레스·용접 로봇·컨베이어 등 10,000대 이상 설비",진동·토크·온도·사이클타임(SCADA·MES·CMMS 연동),설비 고장·성능 저하,도입 12주 만에 비계획 정지 12% 감소,2025,https://blogs.sw.siemens.com/automotive-transportation/2025/04/28/predictive-maintenance-for-automotive-smart-manufacturing/
+포스코(포항제철소),선재공장 냉각장치·유압실린더 등 주요 설비,PIMS(포스코 지능형 설비관리시스템) 설비 데이터(센서 종류 미명시),"설비 이상·고장, 수명 예측",8월 기준 돌발정비 전년 동기 대비 약 50% 감소,2026,https://newsroom.posco.com/kr/?p=133451
+포스코(포항제철소 냉연공장),TBR(Tension Bridle Roll) 모터,확인 불가(기사에 센서 종류 미명시),모터 이상 동작·상태,"수치 미공개(돌발정비→계획정비 전환, 정비시간·비용 감소라고만 서술)",2026,https://newsroom.posco.com/kr/?p=132267
+GM(FANUC·Cisco ZDT),조립공장 도장 로봇 등 로봇(27개 공장·5개국 수천 대),"로봇 운전 데이터(클라우드 분석, 센서 종류 미명시)",로봇·공정 잠재 고장,수치 미공개(12개월 파일럿에서 비계획 정지 '대폭 감소' 서술); GM 혁신상 수상,2017,https://www.machinery.co.uk/content/news/fanuc-zero-down-time-project-cuts-unplanned-stoppages-bags-gm-supplier-innovation-award

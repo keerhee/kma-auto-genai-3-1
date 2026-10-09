@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>세계 자동차 산업 3D 지도</title>
+<meta name="description" content="국가별 자동차 생산량·전기차 판매와 주요 완성차 그룹을 3D 지구본에서 보고, 생산국 통화의 오늘 환율을 함께 확인하는 대시보드">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  color-scheme:dark;
+  --space:#05080f; --panel:#0f1622; --panel-2:#151e2d; --line:#253246;
+  --text-1:#f3f6fb; --text-2:#b4bfcf; --text-3:#7f8ca0;
+  --accent:#86b6ef; --oem:#eb6834; --nodata:#2a3342;
+  --up:#3987e5; --down:#e66767; --mid:#383835;
+  --live:#1baf7a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--space);color:var(--text-1);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif}
+a{color:var(--accent)}
+.app{display:grid;grid-template-columns:minmax(0,1fr) 400px;height:100vh}
+.stage{position:relative;overflow:hidden;min-height:0}
+#globe{position:absolute;inset:0}
+.panel{background:var(--panel);border-left:1px solid var(--line);overflow-y:auto;padding:18px 18px 28px}
+.eyebrow{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.02em;margin:0}
+h1{font-size:22px;margin:4px 0 6px}
+.sub{font-size:13px;color:var(--text-2);margin:0 0 14px;line-height:1.5}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.seg button{font:inherit;font-size:13px;padding:8px 6px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);color:var(--text-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#1c5cab;color:#fff;border-color:#2a78d6}
+.toggles{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--text-2);margin:4px 0 14px}
+.toggles label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.legend{margin:0 0 16px}
+.legend .bar{height:10px;border-radius:5px}
+.legend .ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-top:4px}
+.legend .cap{font-size:12px;color:var(--text-2);margin-bottom:6px}
+.legend .nodata{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--nodata);vertical-align:-1px;margin-right:4px}
+.card{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.card h2{font-size:15px;margin:0 0 10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card h2 small{font-size:11px;color:var(--text-3);font-weight:400}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px}
+.kv dt{color:var(--text-3)}.kv dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.hint{font-size:13px;color:var(--text-3)}
+.live{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--live);font-weight:700}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(27,175,122,.25)}
+.rank{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.rank li{display:grid;grid-template-columns:22px 86px 1fr auto;gap:8px;align-items:center;font-size:12.5px;cursor:pointer;border-radius:6px;padding:2px 2px}
+.rank li:hover{background:rgba(134,182,239,.08)}
+.rank .n{color:var(--text-3);text-align:right}.rank .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank .track{display:block;height:8px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+.rank .fill{display:block;height:100%;background:#3987e5;border-radius:0 4px 4px 0}
+.rank .v{color:var(--text-2);font-variant-numeric:tabular-nums;text-align:right;min-width:62px}
+.rank .fill.oem{background:var(--oem)}
+.btn-row{display:flex;gap:8px;margin:-4px 0 14px}
+.btn{font:inherit;font-size:12px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--text-2);cursor:pointer}
+.src{font-size:11.5px;color:var(--text-3);line-height:1.6}
+.src a{color:var(--text-2)}
+.tip{font-family:Pretendard,sans-serif;background:rgba(10,15,24,.94);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--text-1);min-width:180px;line-height:1.55}
+.tip b{font-size:14px}.tip .m{color:var(--text-3)}.tip .hl{color:var(--accent);font-weight:700}
+dialog{background:var(--panel);color:var(--text-1);border:1px solid var(--line);border-radius:12px;max-width:min(960px,94vw);width:100%;padding:0}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dlg-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.dlg-b{max-height:70vh;overflow:auto;padding:0 16px 16px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{position:sticky;top:0;background:var(--panel);color:var(--text-2);font-weight:600;cursor:pointer}
+td:first-child,th:first-child{text-align:left}
+.back{position:absolute;left:14px;top:14px;z-index:5;font-size:12.5px;background:rgba(15,22,34,.85);border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--text-2);text-decoration:none}
+.pop{position:absolute;z-index:6;pointer-events:auto;max-width:min(280px,80vw);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.pop .x{position:absolute;right:6px;top:4px;background:none;border:0;color:var(--text-3);font-size:18px;line-height:1;cursor:pointer;padding:4px}
+.pop .more{display:inline-block;margin-top:6px;font-size:12px;color:var(--accent);background:none;border:0;padding:0;cursor:pointer}
+.status{position:absolute;left:14px;bottom:14px;z-index:5;font-size:12px;color:var(--text-3)}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;grid-template-rows:62vh auto;height:auto}
+  .panel{border-left:0;border-top:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="stage" id="stage">
+    <div id="globe" role="img" aria-label="국가별 자동차 산업 지표를 색과 높이로 표시한 3D 지구본"></div>
+    <a class="back" href="../index.html">← 강의자료 목록</a>
+    <div class="tip pop" id="pop" hidden></div>
+    <div class="status" id="status">지구본을 불러오는 중…</div>
+  </div>
+  <aside class="panel">
+    <p class="eyebrow">자동차산업과 생성형 AI 3-1 · 실습 대시보드</p>
+    <h1>세계 자동차 산업 3D 지도</h1>
+    <p class="sub">나라를 누르면 지도 위에 이름과 수치가 나옵니다. 색과 높이가 고른 지표의 크기입니다. 지구본은 드래그로 돌리고, 휠이나 두 손가락으로 확대합니다.</p>
+
+    <div class="seg" role="group" aria-label="지표 선택" id="metricSeg"></div>
+    <div class="toggles">
+      <label><input type="checkbox" id="tglOem" checked> 완성차 그룹 본사</label>
+      <label><input type="checkbox" id="tglRotate" checked> 자동 회전</label>
+    </div>
+    <div class="legend" id="legend"></div>
+
+    <div class="card" id="detail"><p class="hint">지구본에서 나라를 누르거나, 아래 순위에서 고르세요.</p></div>
+
+    <div class="card">
+      <h2><span id="rankTitle">순위</span><small id="rankYear"></small></h2>
+      <ol class="rank" id="rank"></ol>
+    </div>
+    <div class="btn-row"><button class="btn" id="openTable">표로 보기</button></div>
+
+    <div class="card">
+      <h2><span>완성차 그룹 판매</span><small id="oemYear"></small></h2>
+      <ol class="rank" id="oemRank"></ol>
+    </div>
+
+    <div class="card">
+      <h2><span>오늘의 환율</span><span class="live" id="fxLive">불러오는 중</span></h2>
+      <p class="hint" id="fxNote" style="margin:0 0 8px">생산국 통화 1단위가 몇 원인지, 전 영업일 대비 변화와 함께 보여 줍니다.</p>
+      <ol class="rank" id="fxList"></ol>
+    </div>
+
+    <div class="src" id="sources"></div>
+  </aside>
+</div>
+
+<dialog id="tableDlg">
+  <div class="dlg-h"><b>국가별 데이터 표</b><button class="btn" id="closeTable">닫기</button></div>
+  <div class="dlg-b"><table id="dataTable"></table></div>
+</dialog>
+
+<script id="auto-data" type="application/json">/*__DATA__*/</script>
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js"></script>
+<script>
+(() => {
+const DATA = JSON.parse(document.getElementById('auto-data').textContent);
+const C = Object.fromEntries(DATA.countries.map(c => [c.iso3, c]));
+const Y = DATA.years;
+const nf = new Intl.NumberFormat('ko-KR');
+const fmtN = v => v == null ? '—' : nf.format(Math.round(v));
+const fmtM = v => v == null ? '—' : (v >= 1e6 ? (v / 1e6).toFixed(v >= 1e7 ? 1 : 2) + '백만' : v >= 1e4 ? nf.format(Math.round(v / 1e3)) + '천' : nf.format(v));
+const growth = c => (c.production_total && c.production_prev) ? (c.production_total / c.production_prev - 1) * 100 : null;
+
+// 지표 정의: 색 역할 — 크기(순차, 파랑 한 색) / 증감(발산, 파랑↔빨강 + 회색 중앙)
+const METRICS = {
+  prod:   {label: '자동차 생산량', short: '생산', year: Y.production, get: c => c.production_total, fmt: v => fmtM(v) + '대', kind: 'seq', alt: 0.18},
+  growth: {label: '생산 전년 대비', short: '증감', year: Y.production, get: growth, fmt: v => v == null ? '—' : (v > 0 ? '+' : '') + v.toFixed(1) + '%', kind: 'div', alt: 0.08},
+  ev:     {label: '전기차 판매량', short: 'EV 판매', year: Y.ev, get: c => c.ev_sales, fmt: v => fmtM(v) + '대', kind: 'seq', alt: 0.18},
+  evShare:{label: '전기차 판매 비중', short: 'EV 비중', year: Y.ev, get: c => c.ev_share_pct, fmt: v => v == null ? '—' : v.toFixed(1) + '%', kind: 'seq', alt: 0.14},
+};
+let metric = 'prod', selected = null;
+
+// 순차 램프(어두운 바탕: 작은 값은 바탕 쪽으로 가라앉고 큰 값이 밝아진다)
+const SEQ = ['#184f95','#1c5cab','#256abf','#2a78d6','#3987e5','#5598e7','#6da7ec','#86b6ef','#9ec5f4','#b7d3f6','#cde2fb'];
+const DIV_NEG = ['#e66767','#c95a5a','#8f4c4a'], DIV_MID = '#383835', DIV_POS = ['#2c4f7f','#2a78d6','#86b6ef'];
+const hex2rgb = h => [1,3,5].map(i => parseInt(h.slice(i, i + 2), 16));
+const lerp = (a, b, t) => { const A = hex2rgb(a), B = hex2rgb(b); return `rgb(${A.map((x, i) => Math.round(x + (B[i] - x) * t)).join(',')})`; };
+const ramp = (stops, t) => { t = Math.max(0, Math.min(1, t)); const p = t * (stops.length - 1), i = Math.min(stops.length - 2, Math.floor(p)); return lerp(stops[i], stops[i + 1], p - i); };
+
+function scaleFor(m) {
+  const vals = DATA.countries.map(METRICS[m].get).filter(v => v != null);
+  if (METRICS[m].kind === 'div') { const a = Math.max(...vals.map(Math.abs), 1); return {min: -a, max: a, t: v => v / a}; }
+  const max = vals.length ? Math.max(...vals) : 1;
+  return {min: 0, max, t: v => Math.sqrt(v / max)};   // 제곱근: 중국 한 나라가 나머지를 지우지 않게
+}
+function colorOf(iso, m = metric) {
+  const c = C[iso], M = METRICS[m]; const v = c ? M.get(c) : null;
+  if (v == null) return 'rgba(42,51,66,0.85)';
+  const s = scaleFor(m);
+  if (M.kind === 'div') { const t = s.t(v); return t >= 0 ? ramp([DIV_MID, ...DIV_POS], t) : ramp([DIV_MID, ...DIV_NEG], -t); }
+  return ramp(SEQ, s.t(v));
+}
+function altOf(iso, m = metric) {
+  const c = C[iso], M = METRICS[m]; const v = c ? M.get(c) : null;
+  if (v == null) return 0.004;
+  const s = scaleFor(m);
+  return 0.006 + Math.abs(s.t(v)) * M.alt * (iso === selected ? 1.15 : 1);
+}
+
+// 지구본
+const HOVER = matchMedia('(hover: hover) and (pointer: fine)').matches;   // 마우스면 툴팁, 터치면 누른 자리에 카드
+const el = document.getElementById('globe');
+const stage = document.getElementById('stage');
+const pop = document.getElementById('pop');
+let lastXY = [el.clientWidth / 2, el.clientHeight / 2];
+stage.addEventListener('pointerdown', e => { if (e.target.closest && e.target.closest('#pop')) return; const r = stage.getBoundingClientRect(); lastXY = [e.clientX - r.left, e.clientY - r.top]; });
+function popup(inner, kind = 'country') {
+  if (HOVER) return;   // 마우스: 툴팁 + 오른쪽 상세 카드로 충분. 지도 위 카드는 터치 기기에서만
+  pop.dataset.kind = kind;
+  pop.innerHTML = `<button class="x" aria-label="닫기">×</button>${inner}`;
+  pop.hidden = false;
+  const W = el.clientWidth, H = el.clientHeight, w = pop.offsetWidth, h = pop.offsetHeight;
+  let [x, y] = lastXY; x += 14; y -= h / 2;
+  if (W < 520) { x = (W - w) / 2; y = lastXY[1] < H / 2 ? lastXY[1] + 24 : lastXY[1] - h - 24; if (y < 8) y = lastXY[1] + 24; }
+  if (x + w > W - 8) x = lastXY[0] - w - 14;
+  pop.style.left = Math.max(8, x) + 'px'; pop.style.top = Math.min(Math.max(8, y), H - h - 8) + 'px';
+}
+function hidePop() { pop.hidden = true; }
+// 나라·본사가 아닌 빈 곳(바다·우주)을 누르면 카드를 닫는다
+let picked = false;
+let downAt = null;
+stage.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY, Date.now()]; }, true);
+stage.addEventListener('pointerup', e => {
+  if (!downAt || e.target.closest('#pop') || e.target.closest('.back')) return;
+  const moved = Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]), quick = Date.now() - downAt[2] < 500;
+  if (moved < 8 && quick) setTimeout(() => { if (!picked) hidePop(); picked = false; }, 150);
+  else picked = false;
+}, true);
+pop.addEventListener('click', e => {
+  if (e.target.closest('.x')) hidePop();
+  if (e.target.closest('.more')) document.getElementById('detail').scrollIntoView({behavior: 'smooth', block: 'start'});
+});
+function tipOem(o, more) {
+  return `<b>${o.name_ko}</b><br><span class="m">${o.hq_city_ko} · 본사</span><br>판매 <span class="hl">${fmtN(o.sales)}대</span> (${o.sales_year})<br><span class="m">${o.definition}</span>${more && !HOVER ? '<br><button class="more">나라 상세 보기 ↓</button>' : ''}`;
+}
+const globe = Globe({animateIn: true})(el)
+  .backgroundColor('#05080f')
+  .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-dark.jpg')
+  .showAtmosphere(true).atmosphereColor('#3987e5').atmosphereAltitude(0.16)
+  .polygonSideColor(() => 'rgba(134,182,239,0.12)')
+  .polygonStrokeColor(() => 'rgba(5,8,15,0.9)')
+  .polygonsTransitionDuration(600)
+  .polygonCapColor(f => colorOf(f.properties.ADM0_A3))
+  .polygonAltitude(f => altOf(f.properties.ADM0_A3))
+  .polygonLabel(f => HOVER ? tipCountry(f.properties.ADM0_A3, f.properties.NAME) : '')
+  
+  .onPolygonClick(f => { picked = true; select(f.properties.ADM0_A3); popup(tipCountry(f.properties.ADM0_A3, f.properties.NAME, true)); })
+  .onGlobeClick(() => hidePop())
+  .onPolygonHover(f => { el.style.cursor = f ? 'pointer' : 'grab'; })
+  .pointsData(DATA.oems).pointLat('lat').pointLng('lng')
+  .pointColor(() => '#eb6834').pointRadius(0.45)
+  .pointAltitude(o => 0.02 + Math.sqrt(o.sales / Math.max(1, ...DATA.oems.map(x => x.sales))) * 0.45)
+  .pointLabel(o => HOVER ? `<div class="tip">${tipOem(o)}</div>` : '')
+  .onPointClick(o => { picked = true; select(o.country_iso3); popup(tipOem(o, true), 'oem'); });
+globe.controls().autoRotate = true; globe.controls().autoRotateSpeed = 0.35;
+globe.pointOfView({lat: 30, lng: 115, altitude: 2.1});
+const fit = () => globe.width(el.clientWidth).height(el.clientHeight);
+new ResizeObserver(fit).observe(el); fit();
+
+fetch('assets/countries_110m.geojson').then(r => r.json()).then(g => {
+  globe.polygonsData(g.features.filter(f => f.properties.ADM0_A3 !== 'ATA'));
+  document.getElementById('status').textContent = HOVER ? '드래그로 회전 · 휠로 확대 · 나라를 누르면 상세' : '드래그로 회전 · 두 손가락으로 확대 · 나라를 누르면 수치';
+}).catch(() => { document.getElementById('status').textContent = '국가 경계를 불러오지 못했습니다(사이트 주소로 열어야 합니다).'; });
+
+function tipCountry(iso, fallback, inPop) {
+  const c = C[iso]; const name = c ? c.name_ko : fallback;
+  const wrap = s => inPop ? s : `<div class="tip">${s}</div>`;
+  if (!c) return wrap(`<b>${name}</b><br><span class="m">데이터 없음</span>`);
+  const rows = Object.entries(METRICS).map(([k, M]) => `${k === metric ? '<span class="hl">' : ''}${M.short} ${M.fmt(M.get(c))}${k === metric ? '</span>' : ''}`).join('<br>');
+  const oems = DATA.oems.filter(o => o.country_iso3 === iso).map(o => o.name_ko);
+  const extra = inPop && oems.length ? `<br><span class="m">본사: ${oems.join(', ')}</span>` : '';
+  const note = inPop && c.note ? `<br><span class="m">${c.note}</span>` : '';
+  const more = inPop && !HOVER ? '<br><button class="more">상세 보기 ↓</button>' : '';
+  return wrap(`<b>${name}</b><br>${rows}${extra}${note}${more}`);
+}
+
+// 패널
+const seg = document.getElementById('metricSeg');
+seg.innerHTML = Object.entries(METRICS).map(([k, M]) => `<button data-m="${k}" aria-pressed="${k === metric}">${M.label}</button>`).join('');
+seg.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; metric = b.dataset.m; render(); });
+document.getElementById('tglOem').addEventListener('change', e => globe.pointsData(e.target.checked ? DATA.oems : []));
+document.getElementById('tglRotate').addEventListener('change', e => { globe.controls().autoRotate = e.target.checked; });
+el.addEventListener('pointerdown', () => { globe.controls().autoRotate = false; document.getElementById('tglRotate').checked = false; });
+
+function render() {
+  [...seg.children].forEach(b => b.setAttribute('aria-pressed', b.dataset.m === metric));
+  globe.polygonCapColor(globe.polygonCapColor()).polygonAltitude(globe.polygonAltitude()).polygonLabel(globe.polygonLabel());
+  const M = METRICS[metric], s = scaleFor(metric);
+  const lg = document.getElementById('legend');
+  if (M.kind === 'div') {
+    lg.innerHTML = `<div class="cap">${M.label} (${M.year} vs ${M.year - 1})</div><div class="bar" style="background:linear-gradient(90deg,${[...DIV_NEG].reverse().join(',')},${DIV_MID},${DIV_POS.join(',')})"></div><div class="ticks"><span>${M.fmt(s.min)}</span><span>0%</span><span>${M.fmt(s.max)}</span></div><div class="ticks"><span><i class="nodata"></i>데이터 없음</span><span>높이 = 증감 폭</span></div>`;
+  } else {
+    lg.innerHTML = `<div class="cap">${M.label} (${M.year}년)</div><div class="bar" style="background:linear-gradient(90deg,${SEQ.join(',')})"></div><div class="ticks"><span>0</span><span>${M.fmt(s.max / 4)}</span><span>${M.fmt(s.max)}</span></div><div class="ticks"><span><i class="nodata"></i>데이터 없음</span><span>높이 = 값 크기</span></div>`;
+  }
+  const rows = DATA.countries.map(c => ({c, v: M.get(c)})).filter(r => r.v != null).sort((a, b) => b.v - a.v);
+  const top = M.kind === 'div' ? [...rows.slice(0, 5), ...rows.slice(-5)] : rows.slice(0, 10);
+  const maxAbs = Math.max(1e-9, ...top.map(r => Math.abs(r.v)));
+  document.getElementById('rankTitle').textContent = M.kind === 'div' ? `${M.label} — 상위·하위 5` : `${M.label} 상위 10`;
+  document.getElementById('rankYear').textContent = `${M.year}년`;
+  document.getElementById('rank').innerHTML = top.map((r, i) => {
+    const n = M.kind === 'div' ? (i < 5 ? i + 1 : rows.length - (top.length - 1 - i)) : i + 1;
+    const col = M.kind === 'div' ? (r.v >= 0 ? '#3987e5' : '#e66767') : '#3987e5';
+    return `<li data-iso="${r.c.iso3}"><span class="n">${n}</span><span class="nm">${r.c.name_ko}</span><span class="track"><span class="fill" style="width:${Math.abs(r.v) / maxAbs * 100}%;background:${col}"></span></span><span class="v">${M.fmt(r.v)}</span></li>`;
+  }).join('');
+  if (selected) showDetail(selected);
+  if (!pop.hidden && selected && pop.dataset.kind !== 'oem') popup(tipCountry(selected, selected, true));
+}
+document.getElementById('rank').addEventListener('click', e => { const li = e.target.closest('li'); if (li) select(li.dataset.iso, true); });
+
+function select(iso, fly) {
+  selected = iso; render();
+  if (fly && !HOVER) stage.scrollIntoView({behavior: 'smooth', block: 'start'});
+  if (fly) { const f = (globe.polygonsData() || []).find(f => f.properties.ADM0_A3 === iso); if (f) { const [lng, lat] = centroid(f); globe.pointOfView({lat, lng, altitude: 1.6}, 900); lastXY = [el.clientWidth / 2, el.clientHeight * 0.16]; setTimeout(() => popup(tipCountry(iso, iso, true)), 950); } }
+}
+function centroid(f) {
+  let pts = []; const g = f.geometry; const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
+  const biggest = polys.sort((a, b) => b[0].length - a[0].length)[0][0]; pts = biggest;
+  return [pts.reduce((s, p) => s + p[0], 0) / pts.length, pts.reduce((s, p) => s + p[1], 0) / pts.length];
+}
+function showDetail(iso) {
+  const c = C[iso], d = document.getElementById('detail');
+  if (!c) { d.innerHTML = `<p class="hint">이 나라는 데이터가 없습니다.</p>`; return; }
+  const g = growth(c), oems = DATA.oems.filter(o => o.country_iso3 === iso);
+  const fx = FX.rows[c.currency];
+  d.innerHTML = `<h2><span>${c.name_ko}</span><small>${c.name_en}</small></h2><dl class="kv">
+    <dt>자동차 생산 (${Y.production})</dt><dd>${fmtN(c.production_total)}대</dd>
+    <dt>전년 대비</dt><dd>${METRICS.growth.fmt(g)}</dd>
+    ${c.production_passenger != null ? `<dt>승용차 생산</dt><dd>${fmtN(c.production_passenger)}대</dd>` : ''}
+    <dt>전기차 판매 (${Y.ev})</dt><dd>${fmtN(c.ev_sales)}대</dd>
+    <dt>전기차 판매 비중</dt><dd>${METRICS.evShare.fmt(c.ev_share_pct)}</dd>
+    <dt>통화 · 오늘 환율</dt><dd>${c.currency} · ${c.currency === 'KRW' ? '기준 통화(원)' : fx ? fxText(c.currency, fx) : (FX.loaded ? '제공 안 됨' : '불러오는 중')}</dd>
+    ${oems.length ? `<dt>본사 그룹</dt><dd>${oems.map(o => o.name_ko).join(', ')}</dd>` : ''}
+  </dl>${c.note ? `<p class="hint" style="margin:10px 0 0">${c.note}</p>` : ''}`;
+}
+
+// 완성차 그룹
+(() => {
+  const o = [...DATA.oems].sort((a, b) => b.sales - a.sales), mx = o.length ? o[0].sales : 1;
+  document.getElementById('oemYear').textContent = `${Y.oem}년 · 그룹별 정의가 다름`;
+  document.getElementById('oemRank').innerHTML = o.map((x, i) => `<li data-iso="${x.country_iso3}" title="${x.definition}"><span class="n">${i + 1}</span><span class="nm">${x.name_ko}</span><span class="track"><span class="fill oem" style="width:${x.sales / mx * 100}%"></span></span><span class="v">${fmtM(x.sales)}</span></li>`).join('');
+  document.getElementById('oemRank').addEventListener('click', e => { const li = e.target.closest('li'); if (li) select(li.dataset.iso, true); });
+})();
+
+// 실시간 환율 — Frankfurter(유럽중앙은행 기준, 영업일마다 갱신), 접속할 때마다 새로 불러온다
+const FX = {loaded: false, rows: {}, date: null};
+const fxText = (cur, r) => `${r.krw >= 100 ? nf.format(Math.round(r.krw)) : r.krw.toFixed(r.krw >= 1 ? 2 : 3)}원 <span style="color:${r.chg >= 0 ? '#86b6ef' : '#e66767'}">${r.chg >= 0 ? '▲' : '▼'}${Math.abs(r.chg).toFixed(2)}%</span>`;
+(async () => {
+  const end = new Date(), start = new Date(end - 12 * 864e5), iso = d => d.toISOString().slice(0, 10);
+  const curs = [...new Set(DATA.countries.map(c => c.currency).filter(c => c && c !== 'KRW'))];
+  try {
+    // 달러 기준으로 받아 원화로 환산한다(원화 기준은 소수 5자리에서 잘려 정밀도가 무너진다)
+    const r = await fetch(`https://api.frankfurter.dev/v1/${iso(start)}..${iso(end)}?base=USD`);
+    if (!r.ok) throw new Error(r.status);
+    const j = await r.json(); const dates = Object.keys(j.rates).sort(); const d1 = dates.at(-1), d0 = dates.at(-2);
+    const krwPer = (day, cur) => { const R = j.rates[day]; if (!R || !R.KRW) return null; const u = cur === 'USD' ? 1 : R[cur]; return u ? R.KRW / u : null; };
+    for (const cur of curs) {
+      const a = krwPer(d1, cur), b = d0 ? krwPer(d0, cur) : null;
+      if (a) FX.rows[cur] = {krw: a, chg: b ? (a / b - 1) * 100 : 0};
+    }
+    FX.date = d1; FX.loaded = true;
+    document.getElementById('fxLive').textContent = `${d1} 기준`;
+    const order = ['USD','EUR','JPY','CNY','INR','MXN','BRL','GBP','CAD','THB','TRY','CZK'];
+    document.getElementById('fxList').innerHTML = order.filter(c => FX.rows[c]).map(c => `<li style="grid-template-columns:42px 1fr auto;cursor:default"><span class="nm"><b>${c}</b></span><span class="m" style="color:var(--text-3);font-size:12px">${DATA.countries.filter(x => x.currency === c).map(x => x.name_ko).slice(0, 3).join(' · ')}${DATA.countries.filter(x => x.currency === c).length > 3 ? ' 외' : ''}</span><span class="v">${fxText(c, FX.rows[c])}</span></li>`).join('');
+    const miss = curs.filter(c => !FX.rows[c]);
+    document.getElementById('fxNote').textContent = `통화 1단위 = 원, 전 영업일 대비. 유럽중앙은행 기준이라 주말·휴일에는 직전 영업일 값입니다.${miss.length ? ' 제공되지 않는 통화: ' + miss.join(', ') + '.' : ''}`;
+  } catch (e) {
+    FX.loaded = true;
+    document.getElementById('fxLive').textContent = '연결 실패';
+    document.getElementById('fxNote').textContent = '환율 서버에 연결하지 못했습니다. 인터넷 연결을 확인하거나 잠시 뒤 새로고침하세요.';
+  }
+  if (selected) showDetail(selected);
+})();
+
+// 표 보기
+const dlg = document.getElementById('tableDlg'), tbl = document.getElementById('dataTable');
+const COLS = [['name_ko','나라'],['production_total',`생산 ${Y.production}`],['production_prev',`생산 ${Y.production - 1}`],['_g','전년 대비'],...(DATA.countries.some(c => c.production_passenger != null) ? [['production_passenger','승용차 생산']] : []),['ev_sales',`EV 판매 ${Y.ev}`],['ev_share_pct','EV 비중'],['currency','통화']];
+let sortKey = 'production_total', sortDir = -1;
+const val = (c, k) => k === '_g' ? growth(c) : c[k];
+function drawTable() {
+  const rows = [...DATA.countries].sort((a, b) => { const x = val(a, sortKey), y = val(b, sortKey); if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
+  tbl.innerHTML = `<thead><tr>${COLS.map(([k, l]) => `<th data-k="${k}">${l}${k === sortKey ? (sortDir < 0 ? ' ▼' : ' ▲') : ''}</th>`).join('')}</tr></thead><tbody>${rows.map(c => `<tr>${COLS.map(([k]) => `<td>${k === 'name_ko' || k === 'currency' ? c[k] : k === '_g' ? METRICS.growth.fmt(growth(c)) : k === 'ev_share_pct' ? METRICS.evShare.fmt(c[k]) : fmtN(c[k])}</td>`).join('')}</tr>`).join('')}</tbody>`;
+}
+tbl.addEventListener('click', e => { const th = e.target.closest('th'); if (!th) return; const k = th.dataset.k; sortDir = sortKey === k ? -sortDir : -1; sortKey = k; drawTable(); });
+document.getElementById('openTable').onclick = () => { drawTable(); dlg.showModal(); };
+document.getElementById('closeTable').onclick = () => dlg.close();
+
+// 출처
+const S = Object.fromEntries(DATA.sources.map(s => [s.key, s]));
+const link = k => S[k] ? `<a href="${S[k].url}" target="_blank" rel="noopener">${S[k].title}</a> (${S[k].publisher})` : k;
+const oemKeys = [...new Set(DATA.oems.map(o => o.source_key))];
+document.getElementById('sources').innerHTML = `<b>출처</b> · 기준일 ${DATA['기준일']}<br>생산: ${link(DATA.country_source_keys.production)}<br>전기차: ${link(DATA.country_source_keys.ev)}<br>완성차 그룹: ${oemKeys.map(k => S[k] ? `<a href="${S[k].url}" target="_blank" rel="noopener">${S[k].publisher}</a>` : k).join(' · ')}<br>환율: <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a>(유럽중앙은행 기준, 접속할 때마다 갱신)<br>지도: Natural Earth 1:110m · 3D: globe.gl`;
+
+render();
+})();
+</script>
+</body>
+</html>
