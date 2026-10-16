@@ -32,6 +32,9 @@ for d, tag, title, hours, hook in DAYS:
         if '_3_Main' in pdf: desc = f'본 강의 — {hours}'
         main = ' is-main' if '_3_Main' in pdf else ''
         links = f'<a class="btn" href="{url(pdf)}" target="_blank" rel="noopener">PDF 보기</a>'
+        for mp4 in sorted(glob.glob(pdf.rsplit('_deck', 1)[0] + '_*.mp4')) if '_deck' in pdf else []:   # 케이스 모션그래픽 영상
+            vl = {'MotionStudio': '영상 · 모션', 'MotionLecture': '영상 · 강의형'}.get(mp4.rsplit('_', 1)[1][:-4], '영상')
+            links += f'<a class="btn ghost" href="{url(mp4)}" target="_blank" rel="noopener">{vl}</a>'
         rows.append(f'<li class="row{main}"><span class="k">{html.escape(k)}</span><span class="d">{html.escape(desc)}</span><span class="l">{links}</span></li>')
     cards.append(f'<section class="card" id="{d}"><header><span class="tag">{tag}</span><h2>{html.escape(title)}</h2></header><ol>{"".join(rows)}</ol></section>')
 
@@ -92,7 +95,7 @@ footer{{margin-top:40px;color:var(--sub);font-size:13px}}footer a{{color:var(--a
 <h3>대시보드</h3><a class="dash" href="HTML/auto_world_dashboard.html" target="_blank" rel="noopener"><span class="dash-t">세계 자동차 산업 3D 지도</span><span class="dash-d">국가별 자동차 생산량·전기차 판매와 비중, 주요 완성차 그룹을 3D 지구본에서 보고, 생산국 통화의 오늘 환율을 함께 확인합니다.</span><small>대시보드 열기 →</small></a>
 {data_html}
 <h3>교육용 시뮬레이션</h3><div class="sims">{sims}</div>
-<footer>PDF는 브라우저에서 바로 열립니다. · <a href="https://github.com/keerhee/kma-auto-genai-3-1">GitHub 저장소</a></footer>
+<footer>PDF와 케이스 영상은 브라우저에서 바로 열립니다(영상 · 모션 = 모션그래픽, 영상 · 강의형 = 장표형 나레이션). · <a href="https://github.com/keerhee/kma-auto-genai-3-1">GitHub 저장소</a></footer>
 </div></body></html>'''
 open('index.html', 'w', encoding='utf-8').write(page)
 print('index.html', len(page))
