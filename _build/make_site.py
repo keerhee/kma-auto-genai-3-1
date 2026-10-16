@@ -20,6 +20,7 @@ def label(fn, day):
     if '_2_Front' in n: return ('Front · 2H', '인트로 — 기본기')
     if '_3_Main' in n: return ('Main', '본 강의')
     if '_4_Back' in n: return ('Back · 2H', '보강 실습')
+    if '_5_보조' in n: return ('보조', '보조 자료 — ' + n.split('_', 3)[3].rsplit('.', 1)[0].replace('시각화의두고전_나이팅게일과앤스컴', '시각화의 두 고전: 나이팅게일과 앤스컴'))
     return ('', n)
 def url(p): return urllib.parse.quote(p)
 cards = []
