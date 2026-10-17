@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python working/scripts/*)",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "deny": [
+      "Edit(input/**)",
+      "Write(input/**)"
+    ]
+  }
+}

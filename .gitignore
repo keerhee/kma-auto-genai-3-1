@@ -2,4 +2,6 @@
 ~$*
 *.pptx
 _motion_*/
-x_*/
+node_modules/
+__pycache__/
+x_skills/ppt/pptx.zip
