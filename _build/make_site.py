@@ -3,7 +3,7 @@ import os, glob, html, urllib.parse
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 DAYS = [
-    ('Day0', '0일차', '과정 안내', '강의소개 · 기초 프롬프트 · 미니 프로젝트 과제집 · 설치 치트시트', None),
+    ('Day0', '0일차', '과정 안내', '강의소개 · 기초 프롬프트 · 미니 프로젝트 과제집 · 설치 가이드', None),
     ('Day1', '1일차', '자동차 시장 및 트렌드 이해', '이론 5H + 실습 3H', '테슬라 2008'),
     ('Day2', '2일차', '자동차 데이터 크롤링 및 시각화', '이론 4H + 실습 4H', '머니볼'),
     ('Day3', '3일차', '경쟁사 재무와 전략 분석', '이론 4H + 실습 4H', 'GM 파산'),
@@ -15,7 +15,7 @@ DAYS = [
 def label(fn, day):
     n = os.path.basename(fn)
     if day == 'Day0':
-        return {'1': ('안내', '강의소개 및 개요'), '2': ('기초', '기초 프롬프트 작성법'), '3': ('과제집', '실전 미니 프로젝트 과제집'), '4': ('치트시트', 'Claude Code 설치·사용 치트시트')}[n.split('_')[1]]
+        return {'1': ('안내', '강의소개 및 개요'), '2': ('기초', '기초 프롬프트 작성법'), '3': ('과제집', '실전 미니 프로젝트 과제집'), '4': ('설치', 'Claude 설치 가이드 — 데스크톱 앱 + VS Code')}[n.split('_')[1]]
     if '_1_Hook' in n: return ('Hook · 1H', '케이스 스토리')
     if '_2_Front' in n: return ('Front · 2H', '인트로 — 기본기')
     if '_3_Main' in n: return ('Main', '본 강의')
