@@ -78,7 +78,7 @@ for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') 
         rows.append(f'<li class="row"><span class="k">{no}</span><span class="d">{html.escape(what.replace("`", ""))}</span><span class="l">{btns}</span></li>')
 supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 22종입니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
              f'전체 목록은 <a href="{GH_BLOB}{url("보충교재/README.md")}">보충교재 안내</a>에 있습니다.</p>'
-             f'<div class="grid">{"".join(supp_cards)}</div>')
+             f'<div class="grid supp-grid">{"".join(supp_cards)}</div>')
 
 SIMS = [('ev_parts.html', 'EV 부품 학습'), ('ev_factory.html', 'EV 스마트팩토리'), ('humanoid_parts.html', '휴머노이드 부품 학습'), ('humanoid_factory.html', '휴머노이드 조립 공정')]
 sims = ''.join(f'<a class="sim" href="HTML/{f}" target="_blank" rel="noopener"><span>{html.escape(t)}</span><small>시뮬레이션 열기 →</small></a>' for f, t in SIMS)
@@ -110,7 +110,7 @@ h3{{margin:36px 0 12px}}.sims{{display:grid;grid-template-columns:repeat(auto-fi
 .badge{{font-size:11px;font-weight:700;border-radius:6px;padding:1px 6px;white-space:nowrap}}.badge.real{{background:#dcfce7;color:#166534}}.badge.synth{{background:#fef3c7;color:#92400e}}.badge.tmpl{{background:#e0e7ff;color:#3730a3}}
 .dash{{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:linear-gradient(120deg,#0f1622,#1c2f52);color:#f3f6fb;border-radius:14px;padding:20px}}.dash-t{{font-size:18px;font-weight:700}}.dash-d{{font-size:14px;color:#b4bfcf}}.dash small{{color:#86b6ef}}
 footer{{margin-top:40px;color:var(--sub);font-size:13px}}footer a{{color:var(--accent)}}
-.supp .row{{grid-template-columns:28px 1fr}}.supp .l{{grid-column:2;flex-wrap:wrap}}
+.supp-grid{{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}}.supp{{padding:14px}}.supp h2{{font-size:16px}}.supp .d{{font-size:14px}}.supp .row{{grid-template-columns:28px 1fr}}.supp .l{{grid-column:2;flex-wrap:wrap}}
 @media (max-width:520px){{.row{{grid-template-columns:1fr;gap:4px}}.supp .l{{grid-column:1}}}}
 </style></head><body><div class="wrap">
 <div class="hero"><p class="eyebrow">능률협회 · 자동차특화 AI융합 전문가 육성 과정</p><h1>자동차산업과 생성형 AI 3-1</h1>
