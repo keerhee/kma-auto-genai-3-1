@@ -56,6 +56,30 @@ data_html = (f'<h3 id="data">실습 데이터</h3><p class="note">실데이터�
              f'파일별 설명은 <a href="{GH}README.md">데이터 안내</a>, 함정과 정답은 <a href="{GH}{url("_강사용_정답메모.md")}">강사용 정답 메모</a>를 보세요.</p>'
              f'<div class="data">{"".join(drows)}</div>')
 
+# 보충교재: 보충교재/README.md의 날짜별 표(## 제목 + | 번호 | 자료 | 내려받기 |)를 그대로 카드로 옮긴다
+import re
+GH_BLOB = 'https://github.com/keerhee/kma-auto-genai-3-1/blob/main/'
+def supp_link(label, href):
+    p = '보충교재/' + urllib.parse.unquote(href)
+    ext = p.rsplit('.', 1)[-1].lower()
+    if ext == 'md':   # Pages는 md를 날글로 보여 주므로 GitHub 화면으로
+        return f'<a class="btn ghost" href="{GH_BLOB}{url(p)}" target="_blank" rel="noopener">{html.escape(label)}</a>'
+    dl = ' download' if ext == 'zip' else ' target="_blank" rel="noopener"'
+    return f'<a class="btn{" ghost" if ext != "pdf" else ""}" href="{url(p)}"{dl}>{html.escape(label)}</a>'
+supp_cards, sec, rows = [], None, []
+for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') + ['## ']:
+    if line.startswith('## '):
+        if sec and rows:
+            supp_cards.append(f'<section class="card supp"><header><h2>{html.escape(sec)}</h2></header><ol>{"".join(rows)}</ol></section>')
+        sec, rows = line[3:].strip(), []
+    elif line.startswith('| ') and sec and not line.startswith(('| 번호', '|---')):
+        no, what, links = [c.strip() for c in line.strip('|').split(' | ')]
+        btns = ''.join(supp_link(t, h) for t, h in re.findall(r'\[([^\]]+)\]\(([^)]+)\)', links))
+        rows.append(f'<li class="row"><span class="k">{no}</span><span class="d">{html.escape(what.replace("`", ""))}</span><span class="l">{btns}</span></li>')
+supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 22종입니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
+             f'전체 목록은 <a href="{GH_BLOB}{url("보충교재/README.md")}">보충교재 안내</a>에 있습니다.</p>'
+             f'<div class="grid">{"".join(supp_cards)}</div>')
+
 SIMS = [('ev_parts.html', 'EV 부품 학습'), ('ev_factory.html', 'EV 스마트팩토리'), ('humanoid_parts.html', '휴머노이드 부품 학습'), ('humanoid_factory.html', '휴머노이드 조립 공정')]
 sims = ''.join(f'<a class="sim" href="HTML/{f}" target="_blank" rel="noopener"><span>{html.escape(t)}</span><small>시뮬레이션 열기 →</small></a>' for f, t in SIMS)
 page = f'''<!doctype html>
@@ -86,12 +110,14 @@ h3{{margin:36px 0 12px}}.sims{{display:grid;grid-template-columns:repeat(auto-fi
 .badge{{font-size:11px;font-weight:700;border-radius:6px;padding:1px 6px;white-space:nowrap}}.badge.real{{background:#dcfce7;color:#166534}}.badge.synth{{background:#fef3c7;color:#92400e}}.badge.tmpl{{background:#e0e7ff;color:#3730a3}}
 .dash{{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:linear-gradient(120deg,#0f1622,#1c2f52);color:#f3f6fb;border-radius:14px;padding:20px}}.dash-t{{font-size:18px;font-weight:700}}.dash-d{{font-size:14px;color:#b4bfcf}}.dash small{{color:#86b6ef}}
 footer{{margin-top:40px;color:var(--sub);font-size:13px}}footer a{{color:var(--accent)}}
-@media (max-width:520px){{.row{{grid-template-columns:1fr;gap:4px}}}}
+.supp .row{{grid-template-columns:28px 1fr}}.supp .l{{grid-column:2;flex-wrap:wrap}}
+@media (max-width:520px){{.row{{grid-template-columns:1fr;gap:4px}}.supp .l{{grid-column:1}}}}
 </style></head><body><div class="wrap">
 <div class="hero"><p class="eyebrow">능률협회 · 자동차특화 AI융합 전문가 육성 과정</p><h1>자동차산업과 생성형 AI 3-1</h1>
 <p>6일 과정과 로봇·스마트팩토리 특강의 강의자료입니다. 날마다 케이스 스토리로 열고, 기본기를 다진 뒤 본 강의와 보강 실습으로 이어집니다.</p></div>
 <div class="flow"><span><b>Hook</b> 케이스 1H</span><span><b>Front</b> 인트로 2H</span><span><b>Main</b> 본 강의 8H</span><span><b>Back</b> 보강 실습 2H</span></div>
 <div class="grid">{"".join(cards)}</div>
+{supp_html}
 <h3>대시보드</h3><a class="dash" href="HTML/auto_world_dashboard.html" target="_blank" rel="noopener"><span class="dash-t">세계 자동차 산업 3D 지도</span><span class="dash-d">국가별 자동차 생산량·전기차 판매와 비중, 주요 완성차 그룹을 3D 지구본에서 보고, 생산국 통화의 오늘 환율을 함께 확인합니다.</span><small>대시보드 열기 →</small></a>
 {data_html}
 <h3>교육용 시뮬레이션</h3><div class="sims">{sims}</div>
