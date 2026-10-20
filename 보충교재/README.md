@@ -42,6 +42,7 @@
 |---|---|---|
 | 11 | AI 네이티브 오피스 4시간 과정 | [Part1 프롬프트 패턴](11_AI네이티브오피스_4시간과정/AINativeOffice_Part1_프롬프트패턴_zeroone.pdf) · [Part2 반복업무 자동화](11_AI네이티브오피스_4시간과정/AINativeOffice_Part2_반복업무자동화_zeroone.pdf) · [Part3 AI 팀](11_AI네이티브오피스_4시간과정/AINativeOffice_Part3_AI팀_도메인결합_zeroone.pdf) · [Part4 안전·내 업무 설계](11_AI네이티브오피스_4시간과정/AINativeOffice_Part4_안전_내업무설계_zeroone.pdf) |
 | 12 | 구글 워크스페이스 CLI × Claude Code 연결 가이드 (26장) | [PDF](12_GWS_CLI_클로드코드_가이드/GWS_CLI_ClaudeCode_Guide_III.pdf) |
+| 12 | gws CLI 설치·초기 세팅 — 초보자 따라 하기 (43장 · 외부 대상 · JSON 다운로드 · localhost 점검) | [PDF](12_GWS_CLI_클로드코드_가이드/gws_CLI_설치가이드_jj덱.pdf) · [md](12_GWS_CLI_클로드코드_가이드/gws_CLI_설치가이드.md) |
 | 13 | 바이브 코딩 실습 — 원무과 서류 발급 현황 앱 | [덱 PDF](13_바이브코딩_실습/VibeCoding_ClaudeCode_Lab.pdf) · [교안 PDF](13_바이브코딩_실습/바이브%20코딩%20실습%20교안%20—%20Claude%20Code로%20만드는%20원무과%20서류%20발급%20현황%20앱.pdf) |
 | 14 | RAG — 05의 Day2 작업 폴더 위에 RAG를 얹는다 | [Primer](14_RAG_강의덱/KMA_RAG_Primer_II_zeroone.pdf) · [L1 입문](14_RAG_강의덱/KMA_RAG_L1_Basic_zeroone.pdf) · [실습 II](14_RAG_강의덱/KMA_RAG_Easy_HandsOn_II_extension_zeroone.pdf) · [L2 실무](14_RAG_강의덱/KMA_RAG_L2_Practitioner_zeroone.pdf) · [L3 심화](14_RAG_강의덱/KMA_RAG_L3_Advanced_zeroone.pdf) · [손계산 워크북](14_RAG_강의덱/KMA_RAG_Workbook_zeroone.pdf) |
 | 15 | 세컨드 브레인 (옵시디언 + Claude Code) | [L1 기초](15_세컨드브레인/SecondBrain_L1_Obsidian_PARA_Basics.pdf) · [L2 연결](15_세컨드브레인/SecondBrain_L2_ClaudeCode_Librarian.pdf) · [L3 운영](15_세컨드브레인/SecondBrain_L3_Operations_Lifecycle.pdf) · [빈 볼트 키트 zip](15_세컨드브레인/second-brain-kit-v2.zip) · [3-1 예시 볼트 zip](15_세컨드브레인/vault-kma-3-1.zip) |
