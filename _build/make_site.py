@@ -76,7 +76,7 @@ for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') 
         no, what, links = [c.strip() for c in line.strip('|').split(' | ')]
         btns = ''.join(supp_link(t, h) for t, h in re.findall(r'\[([^\]]+)\]\(([^)]+)\)', links))
         rows.append(f'<li class="row"><span class="k">{no}</span><span class="d">{html.escape(what.replace("`", ""))}</span><span class="l">{btns}</span></li>')
-supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 22종입니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
+supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 27종입니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
              f'전체 목록은 <a href="{GH_BLOB}{url("보충교재/README.md")}">보충교재 안내</a>에 있습니다.</p>'
              f'<div class="grid">{"".join(supp_cards)}</div>')
 

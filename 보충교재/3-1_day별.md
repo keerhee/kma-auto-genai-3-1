@@ -2,11 +2,11 @@
 
 | 3-1 날짜 | 번호·폴더 |
 |---|---|
-| Day0 강의소개·기초 | 01 Claude 설치가이드 · 02 GitHub 저장소 초보자가이드 · 03 AI 에이전트 스킬 10선 |
+| Day0 강의소개·기초 | 01 Claude 설치가이드 · 02 GitHub 저장소 초보자가이드 · 03 AI 에이전트 스킬 10선 · 24 Claude Code GitHub 실습 패키지 · 25 Claude Code GitHub 자동화 가이드 |
 | Day1 시장·트렌드 | 04 테슬라 기술혁신 분석 |
 | Day2 데이터·시각화 | 05 ClaudeCode 시작가이드 Day2 update · 06 인포그래픽 스킬 · 07 스킬모음 24종 |
-| Day3 경쟁사 재무 | 08 해외자동차 5사 실적비교 · 09 KAuto Neo4j 실습 · 10 Financial Insight KG |
-| Day4 직무 업무 자동화 | 11 AI 네이티브 오피스 · 12 GWS CLI · 13 바이브코딩 · 14 RAG · 15 세컨드브레인 |
+| Day3 경쟁사 재무 | 08 해외자동차 5사 실적비교 · 23 GM Downfall Decoded · 09 KAuto Neo4j 실습 · 10 Financial Insight KG · 26 KAuto Neo4j 종합강의노트 |
+| Day4 직무 업무 자동화 | 11 AI 네이티브 오피스 · 12 GWS CLI · 13 바이브코딩 · 14 RAG · 15 세컨드브레인 · 27 AI 브라우저 자동화 도구 |
 | Day5 예지보전 | 16 스마트팩토리 입문과정 · 17 스마트팩토리 멀티에이전트 |
 | Day6 최종 프로젝트 | 18 GitHub 배포·Supabase · 19 하네스 엔지니어링 · 20 AI Agent Pixel Office |
 | 로봇 특강 | 21 로봇 SI 제안덱 |

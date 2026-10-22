@@ -10,6 +10,8 @@
 | 01 | Claude 설치가이드 간단판 | [PDF](01_Claude_설치가이드/Claude_설치가이드_간단판.pdf) |
 | 02 | GitHub 저장소 만들기 — 초보자 실습 가이드 (33장) | [PDF](02_GitHub_저장소_초보자가이드/GitHub_Repo_Beginner_Guide_zeroone_II.pdf) |
 | 03 | 비개발자를 위한 AI 에이전트 스킬 10선 (31장) | [PDF](03_AI에이전트_스킬10선/AI_Agent_Skills_Top10_Lecture.pdf) |
+| 24 | Claude Code × GitHub 실습 패키지 — 초보자 실습가이드 · 브라우저 인증 가이드 · 프롬프트 A~E · 샘플 저장소 | [시작 안내](24_Claude_Code_GitHub_실습_패키지/README_먼저읽기.md) · [실습가이드](24_Claude_Code_GitHub_실습_패키지/01_초보자_실습가이드.md) · [브라우저 인증](24_Claude_Code_GitHub_실습_패키지/02_브라우저_인증_초보자_가이드.md) · [zip](24_Claude_Code_GitHub_실습_패키지/Claude_Code_GitHub_실습_패키지.zip) |
+| 25 | Claude Code로 GitHub 저장소 만들기와 자료 업로드 — 초보자 자동화 가이드 | [md](25_ClaudeCode_GitHub_자동화_가이드/Claude_Code_GitHub_초보자_자동화_가이드.md) |
 
 ## Day1 — 자동차 시장 및 트렌드
 
@@ -35,6 +37,8 @@
 | 08 | 해외 자동차 5개사 실적 비교 실습 (27장) | [PDF](08_해외자동차5사_실적비교/Auto5_Earnings_Comparison_zeroone.pdf) |
 | 09 | Claude Code × Neo4j × MCP 자동차 산업지식그래프 실습 강의노트 | [md](09_KAuto_Neo4j_ClaudeCode_실습/KAuto_Neo4j_ClaudeCode_HandsOn_Lecture_KR.md) · [PDF](09_KAuto_Neo4j_ClaudeCode_실습/KAuto_Neo4j_ClaudeCode_HandsOn_Lecture_KR.pdf) |
 | 10 | Financial Insight KG 실전 활용 사례집 | [md](10_Financial_Insight_KG_활용사례/kg-use-cases.md) · [PDF](10_Financial_Insight_KG_활용사례/kg-use-cases-navy.pdf) |
+| 23 | 케이스 «거인의 파산» — GM 2009 파산을 숫자로 다시 읽기 | [강의형 영상 5:57](23_GM_Downfall_Decoded/GM_Downfall_MotionLecture.mp4) · [요약 영상 1:23](23_GM_Downfall_Decoded/GM_Downfall_Decoded.mp4) · [슬라이드 PDF](23_GM_Downfall_Decoded/Decoding_GM_s_Downfall.pdf) |
+| 26 | K-Auto Neo4j × Claude Code × MCP — 옵시디언 종합실습교재 (09의 확장판) | [md](26_KAuto_Neo4j_종합강의노트/KAuto_Neo4j_ClaudeCode_Obsidian_종합강의노트.md) |
 
 ## Day4 — 직무별 업무 분석
 
@@ -46,6 +50,7 @@
 | 13 | 바이브 코딩 실습 — 원무과 서류 발급 현황 앱 | [덱 PDF](13_바이브코딩_실습/VibeCoding_ClaudeCode_Lab.pdf) · [교안 PDF](13_바이브코딩_실습/바이브%20코딩%20실습%20교안%20—%20Claude%20Code로%20만드는%20원무과%20서류%20발급%20현황%20앱.pdf) |
 | 14 | RAG — 05의 Day2 작업 폴더 위에 RAG를 얹는다 | [Primer](14_RAG_강의덱/KMA_RAG_Primer_II_zeroone.pdf) · [L1 입문](14_RAG_강의덱/KMA_RAG_L1_Basic_zeroone.pdf) · [실습 II](14_RAG_강의덱/KMA_RAG_Easy_HandsOn_II_extension_zeroone.pdf) · [L2 실무](14_RAG_강의덱/KMA_RAG_L2_Practitioner_zeroone.pdf) · [L3 심화](14_RAG_강의덱/KMA_RAG_L3_Advanced_zeroone.pdf) · [손계산 워크북](14_RAG_강의덱/KMA_RAG_Workbook_zeroone.pdf) |
 | 15 | 세컨드 브레인 (옵시디언 + Claude Code) | [L1 기초](15_세컨드브레인/SecondBrain_L1_Obsidian_PARA_Basics.pdf) · [L2 연결](15_세컨드브레인/SecondBrain_L2_ClaudeCode_Librarian.pdf) · [L3 운영](15_세컨드브레인/SecondBrain_L3_Operations_Lifecycle.pdf) · [빈 볼트 키트 zip](15_세컨드브레인/second-brain-kit-v2.zip) · [3-1 예시 볼트 zip](15_세컨드브레인/vault-kma-3-1.zip) |
+| 27 | AI 브라우저 자동화 도구별 설치·실습 가이드 (Playwright 등) | [md](27_AI_브라우저_자동화_도구/AI_브라우저_자동화_도구_설치_가이드_Obsidian_2026-10-21.md) |
 
 ## Day5 — 예지보전 AI
 
