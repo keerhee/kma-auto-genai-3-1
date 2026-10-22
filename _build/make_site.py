@@ -12,6 +12,8 @@ DAYS = [
     ('Day6', '6일차', '최종 프로젝트 구현 및 발표', '구현 4H + 발표 4H', '픽사 브레인트러스트'),
     ('Robot_Special', '특강', '자동차산업의 미래 — 로봇과 스마트팩토리', '본 특강 6H', '아마존 키바'),
 ]
+FOLDER = {'Day0': 'Day0_강의소개', 'Day1': 'Day1_시장트렌드', 'Day2': 'Day2_데이터시각화', 'Day3': 'Day3_경쟁사재무',
+          'Day4': 'Day4_업무자동화', 'Day5': 'Day5_예지보전', 'Day6': 'Day6_최종프로젝트'}  # 폴더명(2026-10-22) — 페이지 앵커 #DayN은 그대로 둔다
 def label(fn, day):
     n = os.path.basename(fn)
     if day == 'Day0':
@@ -26,7 +28,7 @@ def url(p): return urllib.parse.quote(p)
 cards = []
 for d, tag, title, hours, hook in DAYS:
     rows = []
-    for pdf in sorted(glob.glob(f'{d}/*.pdf')):
+    for pdf in sorted(glob.glob(f'{FOLDER.get(d, d)}/*.pdf')):
         k, desc = label(pdf, d)
         if '_1_Hook' in pdf and hook: desc = f'케이스 스토리 — {hook}'
         if '_3_Main' in pdf: desc = f'본 강의 — {hours}'
