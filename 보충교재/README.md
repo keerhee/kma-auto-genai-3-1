@@ -36,7 +36,7 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 케이스 «거인의 파산» — GM 2009 파산을 숫자로 다시 읽기 (★ 보기만) | [강의형 영상 5:57](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_MotionLecture.mp4) · [요약 영상 1:23](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_Decoded.mp4) · [슬라이드 PDF](Day3_경쟁사재무/01_GM_Downfall_Decoded/Decoding_GM_s_Downfall.pdf) |
+| 01 | 케이스 «거인의 파산» — GM 2009 파산을 숫자로 다시 읽기 (★ 보기만) | [강의형 영상 5:51](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_MotionLecture.mp4) · [요약 영상 1:23](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_Decoded.mp4) · [슬라이드 PDF](Day3_경쟁사재무/01_GM_Downfall_Decoded/Decoding_GM_s_Downfall.pdf) |
 | 02 | 해외 자동차 5개사 실적 비교 실습 (27장 · ★) | [PDF](Day3_경쟁사재무/02_해외자동차5사_실적비교/Auto5_Earnings_Comparison_zeroone.pdf) |
 | 03 | Financial Insight KG 실전 활용 사례집 (★ 읽기) | [md](Day3_경쟁사재무/03_Financial_Insight_KG_활용사례/kg-use-cases.md) · [PDF](Day3_경쟁사재무/03_Financial_Insight_KG_활용사례/kg-use-cases-navy.pdf) |
 | 04 | 자동차 산업과 금융 3일 집중과정 — 캡티브 금융·할부·리스·ABS·공급망 금융·밸류에이션 (★★ 개념) | [메인 덱 PDF](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_Finance_Main_III.pdf) · [워크북 PDF](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_Finance_Workbook_II.pdf) · [노트 md](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_and_Finance_3Day_II.md) |
