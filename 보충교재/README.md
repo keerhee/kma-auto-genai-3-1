@@ -59,7 +59,7 @@
 | 04 | 세컨드 브레인 (옵시디언 + Claude Code · ★★) | [L1 기초](Day4_업무자동화/04_세컨드브레인/SecondBrain_L1_Obsidian_PARA_Basics.pdf) · [L2 연결](Day4_업무자동화/04_세컨드브레인/SecondBrain_L2_ClaudeCode_Librarian.pdf) · [L3 운영](Day4_업무자동화/04_세컨드브레인/SecondBrain_L3_Operations_Lifecycle.pdf) · [빈 볼트 키트 zip](Day4_업무자동화/04_세컨드브레인/second-brain-kit-v2.zip) · [3-1 예시 볼트 zip](Day4_업무자동화/04_세컨드브레인/vault-kma-3-1.zip) |
 | 05 | RAG — Day2 01의 작업 폴더 위에 RAG를 얹는다 (★★~★★★) | [Primer](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Primer_II_zeroone.pdf) · [L1 입문](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L1_Basic_zeroone.pdf) · [실습 II](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Easy_HandsOn_II_extension_zeroone.pdf) · [L2 실무](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L2_Practitioner_zeroone.pdf) · [L3 심화](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L3_Advanced_zeroone.pdf) · [손계산 워크북](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Workbook_zeroone.pdf) · [적용 예 — CS 보증 판정 에이전트](Day4_업무자동화/05_RAG_강의덱/Day4_CS_Warranty_RAG_Agent_Example_II.pdf) |
 | 06 | 바이브 코딩 실습 — 원무과 서류 발급 현황 앱 (★★★) | [덱 PDF](Day4_업무자동화/06_바이브코딩_실습/VibeCoding_ClaudeCode_Lab.pdf) · [교안 PDF](Day4_업무자동화/06_바이브코딩_실습/바이브%20코딩%20실습%20교안%20—%20Claude%20Code로%20만드는%20원무과%20서류%20발급%20현황%20앱.pdf) |
-| 07 | 텔레그램 봇 7개로 AI 팀장 7명 운영 (★★★★ 상시 실행) | [가이드 PDF](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Guide.pdf) · [프롬프트 md](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Prompts.md) · [강의형 영상 13:05](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_MotionLecture.mp4) |
+| 07 | 텔레그램 봇 7개로 AI 팀장 7명 운영 (★★★★ 상시 실행) | [가이드 PDF](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Guide.pdf) · [프롬프트 md](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Prompts.md) · [강의형 영상 13:05 유튜브](https://youtu.be/398lH99CAJM) · [내려받기 720p](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_MotionLecture.mp4) |
 
 ## Day5 — 예지보전 AI
 
@@ -84,7 +84,7 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [확장판 PDF — RFQ 유형 판정 · course-forge 연결](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_확장판.pdf) · [임원 브리프 한 장](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_Brief.png) · [강의형 영상 16:29](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
+| 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [확장판 PDF — RFQ 유형 판정 · course-forge 연결](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_확장판.pdf) · [임원 브리프 한 장](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_Brief.png) · [강의형 영상 16:29 유튜브](https://youtu.be/5pk3ftNVTZY) · [내려받기 720p](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
 | 02 | si-forge 스킬 초안 — 처음 보는 유형의 RFQ도 AI가 처음부터 설계·검증해 팀을 넓히고, 사람은 결정만 (★★★ 01 다음 · 초안) | [스킬 zip](Robot_Special/02_si-forge_스킬초안/si-forge.zip) |
 
 ## 과정 전체 참고

@@ -62,6 +62,8 @@ data_html = (f'<h3 id="data">실습 데이터</h3><p class="note">실데이터�
 import re
 GH_BLOB = 'https://github.com/keerhee/kma-auto-genai-3-1/blob/main/'
 def supp_link(label, href):
+    if href.startswith(('http://', 'https://')):  # 유튜브 등 바깥 주소는 그대로
+        return f'<a class="btn ghost" href="{html.escape(href)}" target="_blank" rel="noopener">{html.escape(label)}</a>'
     p = '보충교재/' + urllib.parse.unquote(href)
     ext = p.rsplit('.', 1)[-1].lower()
     if ext == 'md':   # Pages는 md를 날글로 보여 주므로 GitHub 화면으로
