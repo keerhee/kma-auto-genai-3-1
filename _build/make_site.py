@@ -68,7 +68,7 @@ def supp_link(label, href):
         return f'<a class="btn ghost" href="{GH_BLOB}{url(p)}" target="_blank" rel="noopener">{html.escape(label)}</a>'
     dl = ' download' if ext == 'zip' else ' target="_blank" rel="noopener"'
     return f'<a class="btn{" ghost" if ext != "pdf" else ""}" href="{url(p)}"{dl}>{html.escape(label)}</a>'
-supp_cards, sec, rows = [], None, []
+supp_cards, sec, rows, supp_keys = [], None, [], set()
 for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') + ['## ']:
     if line.startswith('## '):
         if sec and rows:
@@ -76,9 +76,10 @@ for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') 
         sec, rows = line[3:].strip(), []
     elif line.startswith('| ') and sec and not line.startswith(('| 번호', '|---')):
         no, what, links = [c.strip() for c in line.strip('|').split(' | ')]
+        supp_keys.add((sec, no))
         btns = ''.join(supp_link(t, h) for t, h in re.findall(r'\[([^\]]+)\]\(([^)]+)\)', links))
         rows.append(f'<li class="row"><span class="k">{no}</span><span class="d">{html.escape(what.replace("`", ""))}</span><span class="l">{btns}</span></li>')
-supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 27종입니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
+supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 {len(supp_keys)}종입니다. 날짜마다 쉬운 것부터 01, 02, … 번호를 붙였습니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
              f'전체 목록은 <a href="{GH_BLOB}{url("보충교재/README.md")}">보충교재 안내</a>에 있습니다.</p>'
              f'<div class="grid">{"".join(supp_cards)}</div>')
 
