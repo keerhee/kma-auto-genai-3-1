@@ -77,14 +77,15 @@
 | 03 | 나만의 AX 앱 포트폴리오 — 1판 GitHub Pages(공개 · ★★) · 2판 Cloudflare(비공개 · 이메일 코드 로그인 · ★★★) | [1판 덱 PDF](Day6_최종프로젝트/03_AX_앱_포트폴리오/AX_App_Portfolio_Guide_Manual_II.pdf) · [2판 Cloudflare 덱 PDF](Day6_최종프로젝트/03_AX_앱_포트폴리오/AX_App_Portfolio_Guide_Manual_2_Cloudflare.pdf) · [초보자 가이드 md](Day6_최종프로젝트/03_AX_앱_포트폴리오/Student_Beginner_Guide.md) · [템플릿 zip](Day6_최종프로젝트/03_AX_앱_포트폴리오/ax-portfolio-template.zip) |
 | 04 | 하네스 엔지니어링 2026 — 덱 11개 + 옵시디언 노트 (★★~★★★) | [안내](Day6_최종프로젝트/04_하네스엔지니어링_2026/README.md) · [실습편 PDF](Day6_최종프로젝트/04_하네스엔지니어링_2026/harness-practice-navy.pdf) |
 | 05 | AI Agent Pixel Office — 에이전트 작업을 픽셀 사무실로 보기 (★★★ 04 다음) | [매뉴얼 md](Day6_최종프로젝트/05_AI_Agent_Pixel_Office/pixel-office-manual.md) · [PDF](Day6_최종프로젝트/05_AI_Agent_Pixel_Office/pixel-office-navy.pdf) |
-| 06 | 강의를 만드는 스킬 course-forge — 내 강의 만들기 · 배우기 · 배포 · 공유 (★★★ 02 다음) | [강의 덱 PDF](Day6_최종프로젝트/06_코스포지_강의만드는스킬/Course_Forge_Lecture_II.pdf) · [스킬 저장소 zip](Day6_최종프로젝트/06_코스포지_강의만드는스킬/course-forge.zip) |
+| 06 | 강의를 만드는 스킬 course-forge — 내 강의 만들기 · 배우기 · 배포 · 공유 (★★★ 02 다음) | [강의 덱 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/Course_Forge_Lecture_II.pdf) · [확장판 PDF — 응용: 업무 팀 만들기](Day6_최종프로젝트/06_커리큘럼만드는스킬/Course_Forge_Lecture_확장판.pdf) · [스킬 저장소 zip](Day6_최종프로젝트/06_커리큘럼만드는스킬/course-forge.zip) |
 | 07 | 나만의 GitHub 사이트 만들기 — 저장소·배포·Supabase 회원관리 Part 1~6 (★★★★) | [과정 목록](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Course_Contents_GitHub_Deploy_Supabase.md) · [실라부스](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Syllabus_GitHub_Deploy_Supabase.md) · [실습 템플릿 zip](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/supabase-course-template-II.zip) |
 
 ## 로봇·스마트팩토리 특강
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [강의형 영상 16:29](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
+| 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [확장판 PDF — RFQ 유형 판정 · course-forge 연결](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_확장판.pdf) · [임원 브리프 한 장](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_Brief.png) · [강의형 영상 16:29](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
+| 02 | si-forge 스킬 초안 — 처음 보는 유형의 RFQ도 AI가 처음부터 설계·검증해 팀을 넓히고, 사람은 결정만 (★★★ 01 다음 · 초안) | [스킬 zip](Robot_Special/02_si-forge_스킬초안/si-forge.zip) |
 
 ## 과정 전체 참고
 
