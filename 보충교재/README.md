@@ -80,6 +80,7 @@
 | 05 | AI Agent Pixel Office — 에이전트 작업을 픽셀 사무실로 보기 (★★★ 04 다음) | [매뉴얼 md](Day6_최종프로젝트/05_AI_Agent_Pixel_Office/pixel-office-manual.md) · [PDF](Day6_최종프로젝트/05_AI_Agent_Pixel_Office/pixel-office-navy.pdf) |
 | 06 | 강의를 만드는 스킬 course-forge — 내 강의 만들기 · 배우기 · 배포 · 공유 (★★★ 02 다음) | [강의 덱 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/Course_Forge_Lecture_II.pdf) · [확장판 PDF — 응용: 업무 팀 만들기](Day6_최종프로젝트/06_커리큘럼만드는스킬/Course_Forge_Lecture_확장판.pdf) · [스킬 저장소 zip](Day6_최종프로젝트/06_커리큘럼만드는스킬/course-forge.zip) |
 | 07 | 나만의 GitHub 사이트 만들기 — 저장소·배포·Supabase 회원관리 Part 1~6 (★★★★) | [과정 목록](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Course_Contents_GitHub_Deploy_Supabase.md) · [실라부스](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Syllabus_GitHub_Deploy_Supabase.md) · [실습 템플릿 zip](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/supabase-course-template-II.zip) |
+| 08 | 에고라이트로 유튜브 운영 자동화 — 프롬프트 10개로 빈 폴더에서 업로드까지 (25장 · ★★★) | [가이드 PDF](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Guide_Deck.pdf) · [실습 콘솔 HTML](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Console.html) |
 
 ## 로봇·스마트팩토리 특강
 

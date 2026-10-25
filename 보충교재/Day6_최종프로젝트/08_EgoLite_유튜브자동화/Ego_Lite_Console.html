@@ -1,0 +1,457 @@
+<title>에고라이트 운영 콘솔</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 방송 큐시트처럼 왼쪽 단계 레일 + 오른쪽 작업 카드. 위쪽에 영상 정보 입력 줄 */
+:root{
+  --bg:#EEF1F6; --surface:#FFFFFF; --ink:#16213E; --muted:#5E6780; --line:#D5DBE6;
+  --accent:#2F4FB5; --accent-soft:#E4EAFA;
+  --amber:#A56300; --amber-soft:#FBF1DF; --amber-ink:#3A2A10;
+  --stop:#B8322A; --stop-soft:#FBE6E3;
+  --ok:#2F7D57; --ok-soft:#E1F2E9;
+  --var:#7A3FB0; --var-soft:#F1E8FA;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --f-mono:"IBM Plex Mono","IBM Plex Sans KR","D2Coding",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1424; --surface:#182036; --ink:#E6EAF4; --muted:#9AA4BE; --line:#2B3552;
+  --accent:#8EA6F2; --accent-soft:#233059;
+  --amber:#E6A54A; --amber-soft:#2E2414; --amber-ink:#F3E3C6;
+  --stop:#F08A80; --stop-soft:#3A1E1E;
+  --ok:#7CCBA2; --ok-soft:#173327;
+  --var:#C9A2F0; --var-soft:#2E2242; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1424; --surface:#182036; --ink:#E6EAF4; --muted:#9AA4BE; --line:#2B3552;
+  --accent:#8EA6F2; --accent-soft:#233059;
+  --amber:#E6A54A; --amber-soft:#2E2414; --amber-ink:#F3E3C6;
+  --stop:#F08A80; --stop-soft:#3A1E1E;
+  --ok:#7CCBA2; --ok-soft:#173327;
+  --var:#C9A2F0; --var-soft:#2E2242; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:16px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* 상단 */
+.top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+.top h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
+.top p{margin:2px 0 0;color:var(--muted)}
+.prog{min-width:220px;flex:0 1 300px}
+.prog .lab{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+
+/* 영상 정보 */
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.brief summary{cursor:pointer;font-weight:700;display:flex;gap:8px;align-items:center}
+.brief summary span{font-weight:400;color:var(--muted);font-size:13px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 14px;margin-top:12px}
+.fields label{display:grid;gap:3px;font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+.fields input{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:7px 9px;font-size:14px;min-width:0}
+.fields .wide{grid-column:1/-1}
+
+/* 본문 */
+.main{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:start}
+nav.rail{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;position:sticky;top:max(12px,env(safe-area-inset-top,0px))}
+.grp{font-size:11.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin:10px 8px 4px}
+.grp:first-child{margin-top:2px}
+.step-btn{display:grid;grid-template-columns:30px 1fr auto;gap:6px;align-items:center;width:100%;text-align:left;border:0;background:none;border-radius:7px;padding:7px 8px;cursor:pointer;font-size:14px}
+.step-btn:hover{background:var(--bg)}
+.step-btn[aria-current="true"]{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.step-btn .no{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--line)}
+.dot.half{border-color:var(--ok);background:linear-gradient(90deg,var(--ok) 50%,transparent 50%)}
+.dot.done{border-color:var(--ok);background:var(--ok)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:16px;min-width:0}
+.head .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.head h2{font-size:22px;margin-top:2px}
+.head p{margin:4px 0 0;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:12.5px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.chip.research{border-color:var(--accent);color:var(--accent)}
+.chip.main{border-color:var(--amber);color:var(--amber)}
+.chip.verify{border-color:var(--stop);color:var(--stop)}
+
+.prompt{border:1px solid var(--amber);border-radius:8px;overflow:hidden;min-width:0}
+.prompt .bar2{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--amber);color:#fff;padding:6px 8px 6px 12px;font-size:13px;font-weight:700}
+.copy{border:1px solid rgba(255,255,255,.7);background:transparent;color:#fff;border-radius:6px;padding:3px 10px;cursor:pointer;font-size:13px;font-weight:500}
+.copy:hover{background:rgba(255,255,255,.15)}
+pre.ptext{margin:0;background:var(--amber-soft);color:var(--amber-ink);font-family:var(--f-mono);font-size:14.5px;line-height:1.7;padding:14px 16px;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere}
+mark.v{background:var(--var-soft);color:var(--var);border-radius:3px;padding:0 2px}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.box{border-radius:8px;padding:12px 14px;min-width:0}
+.box h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.out{background:var(--bg);border:1px solid var(--line)}
+.out h3{color:var(--muted)}
+.out ul{margin:0;padding-left:18px}
+.human{background:var(--ok-soft)}
+.human h3{color:var(--ok)}
+.check{display:flex;gap:8px;align-items:flex-start;padding:4px 0;cursor:pointer}
+.check input{margin-top:5px;accent-color:var(--ok);width:16px;height:16px;flex:none}
+.check.on span{text-decoration:line-through;color:var(--muted)}
+.stop{display:flex;gap:10px;align-items:flex-start;background:var(--stop-soft);color:var(--stop);border-radius:8px;padding:10px 14px;font-weight:500}
+.stop b{flex:none;border:1.5px solid var(--stop);border-radius:4px;font-size:12px;padding:0 6px;margin-top:2px}
+.note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.nav2{display:flex;justify-content:space-between;gap:8px}
+.nav2 button{border:1px solid var(--line);background:var(--surface);border-radius:7px;padding:7px 14px;cursor:pointer}
+.nav2 button:disabled{opacity:.4;cursor:default}
+.nav2 button.pri{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;counter-reset:h}
+.howto div{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px}
+.howto div::before{counter-increment:h;content:counter(h);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--surface);font-size:12px;font-weight:700;margin-right:6px}
+code{font-family:var(--f-mono);font-size:.92em;background:var(--bg);padding:1px 5px;border-radius:4px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:8px 16px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+
+.chip.added{border-color:var(--var);color:var(--var)}
+.files2 .box{padding:10px 14px}
+.fin{background:var(--bg);border:1px dashed var(--line)}
+.fmk{background:var(--accent-soft)}
+.fin h3,.fmk h3{color:var(--muted)}
+ul.files{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+ul.files li{font-size:14px;overflow-wrap:anywhere}
+.from{color:var(--muted);font-size:13px}
+.flink{border:0;background:none;padding:0;color:var(--accent);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font-size:13px}
+.none{color:var(--muted);font-size:13.5px;margin:0}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+.tbl table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl th{text-align:left;font-size:12px;letter-spacing:.06em;color:var(--muted);background:var(--bg);padding:8px 12px;border-bottom:1px solid var(--line)}
+.tbl td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.sub3{font-size:15px;margin-top:4px}
+.fl{margin:0;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13.5px;color:var(--muted)}
+.fl b{color:var(--ink);font-weight:500;margin-right:4px}
+.flowline{display:flex;flex-wrap:wrap;gap:6px}
+.node{display:flex;gap:6px;align-items:center;border:1.5px solid var(--line);background:var(--surface);border-radius:7px;padding:6px 10px;cursor:pointer;font-size:14px}
+.node span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.node.research{border-color:var(--accent)}.node.main{border-color:var(--amber)}.node.loc{border-style:dashed}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13px;color:var(--muted);margin:0}
+.sw{display:inline-block;width:14px;height:10px;border:1.5px solid var(--line);border-radius:3px}
+.sw.research{border-color:var(--accent)}.sw.main{border-color:var(--amber)}.sw.loc{border-style:dashed}
+.tbl td .flink{margin-right:8px;white-space:nowrap}
+@media (max-width:820px){
+  .main{grid-template-columns:minmax(0,1fr)}
+  nav.rail{position:static;display:flex;gap:6px;overflow-x:auto;padding:8px}
+  .grp{display:none}
+  .step-btn{grid-template-columns:auto auto;white-space:nowrap;width:auto;flex:none;border:1px solid var(--line)}
+  .step-btn .dot{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>에고라이트 운영 콘솔</h1>
+      <p>프롬프트를 순서대로 Claude Code에 붙여넣으면 빈 폴더에서 업로드까지 끝납니다.</p>
+    </div>
+    <div class="prog" aria-live="polite">
+      <div class="lab"><span>사람이 할 일 진행</span><span id="progTxt">0 / 0</span></div>
+      <div class="bar"><i id="progBar"></i></div>
+    </div>
+  </header>
+
+  <details class="brief">
+    <summary>영상 정보 바꾸기 <span>지금은 휴머노이드 로봇 예시입니다. 바꾸면 보라색 부분이 따라 바뀝니다.</span></summary>
+    <form class="fields" id="vars" autocomplete="off">
+      <label class="wide">영상 주제<input id="v_topic" name="topic"></label>
+      <label>작업 폴더 이름<input id="v_proj" name="proj"></label>
+      <label>영상 길이 (분)<input id="v_min" name="min" inputmode="numeric"></label>
+      <label>영문 검색어<input id="v_en" name="en"></label>
+      <label>한글 검색어<input id="v_ko" name="ko"></label>
+      <label>썸네일 장면<input id="v_scene" name="scene"></label>
+      <label>썸네일 문구<input id="v_thumb" name="thumb"></label>
+      <label>태그 (쉼표로 구분)<input id="v_tags" name="tags"></label>
+      <label>예약 공개 시각<input id="v_when" name="when"></label>
+      <label>시연 클립 이름<input id="v_demo" name="demo"></label>
+      <label>답장 초안을 쓸 제안 분야<input id="v_mail" name="mail"></label>
+      <label>내레이션 음성<input id="v_voice" name="voice"></label>
+    </form>
+  </details>
+
+  <div class="main">
+    <nav class="rail" id="rail" aria-label="단계"></nav>
+    <section class="card" id="card" aria-live="polite"></section>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const DEF={topic:"휴머노이드 로봇, 자동차 공장에 들어가다",proj:"humanoid-video",min:"10",voice:"ko-KR-InJoonNeural",
+  en:"humanoid robot factory",ko:"휴머노이드 로봇 공장",
+  scene:"자동차 조립라인의 휴머노이드 로봇",thumb:"사람 대신 20시간",tags:"휴머노이드, 자동차공장, 로봇자동화",
+  when:"다음 주 화요일 저녁 7시",demo:"robot_demo",mail:"로봇·자동차"};
+
+const REC_HEAD=`에고 브라우저로 1920×1080 창을 열고
+동작 사이에 1~2초씩 쉬면서 그 페이지만
+연속 캡처하고, 클릭 시각과 좌표를 기록해.
+`;
+const S=[
+ {id:"flow",g:"전체",no:"",name:"한눈에 보기",overview:true},
+ {id:"prep",g:"준비",no:"0",name:"준비",title:"작업 폴더와 도구를 준비하고 에고라이트 연결을 확인한다",
+  sub:"설치도 직접 하지 않고 Claude Code에게 시킵니다.",acct:"research",howto:true,
+  p:`작업 폴더 {proj}를 만들고 그 안에
+research, references, build, recordings,
+output 폴더를 만들어 줘.
+ffmpeg와 edge-tts가 없으면 설치해 줘.
+
+끝나면 에고 브라우저로 youtube.com을 열고
+첫 화면의 영상 제목 3개를 읽어서
+연결이 되는지 보여 줘.`,
+  in:[],mk:["{proj}/ 작업 폴더"],
+  out:["폴더 5개","영상 제목 3개"],
+  h:["제목 3개가 나오면 준비가 끝난 것이다"]},
+ {id:"bench",g:"영상 만들기",no:"1",name:"벤치마킹",title:"잘된 영상의 제목과 썸네일 패턴을 정리한다",
+  sub:"처음 가는 사이트가 많아 조사용 프로필에서 합니다. 영상에서는 29개를 훑어 12개를 정리하는 데 40초가 걸렸습니다.",acct:"research",
+  p:`에고 브라우저 조사용 프로필로
+유튜브에서 "{en}",
+"{ko}"을 검색해 줘.
+
+최근 1주 영상 중 조회수 상위 10개의
+제목, 조회수, 길이, 썸네일 구성을
+표로 정리하고, 반복되는 제목 패턴
+3가지를 뽑아 {proj}/research/benchmark.md에
+저장해.
+
+조회수 1, 2위 영상의 썸네일은
+{proj}/references/ref1.jpg, ref2.jpg로 저장해.`,
+  in:[],mk:["research/benchmark.md","references/ref1.jpg, ref2.jpg"],
+  out:["상위 10개 영상 비교표","제목 패턴 3가지","레퍼런스 썸네일 2장"],
+  h:["표를 읽고 제목 방향을 정한다"]},
+ {id:"script",g:"영상 만들기",no:"2",name:"대본",title:"벤치마킹 결과로 장면별 대본을 쓴다",
+  sub:"본편의 재료입니다. 사실 확인은 사람이 꼭 합니다.",acct:"local",
+  p:`{proj}/research/benchmark.md를 읽고
+"{topic}" 영상의 {min}분짜리
+대본을 써서 {proj}/script.md로 저장해.
+
+- 장면 6~8개로 나누고 장면마다 제목,
+  화면 문구 3줄 이내, 내레이션을 적어.
+- 장면 하나는 "시연" 장면으로 둬.
+- 첫 장면은 벤치마킹의 제목 패턴으로 시작해.
+- 사실과 수치에는 출처를 달아.`,
+  in:["research/benchmark.md"],mk:["script.md"],
+  out:["장면 6~8개짜리 대본"],
+  h:["사실과 수치를 출처와 대조한다"]},
+ {id:"main",g:"영상 만들기",no:"3",name:"본편 만들기",title:"대본을 음성과 화면으로 바꿔 본편을 만든다",
+  sub:"음성은 무료 음성 합성 edge-tts로, 장면 화면은 에고라이트로 찍습니다.",acct:"research",
+  p:`{proj}/script.md로 본편을 만들어 줘.
+
+1. 장면별 내레이션을 edge-tts {voice}
+   음성으로 읽혀 build/audio에 저장해.
+2. 장면별 화면 문구로 1920×1080 HTML을
+   만들고 에고 브라우저로 열어
+   build/slides에 PNG로 저장해.
+   (남색 바탕, 큰 흰 글씨, 3줄 이내)
+3. 화면과 음성을 장면 길이에 맞춰 합쳐
+   build/main.mp4로 저장해. 자막은
+   build/main.srt, 장면별 시작 시각은
+   build/scene_times.json에 남겨.`,
+  in:["script.md"],mk:["build/main.mp4","build/main.srt","build/scene_times.json"],
+  out:["본편 영상","자막 파일","장면별 시각표"],
+  h:["본편을 끝까지 한 번 본다","발음이나 글자가 틀린 장면은 고쳐 달라고 한다"]},
+ {id:"record",g:"영상 만들기",no:"4",name:"시연 녹화",title:"로봇 팔 시연 장면을 녹화한다",
+  sub:"AI가 연 페이지만 찍어 개인 창이 섞이지 않습니다. 영상에서는 18초 동안 507장을 찍고 클릭 5번을 기록했습니다.",acct:"research",
+  p:`에고 브라우저로 1920×1080 창을 열고
+Hugging Face LeRobot 데이터셋 시각화
+페이지에서 로봇 팔이 부품을 집는
+에피소드를 재생해 줘.
+
+동작 사이에 1~2초씩 쉬고, 그 페이지만
+연속 캡처하면서 클릭 시각과 좌표를
+기록해 {proj}/recordings/{demo}에 저장해.`,
+  in:[],mk:["recordings/{demo}/"],
+  out:["연속 캡처 화면","클릭 시각과 좌표 기록"],
+  h:["저장된 화면을 몇 장 열어 본다"]},
+ {id:"final",g:"영상 만들기",no:"5",name:"완성본",title:"시연 클립을 본편에 넣어 완성본을 만든다",
+  sub:"시연 장면의 음성은 그대로 두고 화면만 바꾸므로 자막이 어긋나지 않습니다.",acct:"local",
+  p:`{proj}/recordings/{demo}의 화면을
+원래 길이 그대로 30fps 클립으로 만들고,
+클릭 지점마다 1초씩 줌인과 원형 강조를
+넣어 줘.
+
+그 클립을 build/main.mp4의 "시연" 장면
+화면 자리에 넣어 output/final.mp4로 저장해.
+- 위치는 build/scene_times.json에서 찾고,
+  그 장면의 음성은 그대로 깔아.
+- build/main.srt를 하단 자막으로 넣어.`,
+  in:["recordings/{demo}/","build/main.mp4","build/main.srt","build/scene_times.json"],mk:["output/final.mp4"],
+  out:["자막이 들어간 완성본"],
+  h:["완성본을 끝까지 한 번 본다"]},
+ {id:"thumb",g:"발행",no:"6",name:"썸네일",title:"썸네일은 로그인된 ChatGPT 웹에서 만든다",
+  sub:"쓰고 있는 구독 안에서 만들어 추가 비용이 없습니다. 영상에서는 약 30초가 걸렸습니다.",acct:"main",
+  p:`에고 브라우저로 ChatGPT 웹을 열고
+{proj}/references/ref1.jpg, ref2.jpg를
+첨부해서 다음 썸네일을 16:9로
+만들어 달라고 해 줘.
+
+"{scene},
+ 큰 한글 문구 '{thumb}'"
+
+완성되면 {proj}/output/thumbnail.png로 저장해.`,
+  in:["references/ref1.jpg, ref2.jpg"],mk:["output/thumbnail.png"],
+  out:["16:9 썸네일"],
+  h:["한글 글자가 깨지지 않았는지 본다"]},
+ {id:"upload",g:"발행",no:"7",name:"업로드",title:"업로드는 예약 버튼 앞에서 멈추게 한다",
+  sub:"결제나 보안 확인처럼 사람이 해야 하는 순간에는 에고라이트가 멈추고 넘깁니다.",acct:"main",stop:"예약 버튼은 사람이 직접 누릅니다.",
+  p:`{proj}/script.md를 읽고 제목 후보 3개와
+설명문을 먼저 보여 줘. 내가 고르면 진행해.
+
+에고 브라우저로 유튜브 스튜디오에서
+{proj}/output/final.mp4를 올리고
+고른 제목, 설명, 태그({tags}),
+output/thumbnail.png를 넣어.
+공개 시간은 {when}로 예약 설정해.
+
+예약 버튼은 누르지 말고 멈춰.
+영상 링크는 output/video_link.txt에
+저장하고, 지금 채널이 맞는지 알려 줘.`,
+  in:["script.md","output/final.mp4","output/thumbnail.png"],mk:["output/video_link.txt"],
+  out:["제목 후보 3개","예약 버튼 앞에서 멈춘 화면","영상 링크 파일"],
+  h:["제목을 고른다","예약 버튼을 직접 누른다"]},
+ {id:"promo",g:"발행",no:"8",name:"홍보",title:"홍보글도 게시 버튼 앞에서 멈춘다",
+  sub:"Threads도 업로드와 같은 방식입니다.",acct:"main",stop:"게시 버튼은 사람이 직접 누릅니다.",
+  p:`{proj}/script.md의 첫 장면과
+output/video_link.txt의 링크로
+Threads 홍보글을 써 줘.
+
+에고 브라우저로 Threads에 글과 링크를
+넣고 게시 버튼 앞에서 멈춰.`,
+  in:["script.md","output/video_link.txt"],mk:[],
+  out:["글과 링크가 채워진 작성 화면"],
+  h:["문구를 읽고 게시 버튼을 직접 누른다"]},
+ {id:"mail",g:"발행",no:"9",name:"협업 메일",title:"협업 메일은 표로 묶고 답장 초안까지 받는다",
+  sub:"영상에서는 15통을 같은 건끼리 묶어 7건으로 정리했습니다.",acct:"main",stop:"발송은 사람이 직접 합니다.",
+  p:`에고 브라우저로 Gmail에서
+최근 2주 협업 제안 메일을 찾아 줘.
+
+같은 회사 건은 묶어서 회사명, 제안 내용,
+답장 여부를 표로 정리해
+{proj}/research/mail_table.md에 저장해.
+
+{mail} 관련 제안에는
+답장 초안을 써 두고 보내지는 마.`,
+  in:[],mk:["research/mail_table.md"],
+  out:["제안 정리표","Gmail의 답장 초안"],
+  h:["초안을 읽고 발송은 직접 한다"]},
+ {id:"recall",g:"다른 시연 장면",no:"A",name:"리콜 조회",title:"리콜 대상 차량을 조회하는 장면을 찍는다",
+  sub:"4단계 대신 쓸 수 있습니다. 5단계 프롬프트의 폴더 이름만 바꾸면 됩니다.",acct:"research",
+  p:REC_HEAD+`
+car.go.kr에서 리콜 정보 검색으로 가서
+제작사 "현대자동차", 최근 1년으로 검색하고
+첫 번째 리콜 건의 결함 내용까지 스크롤해.
+
+저장 폴더는 {proj}/recordings/recall_demo`,
+  in:[],mk:["recordings/recall_demo/"],out:["연속 캡처 화면과 클릭 기록"],h:["저장된 화면을 열어 본다"]},
+ {id:"ev",g:"다른 시연 장면",no:"B",name:"충전소 찾기",title:"전기차 충전소를 찾는 장면을 찍는다",
+  sub:"4단계 대신 쓸 수 있습니다.",acct:"research",
+  p:REC_HEAD+`
+ev.or.kr의 충전소 찾기 지도에서
+"부산 해운대구"를 지정하고 급속 충전기만
+남긴 뒤, 충전소 하나의 상태 팝업을 띄워.
+
+저장 폴더는 {proj}/recordings/ev_charger_demo`,
+  in:[],mk:["recordings/ev_charger_demo/"],out:["연속 캡처 화면과 클릭 기록"],h:["저장된 화면을 열어 본다"]},
+ {id:"patent",g:"다른 시연 장면",no:"C",name:"자율주행 특허",title:"자율주행 특허를 검색하는 장면을 찍는다",
+  sub:"4단계 대신 쓸 수 있습니다.",acct:"research",
+  p:REC_HEAD+`
+kipris.or.kr에서 "자율주행 라이다 센서 융합"을
+검색하고 출원일 최신순으로 정렬한 뒤
+상위 결과 하나의 대표 도면을 띄워.
+
+저장 폴더는 {proj}/recordings/patent_demo`,
+  in:[],mk:["recordings/patent_demo/"],out:["연속 캡처 화면과 클릭 기록"],h:["저장된 화면을 열어 본다"]},
+];
+const ACCT={research:["research","조사용 프로필에서 실행 (로그인 없음)"],main:["main","로그인된 주력 계정에서 실행"],local:["","Claude Code에서만 실행 (브라우저 안 씀)"]};
+
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let vars=Object.assign({},DEF,store.get("ego.vars3",{}));
+let done=store.get("ego.done3",{});
+let cur=S.findIndex(s=>s.id===location.hash.slice(1)); if(cur<0) cur=store.get("ego.cur3",0);
+if(!(cur>=0&&cur<S.length)) cur=0;
+
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fill=t=>t.replace(/\{(\w+)\}/g,(m,k)=>vars[k]??m);
+const fillHTML=t=>esc(t).replace(/\{(\w+)\}/g,(m,k)=>`<mark class="v">${esc(vars[k]??m)}</mark>`);
+const maker=f=>S.find(s=>(s.mk||[]).includes(f));
+const users=f=>S.filter(s=>(s.in||[]).includes(f));
+
+Object.keys(DEF).forEach(k=>{const el=document.getElementById("v_"+k);el.value=vars[k];
+  el.addEventListener("input",()=>{vars[k]=el.value;store.set("ego.vars3",vars);renderCard();});});
+document.getElementById("vars").addEventListener("submit",e=>e.preventDefault());
+
+const steps=S.filter(s=>!s.overview);
+function stat(s){if(s.overview)return"";const n=s.h.length,c=s.h.filter((_,i)=>done[s.id+i]).length;return c===0?"":c===n?"done":"half";}
+function renderRail(){
+  let html="",g="";
+  S.forEach((s,i)=>{if(s.g!==g){g=s.g;html+=`<div class="grp">${g}</div>`;}
+    html+=`<button class="step-btn" data-i="${i}" aria-current="${i===cur}"><span class="no">${s.no||"·"}</span><span>${s.name}</span><span class="dot ${stat(s)}"></span></button>`;});
+  rail.innerHTML=html;
+  rail.querySelectorAll(".step-btn").forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  const all=steps.reduce((a,s)=>a+s.h.length,0),c=steps.reduce((a,s)=>a+s.h.filter((_,i)=>done[s.id+i]).length,0);
+  progTxt.textContent=`${c} / ${all}`;progBar.style.width=(all?c/all*100:0)+"%";
+}
+const link=s=>`<button type="button" class="flink" data-go="${S.indexOf(s)}">${s.no} ${s.name}</button>`;
+function fileList(arr,mode){
+  if(!arr.length) return `<p class="none">${mode==="in"?"앞 단계 파일이 필요 없습니다.":"파일을 만들지 않습니다."}</p>`;
+  return `<ul class="files">${arr.map(f=>{
+    const src=mode==="in"?maker(f):null, us=mode==="mk"?users(f):[];
+    return `<li><code>${fillHTML(f)}</code>${src?` <span class="from">← ${link(src)}</span>`:""}${us.length?` <span class="from">→ ${us.map(link).join(" ")}</span>`:""}</li>`;}).join("")}</ul>`;
+}
+function renderOverview(){
+  const vid=[["1. 벤치마킹","bench"],["2. 화면 녹화","record"],["3. 썸네일","thumb"],["4. 업로드","upload"],["5. 홍보","promo"],["6. 메일","mail"]];
+  card.innerHTML=`
+  <div class="head"><div class="eyebrow">처음 보는 분은 여기부터</div>
+    <h2>프롬프트 10개를 순서대로 붙여넣으면 영상 한 편이 올라간다</h2>
+    <p>브라우저 일은 에고라이트가, 파일 작업은 Claude Code가 합니다. 사람은 확인하고, 예약·게시·발송 버튼만 누릅니다.</p></div>
+  <div class="flowline">${steps.filter(x=>x.g!=="다른 시연 장면").map(x=>`<button type="button" class="node ${x.acct==="local"?"loc":x.acct}" data-go="${S.indexOf(x)}"><span>${x.no}</span>${x.name}</button>`).join("")}</div>
+  <p class="legend"><span class="sw research"></span>에고라이트 (조사용 프로필) <span class="sw main"></span>에고라이트 (로그인 계정) <span class="sw loc"></span>Claude Code만</p>
+  <div class="tbl"><table><thead><tr><th>유튜버 영상의 6단계</th><th>이 콘솔</th></tr></thead><tbody>
+  ${vid.map(([a,id])=>`<tr><td>${a}</td><td>${link(S.find(x=>x.id===id))}</td></tr>`).join("")}
+  <tr><td>편집 (영상에서는 "자동 편집"이라고만 언급)</td><td>${["script","main","final"].map(id=>link(S.find(x=>x.id===id))).join(" ")}</td></tr>
+  </tbody></table></div>
+  <div class="nav2"><span></span><button type="button" class="pri" id="next">0 준비부터 시작</button></div>`;
+  card.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  next.onclick=()=>go(1);
+}
+function renderCard(){
+  const s=S[cur]; if(s.overview) return renderOverview();
+  const a=ACCT[s.acct];
+  card.innerHTML=`
+  <div class="head">
+    <div class="eyebrow">${s.g} · 단계 ${s.no}</div>
+    <h2>${s.title}</h2>
+    <p>${esc(s.sub)}</p>
+    <div class="chips"><span class="chip ${a[0]}">${a[1]}</span></div>
+  </div>
+  ${(s.in&&s.in.length)||(s.mk&&s.mk.length)?`<p class="fl">${s.in&&s.in.length?`<span><b>쓰는 파일</b> ${s.in.map(f=>{const m=maker(f);return `<code>${fillHTML(f)}</code>${m?` <span class="from">(${link(m)})</span>`:""}`}).join(", ")}</span>`:""}${s.mk&&s.mk.length?`<span><b>만드는 파일</b> ${s.mk.map(f=>`<code>${fillHTML(f)}</code>`).join(", ")}</span>`:""}</p>`:""}
+  ${s.howto?`<div class="howto"><div>에고라이트 앱을 켜 둡니다.</div><div>터미널에서 <code>claude</code>를 입력합니다.</div><div>아래 프롬프트를 그대로 붙여넣습니다.</div><div>명령 실행 허가를 물으면 내용을 보고 허용합니다.</div></div>`:""}
+  <div class="prompt">
+    <div class="bar2"><span>입력 · Claude Code에 붙여넣기</span><button class="copy" id="copyBtn" type="button">복사</button></div>
+    <pre class="ptext" id="ptext">${fillHTML(s.p)}</pre>
+  </div>
+  ${s.stop?`<div class="stop"><b>멈춤</b><span>${s.stop}</span></div>`:""}
+  <div class="two">
+    <div class="box out"><h3>예상 결과</h3><ul>${s.out.map(o=>`<li>${fillHTML(o)}</li>`).join("")}</ul></div>
+    <div class="box human"><h3>사람이 할 일</h3>${s.h.map((t,i)=>`<label class="check ${done[s.id+i]?"on":""}"><input type="checkbox" id="c_${s.id}_${i}" data-k="${s.id+i}" ${done[s.id+i]?"checked":""}><span>${t}</span></label>`).join("")}</div>
+  </div>
+  <div class="nav2"><button type="button" id="prev">이전 단계</button><button type="button" class="pri" id="next" ${cur===S.length-1?"disabled":""}>다음 단계</button></div>`;
+  copyBtn.onclick=()=>copy(fill(s.p));
+  card.querySelectorAll(".flink").forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  card.querySelectorAll(".check input").forEach(c=>c.onchange=()=>{done[c.dataset.k]=c.checked;store.set("ego.done3",done);c.parentElement.classList.toggle("on",c.checked);renderRail();});
+  prev.onclick=()=>go(cur-1); next.onclick=()=>go(cur+1);
+}
+function go(i){if(i<0||i>=S.length)return;cur=i;store.set("ego.cur3",i);try{history.replaceState(null,"","#"+S[i].id)}catch(e){}renderRail();renderCard();card.scrollIntoView({block:"nearest"});}
+function toast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("show"),1600);}
+function copy(t){
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents(ptext);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);toast("선택했습니다. 직접 복사해 주세요");};
+  try{navigator.clipboard.writeText(t).then(()=>toast("복사했습니다"),fallback);}catch(e){fallback();}
+}
+const rail=document.getElementById("rail"),card=document.getElementById("card");
+renderRail();renderCard();
+</script>
