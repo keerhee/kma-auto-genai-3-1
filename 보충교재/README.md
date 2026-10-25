@@ -60,6 +60,7 @@
 | 05 | RAG — Day2 01의 작업 폴더 위에 RAG를 얹는다 (★★~★★★) | [Primer](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Primer_II_zeroone.pdf) · [L1 입문](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L1_Basic_zeroone.pdf) · [실습 II](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Easy_HandsOn_II_extension_zeroone.pdf) · [L2 실무](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L2_Practitioner_zeroone.pdf) · [L3 심화](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L3_Advanced_zeroone.pdf) · [손계산 워크북](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Workbook_zeroone.pdf) · [적용 예 — CS 보증 판정 에이전트](Day4_업무자동화/05_RAG_강의덱/Day4_CS_Warranty_RAG_Agent_Example_II.pdf) |
 | 06 | 바이브 코딩 실습 — 원무과 서류 발급 현황 앱 (★★★) | [덱 PDF](Day4_업무자동화/06_바이브코딩_실습/VibeCoding_ClaudeCode_Lab.pdf) · [교안 PDF](Day4_업무자동화/06_바이브코딩_실습/바이브%20코딩%20실습%20교안%20—%20Claude%20Code로%20만드는%20원무과%20서류%20발급%20현황%20앱.pdf) |
 | 07 | 텔레그램 봇 7개로 AI 팀장 7명 운영 (★★★★ 상시 실행) | [가이드 PDF](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Guide.pdf) · [프롬프트 md](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Prompts.md) · [강의형 영상 13:05 유튜브](https://youtu.be/398lH99CAJM) · [내려받기 720p](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_MotionLecture.mp4) |
+| 08 | Claude Code 팀 운영법 — 리더·워커·검수자 세션을 팀처럼 굴리기 (56장 · ★★★★) | [가이드 PDF](Day4_업무자동화/08_ClaudeCode_팀운영/ClaudeCode_Team_Guide_III.pdf) · [팀 스타터 키트 zip](Day4_업무자동화/08_ClaudeCode_팀운영/my-team-starter-kit_III.zip) |
 
 ## Day5 — 예지보전 AI
 
