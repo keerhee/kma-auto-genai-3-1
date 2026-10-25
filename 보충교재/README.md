@@ -61,6 +61,7 @@
 | 06 | 바이브 코딩 실습 — 원무과 서류 발급 현황 앱 (★★★) | [덱 PDF](Day4_업무자동화/06_바이브코딩_실습/VibeCoding_ClaudeCode_Lab.pdf) · [교안 PDF](Day4_업무자동화/06_바이브코딩_실습/바이브%20코딩%20실습%20교안%20—%20Claude%20Code로%20만드는%20원무과%20서류%20발급%20현황%20앱.pdf) |
 | 07 | 텔레그램 봇 7개로 AI 팀장 7명 운영 (★★★★ 상시 실행) | [가이드 PDF](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Guide.pdf) · [프롬프트 md](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Prompts.md) · [강의형 영상 13:05 유튜브](https://youtu.be/398lH99CAJM) · [내려받기 720p](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_MotionLecture.mp4) |
 | 08 | Claude Code 팀 운영법 — 리더·워커·검수자 세션을 팀처럼 굴리기 (56장 · ★★★★) | [가이드 PDF](Day4_업무자동화/08_ClaudeCode_팀운영/ClaudeCode_Team_Guide_III.pdf) · [팀 스타터 키트 zip](Day4_업무자동화/08_ClaudeCode_팀운영/my-team-starter-kit_III.zip) |
+| 09 | 프롬프트로 만드는 판정 에이전트 — 출산·육아 인사제도 판정 웹앱 (43장 · ★★) | [안내](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/README.md) · [가이드 PDF](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/HR_Parental_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/hr_lab_data.zip) |
 
 ## Day5 — 예지보전 AI
 
@@ -68,6 +69,7 @@
 |---|---|---|
 | 01 | 스마트팩토리 입문 과정 — 커리큘럼·강의노트·덱 (★★) | [안내](Day5_예지보전/01_스마트팩토리_입문과정/README.md) · [본편 PDF](Day5_예지보전/01_스마트팩토리_입문과정/03_Decks/SmartFactory_Intro_ZeroOne.pdf) · [워크북](Day5_예지보전/01_스마트팩토리_입문과정/03_Decks/SmartFactory_Intro_Workbook.pdf) · [워크북 II](Day5_예지보전/01_스마트팩토리_입문과정/03_Decks/SmartFactory_Intro_Workbook_ClaudeCode.pdf) |
 | 02 | 스마트팩토리 멀티에이전트 예지보전 (★★★) | [덱 PDF](Day5_예지보전/02_스마트팩토리_멀티에이전트/01_decks/SmartFactory_MultiAgent_PdM_II.pdf) · [실습 키트 zip](Day5_예지보전/02_스마트팩토리_멀티에이전트/02_lab_kit/smart-factory-multiagent-demo.zip) |
+| 03 | 설비 정비 조치 판정 에이전트 — 센서 데이터와 정비 기준으로 A/B/C 판정 (46장 · ★★ · Day4 09와 같은 골격) | [안내](Day5_예지보전/03_설비정비판정_에이전트/README.md) · [가이드 PDF](Day5_예지보전/03_설비정비판정_에이전트/Day5_PdM_Action_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day5_예지보전/03_설비정비판정_에이전트/pdm_lab_data.zip) · [완성 MVP HTML](Day5_예지보전/03_설비정비판정_에이전트/pdm_action_agent.html) |
 
 ## Day6 — 최종 프로젝트
 
@@ -81,6 +83,7 @@
 | 06 | 강의를 만드는 스킬 course-forge — 내 강의 만들기 · 배우기 · 배포 · 공유 (★★★ 02 다음) | [강의 덱 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/Course_Forge_Lecture_II.pdf) · [확장판 PDF — 응용: 업무 팀 만들기](Day6_최종프로젝트/06_커리큘럼만드는스킬/Course_Forge_Lecture_확장판.pdf) · [스킬 저장소 zip](Day6_최종프로젝트/06_커리큘럼만드는스킬/course-forge.zip) |
 | 07 | 나만의 GitHub 사이트 만들기 — 저장소·배포·Supabase 회원관리 Part 1~6 (★★★★) | [과정 목록](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Course_Contents_GitHub_Deploy_Supabase.md) · [실라부스](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Syllabus_GitHub_Deploy_Supabase.md) · [실습 템플릿 zip](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/supabase-course-template-II.zip) |
 | 08 | 에고라이트로 유튜브 운영 자동화 — 프롬프트 10개로 빈 폴더에서 업로드까지 (25장 · ★★★) | [가이드 PDF](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Guide_Deck.pdf) · [실습 콘솔 HTML](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Console.html) |
+| 09 | Claude Code 멀티 AI 팀 — Claude가 만들고 GPT가 검토 (Codex CLI · Gemini CLI · MCP · /team · 45장 · ★★★) | [덱 PDF](Day6_최종프로젝트/09_ClaudeCode_멀티AI팀_실습/Claude_Code_Multi_AI_Team_Lab_III.pdf) |
 
 ## 로봇·스마트팩토리 특강
 
