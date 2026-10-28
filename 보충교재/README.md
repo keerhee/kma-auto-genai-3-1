@@ -88,6 +88,7 @@
 | 07 | 나만의 GitHub 사이트 만들기 — 저장소·배포·Supabase 회원관리 Part 1~6 (★★★★) | [과정 목록](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Course_Contents_GitHub_Deploy_Supabase.md) · [실라부스](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Syllabus_GitHub_Deploy_Supabase.md) · [실습 템플릿 zip](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/supabase-course-template-II.zip) |
 | 08 | 에고라이트로 유튜브 운영 자동화 — 프롬프트 10개로 빈 폴더에서 업로드까지 (25장 · ★★★) | [가이드 PDF](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Guide_Deck.pdf) · [실습 콘솔 HTML](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Console.html) |
 | 09 | Claude Code 멀티 AI 팀 — Claude가 만들고 GPT가 검토 (Codex CLI · Gemini CLI · MCP · /team · 45장 · ★★★) | [덱 PDF](Day6_최종프로젝트/09_ClaudeCode_멀티AI팀_실습/Claude_Code_Multi_AI_Team_Lab_III.pdf) |
+| 10 | AICC 콘솔 만들기 — 프롬프트로 내 PC에서 AI 전화 상담원 돌리기 (25장 · ★★★) | [구현 가이드 PDF](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/AICC_Console_Build_Guide.pdf) · [완성 실행판 zip](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/aicc_console_local_II.zip) |
 
 ## 로봇·스마트팩토리 특강
 
