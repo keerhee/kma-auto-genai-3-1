@@ -102,3 +102,4 @@
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
 | 01 | 자동차 AI 자율학습 16주 캠프 (주차별 스킬 16개) | [안내](Common/01_automotive-ai-camp/README.md) · [zip](Common/01_automotive-ai-camp/automotive-ai-camp.zip) |
+| 02 | Windows에서 VS Code 터미널로 Claude Code 설치하기 — 명령 한 줄, WSL · Node.js 없이 (1장) | [PDF](Windows_VSCode_ClaudeCode_Install.pdf) |
