@@ -31,6 +31,7 @@
 | 02 | 금융교육 인포그래픽 스킬 — 설치용 | [zip](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Skill_Install.zip) |
 | 02 | 금융교육 인포그래픽 전체 키트 (워크숍 덱·강사 진행안·실습지·옵시디언 볼트) | [zip](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit.zip) · [시작 안내](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit/START_HERE.md) · [마스터 가이드 PDF](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit/Finance_Education_Infographic_Master_Guide.pdf) |
 | 03 | 스킬모음 — PPT 12 · 인포그래픽 3 · 모션 7 · 문서 2 (★★) | [목록과 설치법](Day2_데이터시각화/03_스킬모음_24종/README.md) |
+| 04 | 인포그래픽 생성 프롬프트 — 덱 한 편을 A4 세로 인포그래픽 여러 쪽으로 그리게 하는 프롬프트 작성 예시 (★) | [안내](Day2_데이터시각화/04_인포그래픽_생성프롬프트/README.md) · [프롬프트 예시 md](Day2_데이터시각화/04_인포그래픽_생성프롬프트/infographic_prompt_example.md) |
 
 ## Day3 — 경쟁사 재무와 전략 분석
 
@@ -89,6 +90,7 @@
 | 08 | 에고라이트로 유튜브 운영 자동화 — 프롬프트 10개로 빈 폴더에서 업로드까지 (25장 · ★★★) | [가이드 PDF](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Guide_Deck.pdf) · [실습 콘솔 HTML](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Console.html) |
 | 09 | Claude Code 멀티 AI 팀 — Claude가 만들고 GPT가 검토 (Codex CLI · Gemini CLI · MCP · /team · 45장 · ★★★) | [덱 PDF](Day6_최종프로젝트/09_ClaudeCode_멀티AI팀_실습/Claude_Code_Multi_AI_Team_Lab_III.pdf) |
 | 10 | AICC 콘솔 만들기 — 프롬프트로 내 PC에서 AI 전화 상담원 돌리기 (25장 · ★★★) | [구현 가이드 PDF](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/AICC_Console_Build_Guide.pdf) · [완성 실행판 zip](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/aicc_console_local_II.zip) |
+| 11 | EV 전체 조립 모션그래픽 완성 세트 — Claude Code × Blender, GLB 3D 모델까지 (★★) | [안내](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/README.md) · [가이드 II PDF](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/1_가이드/EV_Blender_Motion_Graphics_Guide_II.pdf) · [1판 PDF](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/1_가이드/EV_Blender_Motion_Graphics_Guide.pdf) · [전체 조립 영상 54초](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/2_영상/EV_Full_Assembly.mp4) · [타이틀 인트로 예제 10초](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/2_영상/Claude_Blender_Title_10s.mp4) · [스케이트보드 GLB](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/3_3D모델/EV_Skateboard_Education.glb) · [크로스오버 GLB](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/3_3D모델/EV_Crossover_Education.glb) · [Blender 스크립트 zip](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/4_소스/EV_Blender_Scripts.zip) · [타이틀 인트로 소스 zip](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/4_소스/타이틀_인트로.zip) |
 
 ## 로봇·스마트팩토리 특강
 
