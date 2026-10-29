@@ -27,7 +27,9 @@ def label(fn, day):
     return ('', n)
 def url(p): return urllib.parse.quote(p)
 YT = {'Day1_1_Hook_Case_Tesla2008_MotionLecture.mp4': 'https://youtu.be/RTVwJEOyZ4w',   # @DR_Rhee 유튜브(2026-10-30) — 버튼은 저장소 mp4 대신 유튜브로
-      'Day3_1_Hook_Case_GM_Bankruptcy_MotionLecture.mp4': 'https://youtu.be/Q1wl3qU8Xhk'}
+      'Day3_1_Hook_Case_GM_Bankruptcy_MotionLecture.mp4': 'https://youtu.be/Q1wl3qU8Xhk',
+      'Day1_1_Hook_Case_Tesla2008_MotionStudio.mp4': 'https://youtu.be/eZednw8FVb8',
+      'Day3_1_Hook_Case_GM_Bankruptcy_MotionStudio.mp4': 'https://youtu.be/vQfN7x5buus'}
 cards = []
 for d, tag, title, hours, hook in DAYS:
     rows = []
