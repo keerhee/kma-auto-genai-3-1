@@ -91,6 +91,7 @@
 | 09 | Claude Code 멀티 AI 팀 — Claude가 만들고 GPT가 검토 (Codex CLI · Gemini CLI · MCP · /team · 45장 · ★★★) | [덱 PDF](Day6_최종프로젝트/09_ClaudeCode_멀티AI팀_실습/Claude_Code_Multi_AI_Team_Lab_III.pdf) |
 | 10 | AICC 콘솔 만들기 — 프롬프트로 내 PC에서 AI 전화 상담원 돌리기 (25장 · ★★★) | [구현 가이드 PDF](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/AICC_Console_Build_Guide.pdf) · [완성 실행판 zip](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/aicc_console_local_II.zip) |
 | 11 | EV 전체 조립 모션그래픽 완성 세트 — Claude Code × Blender, GLB 3D 모델까지 (★★) | [안내](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/README.md) · [가이드 II PDF](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/1_가이드/EV_Blender_Motion_Graphics_Guide_II.pdf) · [1판 PDF](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/1_가이드/EV_Blender_Motion_Graphics_Guide.pdf) · [전체 조립 영상 54초](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/2_영상/EV_Full_Assembly.mp4) · [타이틀 인트로 예제 10초](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/2_영상/Claude_Blender_Title_10s.mp4) · [스케이트보드 GLB](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/3_3D모델/EV_Skateboard_Education.glb) · [크로스오버 GLB](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/3_3D모델/EV_Crossover_Education.glb) · [Blender 스크립트 zip](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/4_소스/EV_Blender_Scripts.zip) · [타이틀 인트로 소스 zip](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/4_소스/타이틀_인트로.zip) |
+| 12 | 비영리 법인 그룹웨어 — AX 케이스와 멀티에이전트 구현 실습 (개요 22장 · 실습편 30장 · ★★★) | [안내](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/README.md) · [개요 케이스 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case.pdf) · [구현 실습편 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case_III.pdf) · [소개 영상 60초](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Groupware_Reel_60s_III_share.mp4) |
 
 ## 로봇·스마트팩토리 특강
 
