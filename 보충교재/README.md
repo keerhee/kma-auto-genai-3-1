@@ -37,7 +37,7 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 케이스 «거인의 파산» — GM 2009 파산을 숫자로 다시 읽기 (★ 보기만) | [강의형 영상 5:51](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_MotionLecture.mp4) · [요약 영상 1:23](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_Decoded.mp4) · [슬라이드 PDF](Day3_경쟁사재무/01_GM_Downfall_Decoded/Decoding_GM_s_Downfall.pdf) |
+| 01 | 케이스 «거인의 파산» — GM 2009 파산을 숫자로 다시 읽기 (★ 보기만) | [강의형 영상 5:51](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_MotionLecture.mp4) · [유튜브](https://youtu.be/Q1wl3qU8Xhk) · [요약 영상 1:23](Day3_경쟁사재무/01_GM_Downfall_Decoded/GM_Downfall_Decoded.mp4) · [슬라이드 PDF](Day3_경쟁사재무/01_GM_Downfall_Decoded/Decoding_GM_s_Downfall.pdf) |
 | 02 | 해외 자동차 5개사 실적 비교 실습 (27장 · ★) | [PDF](Day3_경쟁사재무/02_해외자동차5사_실적비교/Auto5_Earnings_Comparison_zeroone.pdf) |
 | 03 | Financial Insight KG 실전 활용 사례집 (★ 읽기) | [md](Day3_경쟁사재무/03_Financial_Insight_KG_활용사례/kg-use-cases.md) · [PDF](Day3_경쟁사재무/03_Financial_Insight_KG_활용사례/kg-use-cases-navy.pdf) |
 | 04 | 자동차 산업과 금융 3일 집중과정 — 캡티브 금융·할부·리스·ABS·공급망 금융·밸류에이션 (★★ 개념) | [메인 덱 PDF](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_Finance_Main_III.pdf) · [워크북 PDF](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_Finance_Workbook_II.pdf) · [노트 md](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_and_Finance_3Day_II.md) |
@@ -60,7 +60,7 @@
 | 04 | 세컨드 브레인 (옵시디언 + Claude Code · ★★) | [L1 기초](Day4_업무자동화/04_세컨드브레인/SecondBrain_L1_Obsidian_PARA_Basics.pdf) · [L2 연결](Day4_업무자동화/04_세컨드브레인/SecondBrain_L2_ClaudeCode_Librarian.pdf) · [L3 운영](Day4_업무자동화/04_세컨드브레인/SecondBrain_L3_Operations_Lifecycle.pdf) · [빈 볼트 키트 zip](Day4_업무자동화/04_세컨드브레인/second-brain-kit-v2.zip) · [3-1 예시 볼트 zip](Day4_업무자동화/04_세컨드브레인/vault-kma-3-1.zip) · [옵시디언 세컨드 브레인 덱 II](Day4_업무자동화/04_세컨드브레인/Obsidian_Second_Brain/Obsidian_Second_Brain_Deck_II.pdf) · [1판](Day4_업무자동화/04_세컨드브레인/Obsidian_Second_Brain/Obsidian_Second_Brain_Deck.pdf) · [다음 단계 덱](Day4_업무자동화/04_세컨드브레인/Obsidian_Second_Brain/Obsidian_Second_Brain_Next_Steps_Deck.pdf) · [실습 가이드 md](Day4_업무자동화/04_세컨드브레인/Obsidian_Second_Brain/Obsidian_Second_Brain_Practice_Guide.md) |
 | 05 | RAG — Day2 01의 작업 폴더 위에 RAG를 얹는다 (★★~★★★) | [Primer](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Primer_II_zeroone.pdf) · [L1 입문](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L1_Basic_zeroone.pdf) · [실습 II](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Easy_HandsOn_II_extension_zeroone.pdf) · [L2 실무](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L2_Practitioner_zeroone.pdf) · [L3 심화](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_L3_Advanced_zeroone.pdf) · [손계산 워크북](Day4_업무자동화/05_RAG_강의덱/KMA_RAG_Workbook_zeroone.pdf) · [적용 예 — CS 보증 판정 에이전트](Day4_업무자동화/05_RAG_강의덱/Day4_CS_Warranty_RAG_Agent_Example_II.pdf) |
 | 06 | 바이브 코딩 실습 — 원무과 서류 발급 현황 앱 (★★★) | [덱 PDF](Day4_업무자동화/06_바이브코딩_실습/VibeCoding_ClaudeCode_Lab.pdf) · [교안 PDF](Day4_업무자동화/06_바이브코딩_실습/바이브%20코딩%20실습%20교안%20—%20Claude%20Code로%20만드는%20원무과%20서류%20발급%20현황%20앱.pdf) |
-| 07 | 텔레그램 봇 7개로 AI 팀장 7명 운영 (★★★★ 상시 실행) | [가이드 PDF](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Guide.pdf) · [프롬프트 md](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Prompts.md) · [강의형 영상 13:05 유튜브](https://youtu.be/398lH99CAJM) · [내려받기 720p](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_MotionLecture.mp4) |
+| 07 | 텔레그램 봇 7개로 AI 팀장 7명 운영 (★★★★ 상시 실행) | [가이드 PDF](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Guide.pdf) · [프롬프트 md](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_Prompts.md) · [강의형 영상 13:05 유튜브](https://youtu.be/KGmJqTlRMo8) · [내려받기 720p](Day4_업무자동화/07_텔레그램_AI팀장/Telegram_AI_Team_MotionLecture.mp4) |
 | 08 | Claude Code 팀 운영법 — 리더·워커·검수자 세션을 팀처럼 굴리기 (56장 · ★★★★) | [가이드 PDF](Day4_업무자동화/08_ClaudeCode_팀운영/ClaudeCode_Team_Guide_III.pdf) · [팀 스타터 키트 zip](Day4_업무자동화/08_ClaudeCode_팀운영/my-team-starter-kit_III.zip) |
 | 09 | 프롬프트로 만드는 판정 에이전트 — 출산·육아 인사제도 판정 웹앱 (43장 · ★★) | [안내](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/README.md) · [가이드 PDF](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/HR_Parental_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/hr_lab_data.zip) |
 | 10 | 카톡 업무 AI 비서 — 업무 카톡방을 읽고 의도를 판정해 고객 데이터와 대조 (★★★) | [Mac판 덱 PDF (49장)](Day4_업무자동화/10_카톡_업무AI비서/kakao_ai_secretary_deck_II.pdf) · [Windows판 덱 PDF (52장)](Day4_업무자동화/10_카톡_업무AI비서/kakao_ai_secretary_deck_windows_II.pdf) |
@@ -97,7 +97,7 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [확장판 PDF — RFQ 유형 판정 · course-forge 연결](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_확장판.pdf) · [임원 브리프 한 장](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_Brief.png) · [강의형 영상 16:29 유튜브](https://youtu.be/5pk3ftNVTZY) · [내려받기 720p](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
+| 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [확장판 PDF — RFQ 유형 판정 · course-forge 연결](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_확장판.pdf) · [임원 브리프 한 장](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_Brief.png) · [강의형 영상 16:29 유튜브](https://youtu.be/QgZK2pUEqjs) · [내려받기 720p](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
 | 02 | si-forge 스킬 초안 — 처음 보는 유형의 RFQ도 AI가 처음부터 설계·검증해 팀을 넓히고, 사람은 결정만 (★★★ 01 다음 · 초안) | [스킬 zip](Robot_Special/02_si-forge_스킬초안/si-forge.zip) |
 
 ## 과정 전체 참고
