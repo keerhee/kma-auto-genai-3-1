@@ -26,6 +26,8 @@ def label(fn, day):
     if '_5_보조' in n: return ('보조', '보조 자료 — ' + n.split('_', 3)[3].rsplit('.', 1)[0].replace('시각화의두고전_나이팅게일과앤스컴', '시각화의 두 고전: 나이팅게일과 앤스컴'))
     return ('', n)
 def url(p): return urllib.parse.quote(p)
+YT = {'Day1_1_Hook_Case_Tesla2008_MotionLecture.mp4': 'https://youtu.be/RTVwJEOyZ4w',   # @DR_Rhee 유튜브(2026-10-30) — 버튼은 저장소 mp4 대신 유튜브로
+      'Day3_1_Hook_Case_GM_Bankruptcy_MotionLecture.mp4': 'https://youtu.be/Q1wl3qU8Xhk'}
 cards = []
 for d, tag, title, hours, hook in DAYS:
     rows = []
@@ -37,7 +39,8 @@ for d, tag, title, hours, hook in DAYS:
         links = f'<a class="btn" href="{url(pdf)}" target="_blank" rel="noopener">PDF 보기</a>'
         for mp4 in sorted(glob.glob(pdf.rsplit('_deck', 1)[0] + '_*.mp4')) if '_deck' in pdf else []:   # 케이스 모션그래픽 영상
             vl = {'MotionStudio': '영상 · 모션', 'MotionLecture': '영상 · 강의형'}.get(mp4.rsplit('_', 1)[1][:-4], '영상')
-            links += f'<a class="btn ghost" href="{url(mp4)}" target="_blank" rel="noopener">{vl}</a>'
+            href = YT.get(os.path.basename(mp4)) or url(mp4)
+            links += f'<a class="btn ghost" href="{href}" target="_blank" rel="noopener">{vl}</a>'
         rows.append(f'<li class="row{main}"><span class="k">{html.escape(k)}</span><span class="d">{html.escape(desc)}</span><span class="l">{links}</span></li>')
     cards.append(f'<section class="card" id="{d}"><header><span class="tag">{tag}</span><h2>{html.escape(title)}</h2></header><ol>{"".join(rows)}</ol></section>')
 
