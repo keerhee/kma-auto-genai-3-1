@@ -6,7 +6,7 @@
 |---|---|
 | `CallCenter_Monitoring_Kit.zip` | 기본 키트 — 가상 데이터 5종 · 요구사항 정의서 · 관제 매뉴얼 · STEP 0~11 프롬프트 |
 | `CallCenter_Realtime_Monitoring_ClaudeCode_Guide` (.pptx · 공개본 .pdf) | 기본편 덱 43장 (STEP 0~11) |
-| `CallCenter_Monitoring_Reference.zip` | 레퍼런스 구현 STEP 0~11 — 강사용, 수강생에게 배포하지 않는다 |
+| `CallCenter_Monitoring_Reference.zip` | 레퍼런스 구현 STEP 0~11 — 막혔을 때 내 결과와 맞춰 보는 완성본. 먼저 스스로 만든 뒤 연다 |
 
 ## 진행 순서
 

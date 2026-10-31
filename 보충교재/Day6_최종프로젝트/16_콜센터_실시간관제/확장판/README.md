@@ -8,7 +8,7 @@
 | `CallCenter_Realtime_Monitoring_ClaudeCode_Guide` (.pptx · 공개본 .pdf) | 기본편 덱 43장 (STEP 0~11, 일반판과 같은 파일) |
 | `CallCenter_Monitoring_Kit_Extension.zip` | 확장 키트 — STEP 12~18 |
 | `CallCenter_Realtime_Monitoring_ClaudeCode_Guide_extension` (.pptx · 공개본 .pdf) | 확장편 덱 27장 (STEP 12~18) |
-| `CallCenter_Monitoring_Reference_extension.zip` | 레퍼런스 구현 STEP 0~18 — 강사용, 수강생에게 배포하지 않는다 |
+| `CallCenter_Monitoring_Reference_extension.zip` | 레퍼런스 구현 STEP 0~18 — 막혔을 때 내 결과와 맞춰 보는 완성본. 먼저 스스로 만든 뒤 연다 |
 
 ## 진행 순서
 
