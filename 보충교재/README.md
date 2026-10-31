@@ -76,6 +76,7 @@
 | 03 | 설비 정비 조치 판정 에이전트 — 센서 데이터와 정비 기준으로 A/B/C 판정 (46장 · ★★ · Day4 09와 같은 골격) | [안내](Day5_예지보전/03_설비정비판정_에이전트/README.md) · [가이드 PDF](Day5_예지보전/03_설비정비판정_에이전트/Day5_PdM_Action_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day5_예지보전/03_설비정비판정_에이전트/pdm_lab_data.zip) · [완성 MVP HTML](Day5_예지보전/03_설비정비판정_에이전트/pdm_action_agent.html) |
 | 04 | EV 스케이트보드 조립 공정 — Claude Code × Blender 3D 모션그래픽 실습 (II 44장 · ★★) | [실습 가이드 II PDF](Day5_예지보전/04_EV_조립라인_흐름/EV_Blender_Motion_Graphics_Guide_II.pdf) · [1판 PDF (29장)](Day5_예지보전/04_EV_조립라인_흐름/EV_Blender_Motion_Graphics_Guide.pdf) · [조립 공정 영상 50초](Day5_예지보전/04_EV_조립라인_흐름/EV_Skateboard_Assembly.mp4) · [조립 흐름 영상 30초](Day5_예지보전/04_EV_조립라인_흐름/EV_Skateboard_Assembly_Flow.mp4) · [공장 흐름 HTML](Day5_예지보전/04_EV_조립라인_흐름/EV_Factory_Flow.html) · [Blender 스크립트 zip](Day5_예지보전/04_EV_조립라인_흐름/EV_Blender_Scripts.zip) |
 | 05 | 자동차 예지보전 프롬프트 실습 — 가공 라인 스핀들 6대의 진동·온도로 연습 (25장 · ★) | [실습 덱 PDF](Day5_예지보전/05_예지보전_프롬프트실습/Automotive_PdM_Prompt_Practice.pdf) |
+| 06 | 설비 예지보전 따라 하기 II — 프롬프트 8개로 센서 점검부터 대시보드 공개까지 (38장 · ★) | [덱 PDF](Day5_예지보전/06_예지보전_따라하기_II/PdM_Lab_Manual_II.pdf) · [프롬프트 md](Day5_예지보전/06_예지보전_따라하기_II/PdM_Prompts_II.md) |
 
 ## Day6 — 최종 프로젝트
 
@@ -100,6 +101,12 @@
 |---|---|---|
 | 01 | 로봇 SI 멀티에이전트 제안서 (2판 · ★★) | [PDF](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_II.pdf) · [확장판 PDF — RFQ 유형 판정 · course-forge 연결](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MultiAgent_확장판.pdf) · [임원 브리프 한 장](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_Brief.png) · [강의형 영상 16:29 유튜브](https://youtu.be/QgZK2pUEqjs) · [내려받기 720p](Robot_Special/01_로봇SI_제안덱/Robot_SI_Proposal_MotionLecture.mp4) |
 | 02 | si-forge 스킬 초안 — 처음 보는 유형의 RFQ도 AI가 처음부터 설계·검증해 팀을 넓히고, 사람은 결정만 (★★★ 01 다음 · 초안) | [스킬 zip](Robot_Special/02_si-forge_스킬초안/si-forge.zip) |
+
+## 공급망 특강
+
+| 번호 | 자료 | 내려받기 |
+|---|---|---|
+| 01 | BYD 수직계열화와 EV 분해(티어다운) — 용어집 덱 · 일본 엔지니어 분해 정리 · 쇼릴 60초 (★) | [용어집 PDF](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_EV_Teardown/BYD_EV_Teardown_Glossary.pdf) · [분해 정리 md](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_EV_Teardown/BYD_Teardown_Japan_Engineers.md) · [쇼릴 60초](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/02_showreel/BYD_Showreel_60s.mp4) · [안내](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/README.md) |
 
 ## 과정 전체 참고
 
