@@ -13,28 +13,28 @@
 |---|---|---|
 | 01 | Claude 설치가이드 간단판 (★ 맨 먼저) | [PDF](Day0_강의소개/01_Claude_설치가이드/Claude_설치가이드_간단판.pdf) |
 | 02 | 비개발자를 위한 AI 에이전트 스킬 10선 (31장 · ★) | [PDF](Day0_강의소개/02_AI에이전트_스킬10선/AI_Agent_Skills_Top10_Lecture.pdf) |
-| 03 | GitHub 저장소 만들기 — 초보자 실습 가이드 (33장 · ★★) | [PDF](Day0_강의소개/03_GitHub_저장소_초보자가이드/GitHub_Repo_Beginner_Guide_zeroone_II.pdf) |
-| 04 | Claude Code로 GitHub 저장소 만들기와 자료 업로드 — 초보자 자동화 가이드 (★★) | [md](Day0_강의소개/04_ClaudeCode_GitHub_자동화_가이드/Claude_Code_GitHub_초보자_자동화_가이드.md) |
-| 05 | Claude Code × GitHub 실습 패키지 — 초보자 실습가이드 · 브라우저 인증 가이드 · 프롬프트 A~E · 샘플 저장소 (★★~★★★) | [시작 안내](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/README_먼저읽기.md) · [실습가이드](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/01_초보자_실습가이드.md) · [브라우저 인증](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/02_브라우저_인증_초보자_가이드.md) · [zip](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/Claude_Code_GitHub_실습_패키지.zip) |
-| 06 | 메타 프롬프트로 GitHub 학습 저장소 만들고 매일 챕터 올리기 (★★ Claude Code 첫 실습) | [덱 PDF](Day0_강의소개/06_GitHub_학습저장소_올리기/KMA_Day3_Chapter_Upload_zeroone_III.pdf) · [노트 md](Day0_강의소개/06_GitHub_학습저장소_올리기/KMA_Day3_Chapter_Upload_ClaudeCode_III.md) |
+| 03 | GitHub 저장소 만들기 — 초보자 실습 가이드 (33장 · ★★) | [PDF](Day0_강의소개/03_GitHub첫걸음_저장소만들기/GitHub_Repo_Beginner_Guide_zeroone_II.pdf) |
+| 04 | Claude Code로 GitHub 저장소 만들기와 자료 업로드 — 초보자 자동화 가이드 (★★) | [md](Day0_강의소개/04_GitHub_저장소생성업로드_자동화/Claude_Code_GitHub_초보자_자동화_가이드.md) |
+| 05 | Claude Code × GitHub 실습 패키지 — 초보자 실습가이드 · 브라우저 인증 가이드 · 프롬프트 A~E · 샘플 저장소 (★★~★★★) | [시작 안내](Day0_강의소개/05_GitHub_실습패키지_프롬프트AtoE/README_먼저읽기.md) · [실습가이드](Day0_강의소개/05_GitHub_실습패키지_프롬프트AtoE/01_초보자_실습가이드.md) · [브라우저 인증](Day0_강의소개/05_GitHub_실습패키지_프롬프트AtoE/02_브라우저_인증_초보자_가이드.md) · [zip](Day0_강의소개/05_GitHub_실습패키지_프롬프트AtoE/Claude_Code_GitHub_실습_패키지.zip) |
+| 06 | 메타 프롬프트로 GitHub 학습 저장소 만들고 매일 챕터 올리기 (★★ Claude Code 첫 실습) | [덱 PDF](Day0_강의소개/06_GitHub_학습저장소_매일챕터올리기/KMA_Day3_Chapter_Upload_zeroone_III.pdf) · [노트 md](Day0_강의소개/06_GitHub_학습저장소_매일챕터올리기/KMA_Day3_Chapter_Upload_ClaudeCode_III.md) |
 
 ## Day1 — 자동차 시장 및 트렌드
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 테슬라 배터리 기술혁신 분석 — 나레이션 영상 (4:36 · ★) | [MP4](Day1_시장트렌드/01_테슬라%20기술혁신%20분석/02_technology.mp4) |
+| 01 | 테슬라 배터리 기술혁신 분석 — 나레이션 영상 (4:36 · ★) | [MP4](Day1_시장트렌드/01_테슬라2008_배터리혁신_영상/02_technology.mp4) |
 
 ## Day2 — 데이터 크롤링 및 시각화
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | Claude Code 기초지식 · 시작가이드 (★) | [기초지식 PDF](Day2_데이터시각화/01_ClaudeCode_시작가이드_Day2_update/Day2_가이드덱/Claude_Code_기초지식.pdf) · [시작가이드 PDF](Day2_데이터시각화/01_ClaudeCode_시작가이드_Day2_update/Day2_가이드덱/Claude_Code_시작가이드.pdf) |
-| 01 | Day2 실습 작업 폴더 (CLAUDE.md · 스킬 5개 · 입력 데이터 · 운영안내) | [zip](Day2_데이터시각화/01_ClaudeCode_시작가이드_Day2_update/Day2_클로드코드.zip) |
+| 01 | Claude Code 기초지식 · 시작가이드 (★) | [기초지식 PDF](Day2_데이터시각화/01_ClaudeCode_시작가이드_Day2작업폴더/Day2_가이드덱/Claude_Code_기초지식.pdf) · [시작가이드 PDF](Day2_데이터시각화/01_ClaudeCode_시작가이드_Day2작업폴더/Day2_가이드덱/Claude_Code_시작가이드.pdf) |
+| 01 | Day2 실습 작업 폴더 (CLAUDE.md · 스킬 5개 · 입력 데이터 · 운영안내) | [zip](Day2_데이터시각화/01_ClaudeCode_시작가이드_Day2작업폴더/Day2_클로드코드.zip) |
 | 02 | 자동차 AX 인포그래픽 스킬 — `~/.claude/skills/`에 풀어 설치 (★★) | [zip](Day2_데이터시각화/02_인포그래픽_스킬/Automotive_AX_Infographic_Skill_Install.zip) |
 | 02 | 금융교육 인포그래픽 스킬 — 설치용 | [zip](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Skill_Install.zip) |
 | 02 | 금융교육 인포그래픽 전체 키트 (워크숍 덱·강사 진행안·실습지·옵시디언 볼트) | [zip](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit.zip) · [시작 안내](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit/START_HERE.md) · [마스터 가이드 PDF](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit/Finance_Education_Infographic_Master_Guide.pdf) |
 | 03 | 스킬모음 — PPT 12 · 인포그래픽 3 · 모션 7 · 문서 2 (★★) | [목록과 설치법](Day2_데이터시각화/03_스킬모음_24종/README.md) |
-| 04 | 인포그래픽 생성 프롬프트 — 덱 한 편을 A4 세로 인포그래픽 여러 쪽으로 그리게 하는 프롬프트 작성 예시 (★) | [안내](Day2_데이터시각화/04_인포그래픽_생성프롬프트/README.md) · [프롬프트 예시 md](Day2_데이터시각화/04_인포그래픽_생성프롬프트/infographic_prompt_example.md) |
+| 04 | 인포그래픽 생성 프롬프트 — 덱 한 편을 A4 세로 인포그래픽 여러 쪽으로 그리게 하는 프롬프트 작성 예시 (★) | [안내](Day2_데이터시각화/04_덱을_A4인포그래픽으로_프롬프트/README.md) · [프롬프트 예시 md](Day2_데이터시각화/04_덱을_A4인포그래픽으로_프롬프트/infographic_prompt_example.md) |
 | 05 | 로컬 자료와 HTML 대시보드 연결 — 로컬 서버 · 빌드 스크립트 · 폴더 선택 세 방법 (14장 · ★★) | [덱 PDF](Day2_데이터시각화/05_로컬자료_대시보드_MVP/Local_Data_Dashboard_MVP.pdf) |
 | 06 | AI 브라우저 자동화 도구별 설치·실습 가이드 (Playwright 등 · ★★) | [가이드 md](Day2_데이터시각화/06_AI_브라우저_자동화_도구/AI_브라우저_자동화_도구_설치_가이드_Obsidian_2026-10-21.md) · [위임 사다리 PDF](Day2_데이터시각화/06_AI_브라우저_자동화_도구/Delegation_Ladder.pdf) · [위임 테스트 PDF](Day2_데이터시각화/06_AI_브라우저_자동화_도구/Browser_Agent_Delegation_Test_II.pdf) · [EGO Lite PDF](Day2_데이터시각화/06_AI_브라우저_자동화_도구/EGO_Lite_Guide.pdf) |
 
