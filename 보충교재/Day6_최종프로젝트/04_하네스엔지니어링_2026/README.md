@@ -22,6 +22,13 @@ Harness Engineering for AI Agents (2026) 과정의 네이비 덱(PDF)과 옵시�
 ### 02_notes_obsidian_md — 옵시디언 강의노트 (11개)
 각 덱에 대응하는 마크다운 강의노트. 옵시디언 vault에 그대로 넣으면 수식·Mermaid·SVG가 렌더링된다.
 
+### 03_입문_응용_실습 — revfactory/harness v2.1 실습 덱 (3개)
+| 파일 | 내용 | 슬라이드 |
+|---|---|---|
+| Harness_Agent_Team_Beginner_Lecture | 초보자 입문 — 한 문장으로 Claude Code 에이전트 팀 만들기(설치 → 내 업무 하네스) | 41 |
+| Harness_Application_Auto_Smart_Factory | 응용 I — 자동차 스마트 팩토리(예지보전 · 품질 8D · 일일 생산 보고, 합성 데이터) | 34 |
+| Harness_Application_Robot_Value_Chain | 응용 II — 로봇 밸류체인(부품에서 AI 두뇌까지, 리서치와 실사) | 35 |
+
 ## 제작 규격
 - 덱: report-navy-deck 스킬, 본문 14pt 이상(최소 12pt), 와이드 다이어그램(1600×640) 자체 제작, LibreOffice MS 호환 정규화
 - 노트: korean-md-standard + obsidian-infographic 규칙 준수
