@@ -98,6 +98,7 @@
 | 14 | Claude Code로 시승 예약 시스템 만들기 — 요구사항 명세 · 테스트 시나리오 · 단계별 프롬프트 (44장 · ★★★) | [덱 PDF](Day6_최종프로젝트/14_AJU_시승예약_시스템/AJU_TestDrive_ClaudeCode_Deck_II.pdf) · [실습 키트 zip](Day6_최종프로젝트/14_AJU_시승예약_시스템/AJU_TestDrive_LabKit_II.zip) |
 | 15 | Claude Code로 시승·견적 신청 시스템 만들기 — 재규어·랜드로버 6개 차종, 고객 신청부터 담당자 확인·견적 발행까지 (46장 · ★★★) | [덱 PDF](Day6_최종프로젝트/15_JLR_시승견적_시스템/JLR_TestDrive_Quote_ClaudeCode_Deck.pdf) · [실습 키트 zip](Day6_최종프로젝트/15_JLR_시승견적_시스템/JLR_TestDrive_Kit.zip) |
 | 16 | Claude Code로 콜센터 실시간 관제 시스템 만들기 — 가상 콜 시뮬레이터 · KPI · 3분 지속 경보 · Erlang C 인력 산정 · AI 관제 요약, 확장판은 통화 텍스트로 인입 원인 분석 (일반판 43장 · 확장판 +27장 · ★★★) | 일반판 STEP 0~11: [안내](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/README.md) · [덱 PDF](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/CallCenter_Realtime_Monitoring_ClaudeCode_Guide.pdf) · [실습 키트 zip](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/CallCenter_Monitoring_Kit.zip) · 확장판 STEP 0~18: [안내](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/README.md) · [확장편 덱 PDF](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/CallCenter_Realtime_Monitoring_ClaudeCode_Guide_extension.pdf) · [확장 키트 zip](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/CallCenter_Monitoring_Kit_Extension.zip) (기본 덱·키트도 폴더에 함께 있음) |
+| 17 | Stitch와 Claude Code로 시승 예약 MVP 만들기 — Stitch MCP 연결부터 세 화면 웹앱 · 예약 저장 · 테스트까지 (16장 + 27장 · ★★) | [안내](Day6_최종프로젝트/17_Stitch_시승예약_MVP/README.md) · [① Stitch 연결 가이드 PDF](Day6_최종프로젝트/17_Stitch_시승예약_MVP/Stitch_MCP_Setup_Guide.pdf) · [② 실습 덱 PDF](Day6_최종프로젝트/17_Stitch_시승예약_MVP/TestDrive_MVP_Build_Lecture.pdf) · [실습 키트 zip](Day6_최종프로젝트/17_Stitch_시승예약_MVP/testdrive_kit.zip) |
 
 ## 로봇·스마트팩토리 특강
 
