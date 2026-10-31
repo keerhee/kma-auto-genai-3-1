@@ -96,6 +96,7 @@
 | 12 | 비영리 법인 그룹웨어 — AX 케이스와 멀티에이전트 구현 실습 (개요 22장 · 실습편 30장 · ★★★) | [안내](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/README.md) · [개요 케이스 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case.pdf) · [구현 실습편 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case_III.pdf) · [실습편 이전판 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case_II.pdf) · [소개 영상 60초](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Groupware_Reel_60s_III_share.mp4) |
 | 13 | 나만의 AI 업무 시스템 SSR+ — 스킬 · 세컨드 브레인 · 루틴 · 익스텐션 네 단계로 Claude 대시보드 세우기 (최종 3판 44장 · ★★★) | [덱 PDF](Day6_최종프로젝트/13_SSR_AI_업무시스템/v3/deck/SSR_Plus_AI_System_Deck_III.pdf) · [설계 가이드 md](Day6_최종프로젝트/13_SSR_AI_업무시스템/v3/guides/claude-ai-os-ssr-plus-III.md) · [수강생 실습 키트 zip](Day6_최종프로젝트/13_SSR_AI_업무시스템/v3/SSR_Plus_수강생배포.zip) · 이전 2판: [덱 PDF](Day6_최종프로젝트/13_SSR_AI_업무시스템/v2/SSR_Plus_AI_System_Deck_II.pdf) · [구현 가이드 md](Day6_최종프로젝트/13_SSR_AI_업무시스템/v2/claude-ai-os-ssr-plus-II.md) |
 | 14 | Claude Code로 시승 예약 시스템 만들기 — 요구사항 명세 · 테스트 시나리오 · 단계별 프롬프트 (44장 · ★★★) | [덱 PDF](Day6_최종프로젝트/14_AJU_시승예약_시스템/AJU_TestDrive_ClaudeCode_Deck_II.pdf) · [실습 키트 zip](Day6_최종프로젝트/14_AJU_시승예약_시스템/AJU_TestDrive_LabKit_II.zip) |
+| 15 | Claude Code로 시승·견적 신청 시스템 만들기 — 재규어·랜드로버 6개 차종, 고객 신청부터 담당자 확인·견적 발행까지 (46장 · ★★★) | [덱 PDF](Day6_최종프로젝트/15_JLR_시승견적_시스템/JLR_TestDrive_Quote_ClaudeCode_Deck.pdf) · [실습 키트 zip](Day6_최종프로젝트/15_JLR_시승견적_시스템/JLR_TestDrive_Kit.zip) |
 
 ## 로봇·스마트팩토리 특강
 
