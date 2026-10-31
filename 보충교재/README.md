@@ -106,7 +106,7 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | BYD 수직계열화와 EV 분해(티어다운) — 용어집 덱 · 일본 엔지니어 분해 정리 · 모션그래픽 42초 · 쇼릴 60초 (★) | [용어집 PDF](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_EV_Teardown/BYD_EV_Teardown_Glossary.pdf) · [분해 정리 md](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_EV_Teardown/BYD_Teardown_Japan_Engineers.md) · [모션그래픽 42초](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/01_motion_studio/BYD_Motion_42s.mp4) · [쇼릴 60초](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/02_showreel/BYD_Showreel_60s.mp4) · [안내](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/README.md) |
+| 01 | BYD 수직계열화와 EV 분해(티어다운) — 용어집 덱 · 일본 엔지니어 분해 정리 · 모션그래픽 42초 · 쇼릴 60초 (★) | [용어집 PDF](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_EV_Teardown/BYD_EV_Teardown_Glossary.pdf) · [분해 정리 md](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_EV_Teardown/BYD_Teardown_Japan_Engineers.md) · [모션그래픽 42초](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/01_motion_studio/BYD_Motion_42s.mp4) · [쇼릴 60초](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/02_showreel/BYD_Showreel_60s.mp4) · [안내](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/README.md) · [쇼릴 포스터](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/02_showreel/BYD_Showreel_poster.jpg) · [덱 HTML 원본 11장](SupplyChain_Special/01_BYD_수직계열화_티어다운/BYD_Final/03_deck_source/slides) |
 
 ## 과정 전체 참고
 
