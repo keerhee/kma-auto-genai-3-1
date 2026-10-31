@@ -3,6 +3,8 @@
 3-1 본 과정(Day0~Day6 · 로봇 특강)을 거드는 보충교재입니다. 날짜 폴더(`Day0_강의소개` … `Day6_최종프로젝트` · `Robot_Special` · `Common`)마다 **쉬운 것부터 01, 02, …** 번호를 붙였습니다. 별(★)이 많을수록 준비할 도구가 많습니다.
 덱은 PDF로 보고, **zip**은 내려받아 풀거나 설치해서 쓰는 실습 키트·스킬입니다. 날짜별 요약은 [3-1_day별.md](3-1_day별.md)에 있습니다.
 
+> 2026-10-31 날짜별 주제에 맞춰 다시 배치했습니다 — Day3의 GitHub 실습은 Day0, 대시보드·브라우저 자동화는 Day2, GWS CLI·뉴스레터는 Day4로, Day6의 채용 심사단은 Day4, learn-auto-pdm은 Day5로 옮겼습니다. 예전 주소가 열리지 않으면 이 표에서 다시 찾아 주세요.
+>
 > 2026-10-23부터 과정 전체 공용 번호(01~27) 대신 날짜 폴더 안 번호를 씁니다. 예전 주소(`보충교재/14_RAG_강의덱/…` 등)는 더 이상 열리지 않으니 이 표에서 다시 찾아 주세요.
 
 ## Day0 — 강의소개·기초
@@ -14,6 +16,7 @@
 | 03 | GitHub 저장소 만들기 — 초보자 실습 가이드 (33장 · ★★) | [PDF](Day0_강의소개/03_GitHub_저장소_초보자가이드/GitHub_Repo_Beginner_Guide_zeroone_II.pdf) |
 | 04 | Claude Code로 GitHub 저장소 만들기와 자료 업로드 — 초보자 자동화 가이드 (★★) | [md](Day0_강의소개/04_ClaudeCode_GitHub_자동화_가이드/Claude_Code_GitHub_초보자_자동화_가이드.md) |
 | 05 | Claude Code × GitHub 실습 패키지 — 초보자 실습가이드 · 브라우저 인증 가이드 · 프롬프트 A~E · 샘플 저장소 (★★~★★★) | [시작 안내](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/README_먼저읽기.md) · [실습가이드](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/01_초보자_실습가이드.md) · [브라우저 인증](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/02_브라우저_인증_초보자_가이드.md) · [zip](Day0_강의소개/05_Claude_Code_GitHub_실습_패키지/Claude_Code_GitHub_실습_패키지.zip) |
+| 06 | 메타 프롬프트로 GitHub 학습 저장소 만들고 매일 챕터 올리기 (★★ Claude Code 첫 실습) | [덱 PDF](Day0_강의소개/06_GitHub_학습저장소_올리기/KMA_Day3_Chapter_Upload_zeroone_III.pdf) · [노트 md](Day0_강의소개/06_GitHub_학습저장소_올리기/KMA_Day3_Chapter_Upload_ClaudeCode_III.md) |
 
 ## Day1 — 자동차 시장 및 트렌드
 
@@ -32,6 +35,8 @@
 | 02 | 금융교육 인포그래픽 전체 키트 (워크숍 덱·강사 진행안·실습지·옵시디언 볼트) | [zip](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit.zip) · [시작 안내](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit/START_HERE.md) · [마스터 가이드 PDF](Day2_데이터시각화/02_인포그래픽_스킬/Finance_Education_Infographic_Full_Training_Kit/Finance_Education_Infographic_Master_Guide.pdf) |
 | 03 | 스킬모음 — PPT 12 · 인포그래픽 3 · 모션 7 · 문서 2 (★★) | [목록과 설치법](Day2_데이터시각화/03_스킬모음_24종/README.md) |
 | 04 | 인포그래픽 생성 프롬프트 — 덱 한 편을 A4 세로 인포그래픽 여러 쪽으로 그리게 하는 프롬프트 작성 예시 (★) | [안내](Day2_데이터시각화/04_인포그래픽_생성프롬프트/README.md) · [프롬프트 예시 md](Day2_데이터시각화/04_인포그래픽_생성프롬프트/infographic_prompt_example.md) |
+| 05 | 로컬 자료와 HTML 대시보드 연결 — 로컬 서버 · 빌드 스크립트 · 폴더 선택 세 방법 (14장 · ★★) | [덱 PDF](Day2_데이터시각화/05_로컬자료_대시보드_MVP/Local_Data_Dashboard_MVP.pdf) |
+| 06 | AI 브라우저 자동화 도구별 설치·실습 가이드 (Playwright 등 · ★★) | [가이드 md](Day2_데이터시각화/06_AI_브라우저_자동화_도구/AI_브라우저_자동화_도구_설치_가이드_Obsidian_2026-10-21.md) · [위임 사다리 PDF](Day2_데이터시각화/06_AI_브라우저_자동화_도구/Delegation_Ladder.pdf) · [위임 테스트 PDF](Day2_데이터시각화/06_AI_브라우저_자동화_도구/Browser_Agent_Delegation_Test_II.pdf) · [EGO Lite PDF](Day2_데이터시각화/06_AI_브라우저_자동화_도구/EGO_Lite_Guide.pdf) |
 
 ## Day3 — 경쟁사 재무와 전략 분석
 
@@ -41,14 +46,8 @@
 | 02 | 해외 자동차 5개사 실적 비교 실습 (27장 · ★) | [PDF](Day3_경쟁사재무/02_해외자동차5사_실적비교/Auto5_Earnings_Comparison_zeroone.pdf) |
 | 03 | Financial Insight KG 실전 활용 사례집 (★ 읽기) | [md](Day3_경쟁사재무/03_Financial_Insight_KG_활용사례/kg-use-cases.md) · [PDF](Day3_경쟁사재무/03_Financial_Insight_KG_활용사례/kg-use-cases-navy.pdf) |
 | 04 | 자동차 산업과 금융 3일 집중과정 — 캡티브 금융·할부·리스·ABS·공급망 금융·밸류에이션 (★★ 개념) | [메인 덱 PDF](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_Finance_Main_III.pdf) · [워크북 PDF](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_Finance_Workbook_II.pdf) · [노트 md](Day3_경쟁사재무/04_자동차산업과금융_3일과정/Auto_Industry_and_Finance_3Day_II.md) |
-| 05 | 메타 프롬프트로 GitHub 학습 저장소 만들고 매일 챕터 올리기 (★★ Claude Code 첫 실습) | [덱 PDF](Day3_경쟁사재무/05_KMA_Day3_깃허브_올리기/KMA_Day3_Chapter_Upload_zeroone_III.pdf) · [노트 md](Day3_경쟁사재무/05_KMA_Day3_깃허브_올리기/KMA_Day3_Chapter_Upload_ClaudeCode_III.md) |
-| 06 | 로컬 자료와 HTML 대시보드 연결 — 로컬 서버 · 빌드 스크립트 · 폴더 선택 세 방법 (14장 · ★★) | [덱 PDF](Day3_경쟁사재무/06_로컬자료_대시보드_MVP/Local_Data_Dashboard_MVP.pdf) |
-| 07 | AI 브라우저 자동화 도구별 설치·실습 가이드 (Playwright 등 · ★★) | [가이드 md](Day3_경쟁사재무/07_AI_브라우저_자동화_도구/AI_브라우저_자동화_도구_설치_가이드_Obsidian_2026-10-21.md) · [위임 사다리 PDF](Day3_경쟁사재무/07_AI_브라우저_자동화_도구/Delegation_Ladder.pdf) · [위임 테스트 PDF](Day3_경쟁사재무/07_AI_브라우저_자동화_도구/Browser_Agent_Delegation_Test_II.pdf) · [EGO Lite PDF](Day3_경쟁사재무/07_AI_브라우저_자동화_도구/EGO_Lite_Guide.pdf) |
-| 08 | 구글 워크스페이스 CLI × Claude Code 연결 가이드 (26장 · ★★★) | [PDF](Day3_경쟁사재무/08_GWS_CLI_클로드코드_가이드/GWS_CLI_ClaudeCode_Guide_III.pdf) |
-| 08 | gws CLI 설치·초기 세팅 — 초보자 따라 하기 (43장 · 외부 대상 · JSON 다운로드 · localhost 점검) | [PDF](Day3_경쟁사재무/08_GWS_CLI_클로드코드_가이드/gws_CLI_설치가이드_jj덱.pdf) · [md](Day3_경쟁사재무/08_GWS_CLI_클로드코드_가이드/gws_CLI_설치가이드.md) |
-| 09 | 뉴스레터 자동 발송 에이전트 — Gmail 커넥터 · SMTP 두 경로 (★★★) | [덱 PDF](Day3_경쟁사재무/09_뉴스레터_에이전트/Newsletter_Agent_Deck_IV.pdf) · [구현 절차 md](Day3_경쟁사재무/09_뉴스레터_에이전트/Newsletter_Agent_Implementation_II.md) · [단계별 프롬프트](Day3_경쟁사재무/09_뉴스레터_에이전트/Newsletter_Agent_Prompts_Staged_II.txt) |
-| 10 | AI 예측시장으로 미리 읽는 현대차 미국 투자 — MiroFish 예측 데스크 (★★★ 설치·API 키) | [케이스 덱 PDF](Day3_경쟁사재무/10_MiroFish_예측데스크/Day3_Case_MiroFish_Hyundai_Prediction_Desk_II.pdf) · [실행 가이드 PDF](Day3_경쟁사재무/10_MiroFish_예측데스크/Day3_MiroFish_ClaudeCode_Lab_Guide_II.pdf) · [실습 데이터 zip](Day3_경쟁사재무/10_MiroFish_예측데스크/Day3_MiroFish_Lab_Data_II.zip) |
-| 11 | K-Auto 지식그래프 실습 (Neo4j × Claude Code × MCP) 통합판 v1.3 (★★★★ Docker·Neo4j) | [여기서 시작](Day3_경쟁사재무/11_KAuto_KG_지식그래프_실습/00_여기서_시작.md) · [수강생 꾸러미 zip](Day3_경쟁사재무/11_KAuto_KG_지식그래프_실습/01_수강생_꾸러미/KAuto_Obsidian_Stage1_Complete.zip) · [초보 덱 PDF](Day3_경쟁사재무/11_KAuto_KG_지식그래프_실습/02_강의덱/01_KAuto_KG_Beginner_Lecture_Deck_III.pdf) · [심화 덱 PDF](Day3_경쟁사재무/11_KAuto_KG_지식그래프_실습/02_강의덱/02_KAuto_KG_Neo4j_ClaudeCode_MCP_ZeroOne_Deck.pdf) |
+| 05 | AI 예측시장으로 미리 읽는 현대차 미국 투자 — MiroFish 예측 데스크 (★★★ 설치·API 키) | [케이스 덱 PDF](Day3_경쟁사재무/05_MiroFish_예측데스크/Day3_Case_MiroFish_Hyundai_Prediction_Desk_II.pdf) · [실행 가이드 PDF](Day3_경쟁사재무/05_MiroFish_예측데스크/Day3_MiroFish_ClaudeCode_Lab_Guide_II.pdf) · [실습 데이터 zip](Day3_경쟁사재무/05_MiroFish_예측데스크/Day3_MiroFish_Lab_Data_II.zip) |
+| 06 | K-Auto 지식그래프 실습 (Neo4j × Claude Code × MCP) 통합판 v1.3 (★★★★ Docker·Neo4j) | [여기서 시작](Day3_경쟁사재무/06_KAuto_KG_지식그래프_실습/00_여기서_시작.md) · [수강생 꾸러미 zip](Day3_경쟁사재무/06_KAuto_KG_지식그래프_실습/01_수강생_꾸러미/KAuto_Obsidian_Stage1_Complete.zip) · [초보 덱 PDF](Day3_경쟁사재무/06_KAuto_KG_지식그래프_실습/02_강의덱/01_KAuto_KG_Beginner_Lecture_Deck_III.pdf) · [심화 덱 PDF](Day3_경쟁사재무/06_KAuto_KG_지식그래프_실습/02_강의덱/02_KAuto_KG_Neo4j_ClaudeCode_MCP_ZeroOne_Deck.pdf) |
 
 ## Day4 — 직무별 업무 분석
 
@@ -65,7 +64,10 @@
 | 09 | 프롬프트로 만드는 판정 에이전트 — 출산·육아 인사제도 판정 웹앱 (43장 · ★★) | [안내](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/README.md) · [가이드 PDF](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/HR_Parental_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day4_업무자동화/09_프롬프트_판정에이전트_가이드/hr_lab_data.zip) |
 | 10 | 카톡 업무 AI 비서 — 업무 카톡방을 읽고 의도를 판정해 고객 데이터와 대조 (★★★) | [Mac판 덱 PDF (49장)](Day4_업무자동화/10_카톡_업무AI비서/kakao_ai_secretary_deck_II.pdf) · [Windows판 덱 PDF (52장)](Day4_업무자동화/10_카톡_업무AI비서/kakao_ai_secretary_deck_windows_II.pdf) |
 | 11 | ORCA 설치와 사용 — Claude Code 하나로 시작하는 멀티 에이전트 입문 (Windows · worktree · 25장 · ★★★) | [가이드 PDF](Day4_업무자동화/11_ORCA_멀티에이전트입문/ORCA_Guide_zeroone.pdf) |
-| 12 | AX 앱 포트폴리오 가이드 — 노란 로봇 «기어리»에게 물어 가며 보는 HTML 덱 (11장 · ★★ · Day6 03과 짝) | [기어리 탑재판 열기](Day4_업무자동화/12_AX포트폴리오_기어리가이드/index.html) · [기어리 포함 HTML](Day4_업무자동화/12_AX포트폴리오_기어리가이드/AX_Portfolio_Guide_Geary.html) · [슬라이드만 HTML](Day4_업무자동화/12_AX포트폴리오_기어리가이드/AX_Portfolio_Guide_Slides.html) |
+| 12 | 구글 워크스페이스 CLI × Claude Code 연결 가이드 (26장 · ★★★) | [PDF](Day4_업무자동화/12_GWS_CLI_클로드코드_가이드/GWS_CLI_ClaudeCode_Guide_III.pdf) |
+| 12 | gws CLI 설치·초기 세팅 — 초보자 따라 하기 (43장 · 외부 대상 · JSON 다운로드 · localhost 점검) | [PDF](Day4_업무자동화/12_GWS_CLI_클로드코드_가이드/gws_CLI_설치가이드_jj덱.pdf) · [md](Day4_업무자동화/12_GWS_CLI_클로드코드_가이드/gws_CLI_설치가이드.md) |
+| 13 | 뉴스레터 자동 발송 에이전트 — Gmail 커넥터 · SMTP 두 경로 (★★★) | [덱 PDF](Day4_업무자동화/13_뉴스레터_에이전트/Newsletter_Agent_Deck_IV.pdf) · [구현 절차 md](Day4_업무자동화/13_뉴스레터_에이전트/Newsletter_Agent_Implementation_II.md) · [단계별 프롬프트](Day4_업무자동화/13_뉴스레터_에이전트/Newsletter_Agent_Prompts_Staged_II.txt) |
+| 14 | 클로드 코드 채용 심사단 — 이력서를 AI 심사위원 7명에게 먼저 보이는 스킬 실습 (★★) | [PDF](Day4_업무자동화/14_클로드코드_채용심사단/Hiring_Panel_Guide_zeroone.pdf) |
 
 ## Day5 — 예지보전 AI
 
@@ -74,7 +76,7 @@
 | 01 | 스마트팩토리 입문 과정 — 커리큘럼·강의노트·덱 (★★) | [안내](Day5_예지보전/01_스마트팩토리_입문과정/README.md) · [본편 PDF](Day5_예지보전/01_스마트팩토리_입문과정/03_Decks/SmartFactory_Intro_ZeroOne.pdf) · [워크북](Day5_예지보전/01_스마트팩토리_입문과정/03_Decks/SmartFactory_Intro_Workbook.pdf) · [워크북 II](Day5_예지보전/01_스마트팩토리_입문과정/03_Decks/SmartFactory_Intro_Workbook_ClaudeCode.pdf) |
 | 02 | 스마트팩토리 멀티에이전트 예지보전 (★★★) | [덱 PDF](Day5_예지보전/02_스마트팩토리_멀티에이전트/01_decks/SmartFactory_MultiAgent_PdM_II.pdf) · [실습 키트 zip](Day5_예지보전/02_스마트팩토리_멀티에이전트/02_lab_kit/smart-factory-multiagent-demo.zip) |
 | 03 | 설비 정비 조치 판정 에이전트 — 센서 데이터와 정비 기준으로 A/B/C 판정 (46장 · ★★ · Day4 09와 같은 골격) | [안내](Day5_예지보전/03_설비정비판정_에이전트/README.md) · [가이드 PDF](Day5_예지보전/03_설비정비판정_에이전트/Day5_PdM_Action_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day5_예지보전/03_설비정비판정_에이전트/pdm_lab_data.zip) · [완성 MVP HTML](Day5_예지보전/03_설비정비판정_에이전트/pdm_action_agent.html) |
-| 04 | EV 스케이트보드 조립 공정 — Claude Code × Blender 3D 모션그래픽 실습 (II 44장 · ★★) | [실습 가이드 II PDF](Day5_예지보전/04_EV_조립라인_흐름/EV_Blender_Motion_Graphics_Guide_II.pdf) · [1판 PDF (29장)](Day5_예지보전/04_EV_조립라인_흐름/EV_Blender_Motion_Graphics_Guide.pdf) · [조립 공정 영상 50초](Day5_예지보전/04_EV_조립라인_흐름/EV_Skateboard_Assembly.mp4) · [조립 흐름 영상 30초](Day5_예지보전/04_EV_조립라인_흐름/EV_Skateboard_Assembly_Flow.mp4) · [공장 흐름 HTML](Day5_예지보전/04_EV_조립라인_흐름/EV_Factory_Flow.html) · [Blender 스크립트 zip](Day5_예지보전/04_EV_조립라인_흐름/EV_Blender_Scripts.zip) |
+| 04 | 예지보전 자율학습 강의 /learn-auto-pdm — course-forge로 만든 Day5 복습 강의 (★★ 스킬 설치 + 붙여넣기) | [따라 하기 매뉴얼 PDF](Day5_예지보전/04_예지보전_자율학습강의/PdM_Lab_Manual.pdf) · [강의 저장소 zip](Day5_예지보전/04_예지보전_자율학습강의/learn-auto-pdm.zip) · [완성 대시보드 미리보기](Day5_예지보전/04_예지보전_자율학습강의/preview.png) |
 | 05 | 자동차 예지보전 프롬프트 실습 — 가공 라인 스핀들 6대의 진동·온도로 연습 (25장 · ★) | [실습 덱 PDF](Day5_예지보전/05_예지보전_프롬프트실습/Automotive_PdM_Prompt_Practice.pdf) |
 | 06 | 설비 예지보전 따라 하기 II — 프롬프트 8개로 센서 점검부터 대시보드 공개까지 (38장 · ★) | [덱 PDF](Day5_예지보전/06_예지보전_따라하기_II/PdM_Lab_Manual_II.pdf) · [프롬프트 md](Day5_예지보전/06_예지보전_따라하기_II/PdM_Prompts_II.md) |
 
@@ -82,18 +84,17 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 클로드 코드 채용 심사단 — 이력서를 AI 심사위원 7명에게 먼저 보이는 스킬 실습 (★★) | [PDF](Day6_최종프로젝트/01_클로드코드_채용심사단/Hiring_Panel_Guide_zeroone.pdf) |
-| 02 | 예지보전 자율학습 강의 /learn-auto-pdm — course-forge로 만든 Day5 복습 강의 (★★ 스킬 설치 + 붙여넣기) | [따라 하기 매뉴얼 PDF](Day6_최종프로젝트/02_예지보전_자율학습강의/PdM_Lab_Manual.pdf) · [강의 저장소 zip](Day6_최종프로젝트/02_예지보전_자율학습강의/learn-auto-pdm.zip) · [완성 대시보드 미리보기](Day6_최종프로젝트/02_예지보전_자율학습강의/preview.png) |
-| 03 | 나만의 AX 앱 포트폴리오 — 1판 GitHub Pages(공개 · ★★) · 2판 Cloudflare(비공개 · 이메일 코드 로그인 · ★★★) | [1판 덱 PDF](Day6_최종프로젝트/03_AX_앱_포트폴리오/AX_App_Portfolio_Guide_Manual_II.pdf) · [2판 Cloudflare 덱 PDF](Day6_최종프로젝트/03_AX_앱_포트폴리오/AX_App_Portfolio_Guide_Manual_2_Cloudflare.pdf) · [초보자 가이드 md](Day6_최종프로젝트/03_AX_앱_포트폴리오/Student_Beginner_Guide.md) · [템플릿 zip](Day6_최종프로젝트/03_AX_앱_포트폴리오/ax-portfolio-template.zip) |
+| 03 | 나만의 AX 앱 포트폴리오 — 1판 GitHub Pages(공개 · ★★) · 2판 Cloudflare(비공개 · 이메일 코드 로그인 · ★★★) | [1판 덱 PDF](Day6_최종프로젝트/03_AX_앱_포트폴리오/AX_App_Portfolio_Guide_Manual_II.pdf) · [2판 Cloudflare 덱 PDF](Day6_최종프로젝트/03_AX_앱_포트폴리오/AX_App_Portfolio_Guide_Manual_2_Cloudflare.pdf) · [초보자 가이드 md](Day6_최종프로젝트/03_AX_앱_포트폴리오/Student_Beginner_Guide.md) · [템플릿 zip](Day6_최종프로젝트/03_AX_앱_포트폴리오/ax-portfolio-template.zip) · 기어리 가이드: [기어리 탑재판 열기](Day6_최종프로젝트/03_AX_앱_포트폴리오/기어리가이드/index.html) · [기어리 포함 HTML](Day6_최종프로젝트/03_AX_앱_포트폴리오/기어리가이드/AX_Portfolio_Guide_Geary.html) · [슬라이드만 HTML](Day6_최종프로젝트/03_AX_앱_포트폴리오/기어리가이드/AX_Portfolio_Guide_Slides.html) |
 | 04 | 하네스 엔지니어링 2026 — 덱 11개 + 옵시디언 노트 + harness v2.1 입문·응용 실습 덱 3개 (★★~★★★) | [안내](Day6_최종프로젝트/04_하네스엔지니어링_2026/README.md) · [실습편 PDF](Day6_최종프로젝트/04_하네스엔지니어링_2026/harness-practice-navy.pdf) · [입문 실습 PDF — 에이전트 팀 만들기](Day6_최종프로젝트/04_하네스엔지니어링_2026/03_입문_응용_실습/Harness_Agent_Team_Beginner_Lecture.pdf) · [응용 I 스마트 팩토리 PDF](Day6_최종프로젝트/04_하네스엔지니어링_2026/03_입문_응용_실습/Harness_Application_Auto_Smart_Factory.pdf) · [응용 II 로봇 밸류체인 PDF](Day6_최종프로젝트/04_하네스엔지니어링_2026/03_입문_응용_실습/Harness_Application_Robot_Value_Chain.pdf) |
 | 05 | AI Agent Pixel Office — 에이전트 작업을 픽셀 사무실로 보기 (★★★ 04 다음) | [매뉴얼 md](Day6_최종프로젝트/05_AI_Agent_Pixel_Office/pixel-office-manual.md) · [PDF](Day6_최종프로젝트/05_AI_Agent_Pixel_Office/pixel-office-navy.pdf) |
-| 06 | 강의를 만드는 스킬 course-forge — 내 강의 만들기 · 배우기 · 배포 · 공유 (★★★ 02 다음) | [스킬 저장소 zip](Day6_최종프로젝트/06_커리큘럼만드는스킬/course-forge.zip) · **최종 패키지(10-31)**: [안내](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/README.md) · [Day5 본편 IV PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/1_Day5_Course_Forge/Course_Forge_Lecture_IV.pdf) · [본편 IV 확장판 PDF — 응용: 업무 팀 만들기](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/1_Day5_Course_Forge/Course_Forge_Lecture_IV_확장판.pdf) · [60분 실습판 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/1_Day5_Course_Forge/Course_Forge_Lecture_Lite.pdf) · [내 주제 E2E II PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/2_Topic_E2E/Course_Forge_Topic_E2E_II.pdf) · [단순화판 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/2_Topic_E2E/Course_Forge_Topic_Simple.pdf) · [소상공인 AX PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/3_Small_Biz_AX/Small_Biz_AX_Course_Forge.pdf) |
+| 06 | 강의를 만드는 스킬 course-forge — 내 강의 만들기 · 배우기 · 배포 · 공유 (★★★ Day5 04 다음) | [스킬 저장소 zip](Day6_최종프로젝트/06_커리큘럼만드는스킬/course-forge.zip) · **최종 패키지(10-31)**: [안내](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/README.md) · [Day5 본편 IV PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/1_Day5_Course_Forge/Course_Forge_Lecture_IV.pdf) · [본편 IV 확장판 PDF — 응용: 업무 팀 만들기](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/1_Day5_Course_Forge/Course_Forge_Lecture_IV_확장판.pdf) · [60분 실습판 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/1_Day5_Course_Forge/Course_Forge_Lecture_Lite.pdf) · [내 주제 E2E II PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/2_Topic_E2E/Course_Forge_Topic_E2E_II.pdf) · [단순화판 PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/2_Topic_E2E/Course_Forge_Topic_Simple.pdf) · [소상공인 AX PDF](Day6_최종프로젝트/06_커리큘럼만드는스킬/최종패키지/3_Small_Biz_AX/Small_Biz_AX_Course_Forge.pdf) |
 | 07 | 나만의 GitHub 사이트 만들기 — 저장소·배포·Supabase 회원관리 Part 1~6 (★★★★) | [과정 목록](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Course_Contents_GitHub_Deploy_Supabase.md) · [실라부스](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/Syllabus_GitHub_Deploy_Supabase.md) · [실습 템플릿 zip](Day6_최종프로젝트/07_GitHub_배포_Supabase_과정/supabase-course-template-II.zip) |
 | 08 | 에고라이트로 유튜브 운영 자동화 — 프롬프트 10개로 빈 폴더에서 업로드까지 (25장 · ★★★) | [가이드 PDF](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Guide_Deck.pdf) · [실습 콘솔 HTML](Day6_최종프로젝트/08_EgoLite_유튜브자동화/Ego_Lite_Console.html) |
 | 09 | Claude Code 멀티 AI 팀 — Claude가 만들고 GPT가 검토 (Codex CLI · Gemini CLI · MCP · /team · 45장 · ★★★) | [덱 PDF](Day6_최종프로젝트/09_ClaudeCode_멀티AI팀_실습/Claude_Code_Multi_AI_Team_Lab_III.pdf) |
 | 10 | AICC 콘솔 만들기 — 프롬프트로 내 PC에서 AI 전화 상담원 돌리기 (25장 · ★★★) | [구현 가이드 PDF](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/AICC_Console_Build_Guide.pdf) · [완성 실행판 zip](Day6_최종프로젝트/10_AICC_콘솔_구현가이드/aicc_console_local_II.zip) |
 | 11 | EV 전체 조립 모션그래픽 완성 세트 — Claude Code × Blender, GLB 3D 모델까지 (★★) | [안내](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/README.md) · [가이드 II PDF](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/1_가이드/EV_Blender_Motion_Graphics_Guide_II.pdf) · [1판 PDF](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/1_가이드/EV_Blender_Motion_Graphics_Guide.pdf) · [전체 조립 영상 54초](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/2_영상/EV_Full_Assembly.mp4) · [타이틀 인트로 예제 10초](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/2_영상/Claude_Blender_Title_10s.mp4) · [스케이트보드 GLB](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/3_3D모델/EV_Skateboard_Education.glb) · [크로스오버 GLB](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/3_3D모델/EV_Crossover_Education.glb) · [Blender 스크립트 zip](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/4_소스/EV_Blender_Scripts.zip) · [타이틀 인트로 소스 zip](Day6_최종프로젝트/11_EV_전체조립_모션그래픽/4_소스/타이틀_인트로.zip) |
 | 12 | 비영리 법인 그룹웨어 — AX 케이스와 멀티에이전트 구현 실습 (개요 22장 · 실습편 30장 · ★★★) | [안내](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/README.md) · [개요 케이스 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case.pdf) · [구현 실습편 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case_III.pdf) · [실습편 이전판 PDF](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Nonprofit_Groupware_Case_II.pdf) · [소개 영상 60초](Day6_최종프로젝트/12_비영리_그룹웨어_케이스/Groupware_Reel_60s_III_share.mp4) |
+| 13 | 나만의 AI 업무 시스템 SSR+ — 스킬 · 세컨드 브레인 · 루틴 · 익스텐션 네 단계로 Claude 대시보드 세우기 (33장 · ★★★) | [덱 PDF](Day6_최종프로젝트/13_SSR_AI_업무시스템/SSR_Plus_AI_System_Deck_II.pdf) · [구현 가이드 md](Day6_최종프로젝트/13_SSR_AI_업무시스템/claude-ai-os-ssr-plus-II.md) |
 
 ## 로봇·스마트팩토리 특강
 
