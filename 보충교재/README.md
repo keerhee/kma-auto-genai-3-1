@@ -77,8 +77,8 @@
 | 02 | 스마트팩토리 멀티에이전트 예지보전 (★★★) | [덱 PDF](Day5_예지보전/02_스마트팩토리_멀티에이전트/01_decks/SmartFactory_MultiAgent_PdM_II.pdf) · [실습 키트 zip](Day5_예지보전/02_스마트팩토리_멀티에이전트/02_lab_kit/smart-factory-multiagent-demo.zip) |
 | 03 | 설비 정비 조치 판정 에이전트 — 센서 데이터와 정비 기준으로 A/B/C 판정 (46장 · ★★ · Day4 09와 같은 골격) | [안내](Day5_예지보전/03_설비정비판정_에이전트/README.md) · [가이드 PDF](Day5_예지보전/03_설비정비판정_에이전트/Day5_PdM_Action_Agent_Prompt_Guide.pdf) · [실습 데이터 zip](Day5_예지보전/03_설비정비판정_에이전트/pdm_lab_data.zip) · [완성 MVP HTML](Day5_예지보전/03_설비정비판정_에이전트/pdm_action_agent.html) |
 | 04 | 예지보전 자율학습 강의 /learn-auto-pdm — course-forge로 만든 Day5 복습 강의 (★★ 스킬 설치 + 붙여넣기) | [따라 하기 매뉴얼 PDF](Day5_예지보전/04_예지보전_자율학습강의/PdM_Lab_Manual.pdf) · [강의 저장소 zip](Day5_예지보전/04_예지보전_자율학습강의/learn-auto-pdm.zip) · [완성 대시보드 미리보기](Day5_예지보전/04_예지보전_자율학습강의/preview.png) |
-| 05 | 자동차 예지보전 프롬프트 실습 — 가공 라인 스핀들 6대의 진동·온도로 연습 (25장 · ★) | [실습 덱 PDF](Day5_예지보전/05_예지보전_프롬프트실습/Automotive_PdM_Prompt_Practice.pdf) |
-| 06 | 설비 예지보전 따라 하기 II — 프롬프트 8개로 센서 점검부터 대시보드 공개까지 (38장 · ★) | [덱 PDF](Day5_예지보전/06_예지보전_따라하기_II/PdM_Lab_Manual_II.pdf) · [프롬프트 md](Day5_예지보전/06_예지보전_따라하기_II/PdM_Prompts_II.md) |
+| 05 | 자동차 예지보전 프롬프트 실습 — 가공 라인 스핀들 6대의 진동·온도로 연습 (25장 · ★) | [실습 덱 PDF](Day5_예지보전/05_스핀들6대_진동온도_프롬프트실습/Automotive_PdM_Prompt_Practice.pdf) |
+| 06 | 설비 예지보전 따라 하기 II — 프롬프트 8개로 센서 점검부터 대시보드 공개까지 (38장 · ★) | [덱 PDF](Day5_예지보전/06_센서점검부터_대시보드공개까지_따라하기/PdM_Lab_Manual_II.pdf) · [프롬프트 md](Day5_예지보전/06_센서점검부터_대시보드공개까지_따라하기/PdM_Prompts_II.md) |
 
 ## Day6 — 최종 프로젝트
 
