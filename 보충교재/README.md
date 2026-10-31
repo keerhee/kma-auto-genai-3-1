@@ -1,6 +1,6 @@
 # 보충교재
 
-3-1 본 과정(Day0~Day6 · 로봇 특강)을 거드는 보충교재입니다. 날짜 폴더(`Day0_강의소개` … `Day6_최종프로젝트` · `Robot_Special` · `Common`)마다 **쉬운 것부터 01, 02, …** 번호를 붙였습니다. 별(★)이 많을수록 준비할 도구가 많습니다.
+3-1 본 과정(Day0~Day6 · 로봇 특강)을 거드는 보충교재입니다. 날짜 폴더(`Day0_강의소개` … `Day6_최종프로젝트` · `Robot_Special` · `SupplyChain_Special`)마다 **쉬운 것부터 01, 02, …** 번호를 붙였습니다. 별(★)이 많을수록 준비할 도구가 많습니다.
 덱은 PDF로 보고, **zip**은 내려받아 풀거나 설치해서 쓰는 실습 키트·스킬입니다. 날짜별 요약은 [3-1_day별.md](3-1_day별.md)에 있습니다.
 
 > 2026-10-31 날짜별 주제에 맞춰 다시 배치했습니다 — Day3의 GitHub 실습은 Day0, 대시보드·브라우저 자동화는 Day2, GWS CLI·뉴스레터는 Day4로, Day6의 채용 심사단은 Day4, learn-auto-pdm은 Day5로 옮겼습니다. 예전 주소가 열리지 않으면 이 표에서 다시 찾아 주세요.
@@ -118,5 +118,5 @@
 
 | 번호 | 자료 | 내려받기 |
 |---|---|---|
-| 01 | 자동차 AI 자율학습 16주 캠프 (주차별 스킬 16개) | [안내](Common/01_자동차AI_자율학습16주캠프/README.md) · [zip](Common/01_자동차AI_자율학습16주캠프/automotive-ai-camp.zip) |
+| 01 | 자동차 AI 자율학습 16주 캠프 — 주차별 스킬 16개 · 시작 안내 · 가상 샘플 데이터 3종, zip 하나로 자체 완결 | [안내](자동차AI_자율학습16주캠프/README.md) · [zip](자동차AI_자율학습16주캠프/automotive-ai-camp.zip) |
 | 02 | Windows에서 VS Code 터미널로 Claude Code 설치하기 — 명령 한 줄, WSL · Node.js 없이 (1장) | [PDF](Windows_VSCode_ClaudeCode_Install.pdf) |

@@ -9,7 +9,7 @@
 | `1_가이드/` | `EV_Process_Flow_Video_Guide.pdf` | 공정 흐름 영상 만들기 초보자 가이드 (23장) — 흐름 화면 → 차체 3D 모델 공정 흐름 → 영상으로 굽기, 프롬프트 11단계 |
 | | `EV_Blender_Motion_Graphics_Guide_II.pdf` | 실습 가이드 II (44장) — 먼저 볼 판 |
 | | `EV_Blender_Motion_Graphics_Guide.pdf` | 실습 가이드 1판 (29장) — GLB 모델 한 개에서 30초 1080p MP4까지 |
-| `2_영상/` | `EV_Assembly_Line_Flow_Blender.mp4` | **공정 흐름 Blender판 48초 · 1080p** — 같은 다섯 공정을 Blender(EEVEE) 조명·그림자·재질로 렌더 |
+| `2_영상/` | `EV_Assembly_Line_Flow_Blender.mp4` | **공정 흐름 Blender판 48초 · 1080p · 효과음** — 같은 다섯 공정을 Blender(EEVEE) 조명·그림자·재질로 렌더. 공장 소음·컨베이어, 프레임 쾅 7번, 배터리 찰칵 21번, 구동계 체결음·공구 모터, 차체 유압·결합, 검사 스캔·통과 차임(-16 LUFS). 무음판은 `2_영상/_구판/` |
 | | `EV_Assembly_Line_Flow.mp4` | **공정 흐름 3D 영상 48초 · 1080p** — 차체까지 든 GLB가 라인을 따라 프레임 → 배터리 → 구동계 → 차체 결합 → 검사·출하 |
 | | `Car_Factory_Isometric_Flow.mp4` | 공장 흐름 화면(Car_Factory_Isometric.html)을 녹화한 영상 44초 · 1080p |
 | | `EV_Full_Assembly.mp4` | 전체 조립 영상 53.5초 · 1080p |
@@ -19,7 +19,7 @@
 | `3_3D모델/` | `EV_Skateboard_Education.glb` | 교육용 스케이트보드 플랫폼 모델 (메시 408개) |
 | | `EV_Crossover_Education.glb` | 교육용 크로스오버 차체 모델 (메시 1,015개) |
 | `4_소스/` | `공정흐름_3D.zip` | 3D 공정 흐름 원본 — `index.html`(three.js, 3_3D모델의 GLB를 읽음 · 로컬 서버로 연다) · `capture.py`·`capture_isometric.py`(가상 시계 프레임 캡처) · `lib/`(three.js r160) |
-| | `공정흐름_Blender.zip` | Blender판 원본 — `flow_scene.py`(`blender -b -P flow_scene.py -- preview` · `-- final`) · `comp_flow.py`(공정 패널·탭 자막 합성) |
+| | `공정흐름_Blender.zip` | Blender판 원본 — `flow_scene.py`(`blender -b -P flow_scene.py -- preview` · `-- final`) · `comp_flow.py`(공정 패널·탭 자막 합성) · `sound_flow.py`(효과음 — flow_scene.py와 같은 시간표 · GLB 부품 수로 소리 위치 계산, `python3 sound_flow.py` 뒤 ffmpeg로 입힘) |
 | | `EV_Blender_Scripts.zip` | 영상을 만든 Blender 스크립트 — scene.py(장면) · comp.py(합성) · sound.py(사운드) |
 | | `EV_Factory_Flow.html` | 브라우저로 여는 공장 흐름 화면 |
 | | `타이틀_인트로/` | 타이틀 인트로 예제의 소스 — `scene.py`(Blender 4.2 Eevee, 240프레임, 150프레임에 글자 등장 · `timing.json` 생성) · `make_final.sh`(PNG 프레임 + `sfx/hit.wav` → mp4, 효과음을 글자 등장 시각에 맞춘다) · `sfx/hit.wav` |
