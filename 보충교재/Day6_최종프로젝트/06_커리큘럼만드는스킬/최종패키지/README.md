@@ -3,6 +3,7 @@
 | 폴더 | 파일 | 내용 |
 |---|---|---|
 | 1_Day5_Course_Forge | Course_Forge_Lecture_IV.pptx + Course_Forge_Prompts.md | Day5 예지보전으로 강의 만들기 본편 (50장, STEP 0–11) |
+| 1_Day5_Course_Forge | Course_Forge_Lecture_IV_확장판.pptx | 본편 IV + 50장 «응용: 업무 팀 만들기»(같은 여덟 단계로 로봇 SI 제안 팀 만들기, 51장) |
 | 1_Day5_Course_Forge | Course_Forge_Lecture_Lite.pptx + Course_Forge_Lite_Prompts.md | 수업 중 실습판 60분 (블록 3개, 퀴즈 1문항, 짝 교환) |
 | 2_Topic_E2E | Course_Forge_Topic_E2E_II.pptx + Prompts.md | 내 주제로 처음부터 강의 만들기 본편 (교재 + 네이비 덱 + 강의, 41장) |
 | 2_Topic_E2E | Course_Forge_Topic_Simple.pptx + Prompts.md | 단순화판 2 (혼자 10단계, 짝 교환과 Ego Lite는 부록, 33장) |
