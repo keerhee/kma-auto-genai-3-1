@@ -9,4 +9,4 @@
 | `[STYLE]` | 모든 쪽에 공통인 캔버스 · 색 · 헤더 · 섹션 띠 · 카드 · KPI · 표 · 일러스트 · 금지 사항 | 그대로 재사용(러닝헤드 · 푸터 문구만 바꾼다) |
 | `[PAGE 1]~[PAGE 7]` | 쪽마다 들어갈 문구를 따옴표로 고정 — 표지 · 요약 표 · KPI 카드 · 번호 목록 · 표 | 내 자료의 내용으로 바꾼다 |
 
-`infographic_prompt_example.md`의 쪽 내용은 **예시**다 — Day4 `11_ORCA_멀티에이전트입문`의 ORCA 가이드 덱(설치 · 비용 · 실습 3종)을 7쪽으로 옮겼다. 그래서 프롬프트 안의 러닝헤드(«ORCA GUIDE | WINDOWS QUICK START»)와 `[PAGE]` 문구에 ORCA가 나온다. 다른 덱에 쓸 때는 `[STYLE]`은 두고 `[PAGE]` 블록만 그 덱의 문구로 바꾼다.
+`infographic_prompt_example.md`의 쪽 내용은 **예시**다 — Day4 `11_ORCA_에이전트여럿_동시작업`의 ORCA 가이드 덱(설치 · 비용 · 실습 3종)을 7쪽으로 옮겼다. 그래서 프롬프트 안의 러닝헤드(«ORCA GUIDE | WINDOWS QUICK START»)와 `[PAGE]` 문구에 ORCA가 나온다. 다른 덱에 쓸 때는 `[STYLE]`은 두고 `[PAGE]` 블록만 그 덱의 문구로 바꾼다.
