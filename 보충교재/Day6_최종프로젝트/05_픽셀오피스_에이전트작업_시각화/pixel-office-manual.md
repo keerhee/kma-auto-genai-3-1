@@ -58,7 +58,7 @@ flowchart LR
 > export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 > # 5) harness 플러그인 (Claude Code 안에서)
 > #    /plugin marketplace add revfactory/harness
-> #    /plugin install harness@harness
+> #    /plugin install harness@harness-marketplace
 > ```
 
 > [!note] [출력] 확인

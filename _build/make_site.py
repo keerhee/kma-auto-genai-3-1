@@ -89,6 +89,7 @@ for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') 
         rows.append(f'<li class="row"><span class="k">{no}</span><span class="d">{html.escape(what.replace("`", ""))}</span><span class="l">{btns}</span></li>')
 supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 {len(supp_keys)}종입니다. 날짜마다 쉬운 것부터 01, 02, … 번호를 붙였습니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
              f'전체 목록은 <a href="{GH_BLOB}{url("보충교재/README.md")}">보충교재 안내</a>에 있습니다.</p>'
+             f'<p class="note"><b>교과서</b> — 이 보충교재 전체를 배우는 순서(난이도 1~4단계)로 엮은 <a href="{GH_BLOB}{url("보충교재/Textbook/README.md")}">《자동차 산업과 생성형 AI — Claude Code로 일하는 법》</a>(4부 12장 + 부록 3, 그림 98개)이 있습니다.</p>'
              f'<div class="supp-list">{"".join(supp_cards)}</div>')
 
 SIMS = [('ev_parts.html', 'EV 부품 학습'), ('ev_factory.html', 'EV 스마트팩토리'), ('humanoid_parts.html', '휴머노이드 부품 학습'), ('humanoid_factory.html', '휴머노이드 조립 공정')]
