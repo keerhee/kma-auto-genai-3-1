@@ -87,9 +87,10 @@ for line in open('보충교재/README.md', encoding='utf-8').read().split('\n') 
         supp_keys.add((sec, no))
         btns = ''.join(supp_link(t, h) for t, h in re.findall(r'\[([^\]]+)\]\(([^)]+)\)', links))
         rows.append(f'<li class="row"><span class="k">{no}</span><span class="d">{html.escape(what.replace("`", ""))}</span><span class="l">{btns}</span></li>')
+book_html = (f'<h3 id="book">교과서</h3><p class="note"><a href="{GH_BLOB}{url("Textbook/README.md")}"><b>《자동차 산업과 생성형 AI — Claude Code로 일하는 법》</b></a> — '
+             '이 과정과 보충교재 전체를 배우는 순서(난이도 1~4단계)로 엮은 교과서입니다. 4부 12장 + 부록 3, 그림 98개. 장마다 끝의 «실습 길잡이»가 아래 보충교재 폴더로 이어집니다.</p>')
 supp_html = (f'<h3 id="supp">보충교재</h3><p class="note">본 강의를 거드는 보충교재 {len(supp_keys)}종입니다. 날짜마다 쉬운 것부터 01, 02, … 번호를 붙였습니다. PDF는 바로 열리고, zip은 내려받아 풀거나 설치하는 실습 키트·스킬입니다. '
              f'전체 목록은 <a href="{GH_BLOB}{url("보충교재/README.md")}">보충교재 안내</a>에 있습니다.</p>'
-             f'<p class="note"><b>교과서</b> — 이 보충교재 전체를 배우는 순서(난이도 1~4단계)로 엮은 <a href="{GH_BLOB}{url("보충교재/Textbook/README.md")}">《자동차 산업과 생성형 AI — Claude Code로 일하는 법》</a>(4부 12장 + 부록 3, 그림 98개)이 있습니다.</p>'
              f'<div class="supp-list">{"".join(supp_cards)}</div>')
 
 SIMS = [('ev_parts.html', 'EV 부품 학습'), ('ev_factory.html', 'EV 스마트팩토리'), ('humanoid_parts.html', '휴머노이드 부품 학습'), ('humanoid_factory.html', '휴머노이드 조립 공정')]
@@ -129,6 +130,7 @@ footer{{margin-top:40px;color:var(--sub);font-size:13px}}footer a{{color:var(--a
 <p>6일 과정과 로봇·스마트팩토리 특강의 강의자료입니다. 날마다 케이스 스토리로 열고, 기본기를 다진 뒤 본 강의와 보강 실습으로 이어집니다.</p></div>
 <div class="flow"><span><b>Hook</b> 케이스 1H</span><span><b>Front</b> 인트로 2H</span><span><b>Main</b> 본 강의 8H</span><span><b>Back</b> 보강 실습 2H</span></div>
 <div class="grid">{"".join(cards)}</div>
+{book_html}
 {supp_html}
 <h3>대시보드</h3><a class="dash" href="HTML/auto_world_dashboard.html" target="_blank" rel="noopener"><span class="dash-t">세계 자동차 산업 3D 지도</span><span class="dash-d">국가별 자동차 생산량·전기차 판매와 비중, 주요 완성차 그룹을 3D 지구본에서 보고, 생산국 통화의 오늘 환율을 함께 확인합니다.</span><small>대시보드 열기 →</small></a>
 {data_html}
