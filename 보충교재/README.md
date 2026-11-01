@@ -100,6 +100,7 @@
 | 14 | Claude Code로 시승 예약 시스템 만들기 — 요구사항 명세 · 테스트 시나리오 · 단계별 프롬프트 (44장 · ★★★) | [덱 PDF](Day6_최종프로젝트/14_시승예약시스템_요구사항명세부터/AJU_TestDrive_ClaudeCode_Deck_II.pdf) · [실습 키트 zip](Day6_최종프로젝트/14_시승예약시스템_요구사항명세부터/AJU_TestDrive_LabKit_II.zip) |
 | 15 | Claude Code로 시승·견적 신청 시스템 만들기 — 재규어·랜드로버 6개 차종, 고객 신청부터 담당자 확인·견적 발행까지 (46장 · ★★★) | [덱 PDF](Day6_최종프로젝트/15_시승견적신청시스템_재규어랜드로버/JLR_TestDrive_Quote_ClaudeCode_Deck.pdf) · [실습 키트 zip](Day6_최종프로젝트/15_시승견적신청시스템_재규어랜드로버/JLR_TestDrive_Kit.zip) |
 | 16 | Claude Code로 콜센터 실시간 관제 시스템 만들기 — 가상 콜 시뮬레이터 · KPI · 3분 지속 경보 · Erlang C 인력 산정 · AI 관제 요약, 확장판은 통화 텍스트로 인입 원인 분석 (일반판 43장 · 확장판 +27장 · ★★★) | 일반판 STEP 0~11: [안내](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/README.md) · [덱 PDF](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/CallCenter_Realtime_Monitoring_ClaudeCode_Guide.pdf) · [실습 키트 zip](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/CallCenter_Monitoring_Kit.zip) · [완성본 zip](Day6_최종프로젝트/16_콜센터_실시간관제/일반판/CallCenter_Monitoring_Reference.zip) · 확장판 STEP 0~18: [안내](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/README.md) · [확장편 덱 PDF](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/CallCenter_Realtime_Monitoring_ClaudeCode_Guide_extension.pdf) · [확장 키트 zip](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/CallCenter_Monitoring_Kit_Extension.zip) · [완성본 zip](Day6_최종프로젝트/16_콜센터_실시간관제/확장판/CallCenter_Monitoring_Reference_extension.zip) (기본 덱·키트도 폴더에 함께 있음) |
+| 17 | 웹앱을 Vercel · Cloudflare · Netlify에 배포하기 — 사람은 가입 3번 + 승인 3번, 빌드·배포·주소 확인은 Claude Code (★) | [가이드 md](Day6_최종프로젝트/17_웹배포_Vercel_Cloudflare_Netlify/웹배포_Vercel_Cloudflare_Netlify.md) |
 
 ## 로봇·스마트팩토리 특강
 
