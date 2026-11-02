@@ -16,7 +16,7 @@ from pathlib import Path
 
 SEED = 20261007
 HERE = Path(__file__).resolve().parent
-DEFAULT_OUT = Path("/Users/keerhee/Project/07_신산업과AX/자동차산업3-1/data")
+DEFAULT_OUT = Path("/Users/keerhee/Project/07_산업별AX/자동차산업3-1/data")
 DEFAULT_MANIFEST = Path(
     "/private/tmp/claude-501/-Users-keerhee-Project/5d3b2650-04af-40a9-aa0b-7bb1e164b6d1/scratchpad/data_manifest_synth.jsonl"
 )
